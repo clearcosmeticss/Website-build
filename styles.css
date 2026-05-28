@@ -2167,6 +2167,18 @@ section {
     width: 25px;
 }
 
+.contact-link {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.contact-link:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
 .contact-form {
     background-color: var(--white);
     padding: 2.5rem;
