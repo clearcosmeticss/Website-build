@@ -1,0 +1,12 @@
+/images/*
+  Cache-Control: max-age=31536000
+
+/images/*.mp4
+  Content-Type: video/mp4
+
+/images/*.webm
+  Content-Type: video/webm
+
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - ClearCosmetics</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .admin-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .admin-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .admin-nav {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .admin-nav button {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            background-color: var(--light-gray);
+            color: var(--secondary-color);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .admin-nav button.active,
+        .admin-nav button:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .admin-section {
+            display: none;
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .admin-section.active {
+            display: block;
+        }
+
+        .admin-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .admin-card {
+            background-color: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+        }
+
+        .admin-card h3 {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .practitioner-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .practitioner-item {
+            background-color: var(--white);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .availability-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            margin-top: 1rem;
+        }
+
+        .availability-day {
+            background-color: var(--white);
+            padding: 0.5rem;
+            text-align: center;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            min-height: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .availability-day:hover {
+            background-color: var(--light-gray);
+        }
+
+        .availability-day.available {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .availability-day.partial {
+            background-color: orange;
+            color: white;
+        }
+
+        .booking-item {
+            background-color: var(--white);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .booking-status {
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .booking-status.confirmed {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .booking-status.pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .booking-status.cancelled {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .time-slot-manager {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .time-slot-btn {
+            padding: 0.5rem;
+            border: 2px solid var(--light-gray);
+            background-color: var(--white);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+
+        .time-slot-btn.enabled {
+            border-color: var(--primary-color);
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .time-slot-btn:hover {
+            border-color: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            .admin-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .availability-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1><i class="fas fa-user-shield"></i> ClearCosmetics Admin Panel</h1>
+            <p>Manage appointments, availability, and practitioners</p>
+        </div>
+
+        <div class="admin-nav">
+            <button class="admin-tab active" data-section="dashboard">
+                <i class="fas fa-chart-dashboard"></i> Dashboard
+            </button>
+            <button class="admin-tab" data-section="availability">
+                <i class="fas fa-calendar-alt"></i> Availability
+            </button>
+            <button class="admin-tab" data-section="bookings">
+                <i class="fas fa-calendar-check"></i> Bookings
+            </button>
+            <button class="admin-tab" data-section="practitioners">
+                <i class="fas fa-user-md"></i> Practitioners
+            </button>
+            <button class="admin-tab" data-section="settings">
+                <i class="fas fa-cog"></i> Settings
+            </button>
+        </div>
+
+        <!-- Dashboard Section -->
+        <div id="dashboard" class="admin-section active">
+            <h2>Dashboard Overview</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="today-bookings">12</div>
+                    <div>Today's Bookings</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="week-bookings">84</div>
+                    <div>This Week</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="month-revenue">€18,450</div>
+                    <div>Monthly Revenue</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="pending-bookings">5</div>
+                    <div>Pending Confirmations</div>
+                </div>
+            </div>
+
+            <div class="admin-grid">
+                <div class="admin-card">
+                    <h3>Recent Bookings</h3>
+                    <div id="recent-bookings">
+                        <div class="booking-item">
+                            <div><strong>Sarah Johnson</strong> - Anti-Wrinkle Treatment</div>
+                            <div><small>Today 2:30 PM - Dublin</small></div>
+                            <span class="booking-status confirmed">Confirmed</span>
+                        </div>
+                        <div class="booking-item">
+                            <div><strong>Mike O'Connor</strong> - Consultation</div>
+                            <div><small>Today 4:00 PM - Dublin</small></div>
+                            <span class="booking-status pending">Pending</span>
+                        </div>
+                        <div class="booking-item">
+                            <div><strong>Emma Walsh</strong> - Dermal Fillers</div>
+                            <div><small>Tomorrow 10:00 AM - Marbella</small></div>
+                            <span class="booking-status confirmed">Confirmed</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-card">
+                    <h3>Availability Overview</h3>
+                    <div>
+                        <p><strong>Dublin Clinic:</strong> 8 slots available today</p>
+                        <p><strong>Marbella Clinic:</strong> 12 slots available today</p>
+                        <div style="margin-top: 1rem;">
+                            <button class="btn btn-primary" onclick="showSection('availability')">
+                                Manage Availability
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Availability Management Section -->
+        <div id="availability" class="admin-section">
+            <h2>Availability Management</h2>
+
+            <div class="admin-grid">
+                <div class="admin-card">
+                    <h3>Clinic Selection</h3>
+                    <select id="clinic-availability-select" class="form-select">
+                        <option value="dublin">Dublin Clinic</option>
+                        <option value="marbella">Marbella Clinic</option>
+                    </select>
+
+                    <h4 style="margin-top: 1.5rem;">Date Selection</h4>
+                    <input type="date" id="availability-date" class="form-select" style="margin-bottom: 1rem;">
+
+                    <h4>Available Time Slots</h4>
+                    <div class="time-slot-manager" id="time-slot-manager">
+                        <!-- Time slots will be generated here -->
+                    </div>
+
+                    <button class="btn btn-primary" style="margin-top: 1rem; width: 100%;" onclick="saveAvailability()">
+                        Save Availability
+                    </button>
+                </div>
+
+                <div class="admin-card">
+                    <h3>Weekly Overview</h3>
+                    <div class="availability-grid" id="weekly-availability">
+                        <!-- Weekly grid will be generated here -->
+                    </div>
+
+                    <div style="margin-top: 1rem; text-align: center;">
+                        <small>
+                            <span style="background-color: var(--primary-color); color: white; padding: 2px 8px; border-radius: 4px;">Available</span>
+                            <span style="background-color: orange; color: white; padding: 2px 8px; border-radius: 4px; margin-left: 0.5rem;">Partial</span>
+                            <span style="background-color: var(--light-gray); padding: 2px 8px; border-radius: 4px; margin-left: 0.5rem;">Unavailable</span>
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bookings Management Section -->
+        <div id="bookings" class="admin-section">
+            <h2>Bookings Management</h2>
+
+            <div class="admin-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <h3>All Bookings</h3>
+                    <div>
+                        <select id="booking-filter" class="form-select" style="margin-right: 1rem;">
+                            <option value="all">All Bookings</option>
+                            <option value="today">Today</option>
+                            <option value="week">This Week</option>
+                            <option value="pending">Pending</option>
+                        </select>
+                        <button class="btn btn-primary" onclick="exportBookings()">
+                            <i class="fas fa-download"></i> Export
+                        </button>
+                    </div>
+                </div>
+
+                <div id="bookings-list">
+                    <!-- Bookings will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Practitioners Section -->
+        <div id="practitioners" class="admin-section">
+            <h2>Practitioners Management</h2>
+
+            <div class="admin-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <h3>Practitioners</h3>
+                    <button class="btn btn-primary" onclick="addPractitioner()">
+                        <i class="fas fa-plus"></i> Add Practitioner
+                    </button>
+                </div>
+
+                <div class="practitioner-list" id="practitioner-list">
+                    <div class="practitioner-item">
+                        <div>
+                            <strong>Dr. Sarah Mitchell</strong><br>
+                            <small>Lead Aesthetic Practitioner - Dublin</small>
+                        </div>
+                        <div>
+                            <button class="btn btn-secondary" onclick="editPractitioner(1)">Edit</button>
+                            <button class="btn" style="color: #dc3545;" onclick="deletePractitioner(1)">Delete</button>
+                        </div>
+                    </div>
+
+                    <div class="practitioner-item">
+                        <div>
+                            <strong>Dr. Maria Rodriguez</strong><br>
+                            <small>Senior Practitioner - Marbella</small>
+                        </div>
+                        <div>
+                            <button class="btn btn-secondary" onclick="editPractitioner(2)">Edit</button>
+                            <button class="btn" style="color: #dc3545;" onclick="deletePractitioner(2)">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Section -->
+        <div id="settings" class="admin-section">
+            <h2>Settings</h2>
+
+            <div class="admin-grid">
+                <div class="admin-card">
+                    <h3>Business Hours</h3>
+                    <div style="display: grid; gap: 1rem;">
+                        <div>
+                            <label>Dublin Clinic Hours:</label>
+                            <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+                                <input type="time" value="09:00" class="form-select" style="flex: 1;">
+                                <span style="align-self: center;">to</span>
+                                <input type="time" value="17:00" class="form-select" style="flex: 1;">
+                            </div>
+                        </div>
+                        <div>
+                            <label>Marbella Clinic Hours:</label>
+                            <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+                                <input type="time" value="10:00" class="form-select" style="flex: 1;">
+                                <span style="align-self: center;">to</span>
+                                <input type="time" value="18:00" class="form-select" style="flex: 1;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-card">
+                    <h3>Notification Settings</h3>
+                    <div style="display: grid; gap: 1rem;">
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" checked> Email confirmations
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" checked> SMS reminders
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox"> Cancellation notifications
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" checked> New booking alerts
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
