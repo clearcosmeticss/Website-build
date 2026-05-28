@@ -51,13 +51,28 @@
                 }, { passive: false });
             });
 
-            // Fix chatbot button
+            // Fix chatbot button - allow real functionality
             const chatbotBtn = document.querySelector('.chatbot-btn');
             if (chatbotBtn) {
+                // Add mobile-friendly touch handler that works with the existing functionality
                 chatbotBtn.addEventListener('touchend', function(e) {
-                    e.preventDefault();
-                    alert('AI Chat feature coming soon! Please use WhatsApp for now.');
-                });
+                    e.stopPropagation(); // Don't prevent default, let onclick work
+                    console.log('Chatbot button touched - letting onclick handle it');
+
+                    // Small delay to let the onclick fire, then check if chatbot opened
+                    setTimeout(() => {
+                        if (typeof toggleChat === 'function') {
+                            console.log('toggleChat function is available');
+                        } else {
+                            console.log('toggleChat function not found, trying manual toggle');
+                            const chatbot = document.getElementById('chatbot');
+                            if (chatbot) {
+                                chatbot.classList.toggle('active');
+                                console.log('Chatbot toggled manually');
+                            }
+                        }
+                    }, 50);
+                }, { passive: true });
             }
 
             // Fix treatment cards
@@ -756,7 +771,7 @@
             <i class="fab fa-whatsapp"></i>
         </a>
         <a href="#enquiry" class="sticky-btn book-btn">Enquire Now ✨</a>
-        <button class="sticky-btn chatbot-btn" onclick="toggleChat(); if(typeof toggleChat === 'undefined') { alert('AI Chat coming soon!'); }">
+        <button class="sticky-btn chatbot-btn" onclick="toggleChat()">
             <i class="fas fa-comments"></i>
         </button>
     </div>
