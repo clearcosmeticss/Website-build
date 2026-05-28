@@ -1921,3 +1921,137 @@ function initResultsSliderProper() {
 // Make functions globally accessible
 window.nextSlide = nextSlide;
 window.prevSlide = prevSlide;
+
+// Question Modal Functions
+function openQuestionModal() {
+    console.log('Opening question modal');
+    const modal = document.getElementById('questionModal');
+    const questionText = document.getElementById('questionText');
+    const charCount = document.getElementById('charCount');
+
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+
+        // Focus on textarea
+        if (questionText) {
+            setTimeout(() => questionText.focus(), 300);
+        }
+
+        // Setup character counter
+        setupCharacterCounter();
+
+        // Close on background click
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeQuestionModal();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeQuestionModal();
+            }
+        });
+    }
+}
+
+function closeQuestionModal() {
+    console.log('Closing question modal');
+    const modal = document.getElementById('questionModal');
+    const questionText = document.getElementById('questionText');
+
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+
+        // Clear the textarea
+        if (questionText) {
+            questionText.value = '';
+            updateCharacterCount();
+        }
+    }
+}
+
+function setupCharacterCounter() {
+    const questionText = document.getElementById('questionText');
+    const charCount = document.getElementById('charCount');
+
+    if (questionText && charCount) {
+        questionText.addEventListener('input', updateCharacterCount);
+        updateCharacterCount(); // Initial count
+    }
+}
+
+function updateCharacterCount() {
+    const questionText = document.getElementById('questionText');
+    const charCount = document.getElementById('charCount');
+
+    if (questionText && charCount) {
+        const count = questionText.value.length;
+        charCount.textContent = count;
+
+        // Change color when approaching limit
+        if (count > 450) {
+            charCount.style.color = '#ef4444'; // Red
+        } else if (count > 400) {
+            charCount.style.color = '#f59e0b'; // Orange
+        } else {
+            charCount.style.color = '#6b7280'; // Gray
+        }
+    }
+}
+
+function sendQuestionToWhatsApp() {
+    const questionText = document.getElementById('questionText');
+    const treatmentName = getTreatmentName();
+
+    if (!questionText || !questionText.value.trim()) {
+        alert('Please enter your question before sending.');
+        return;
+    }
+
+    const question = questionText.value.trim();
+    const whatsappNumber = '353831622444';
+
+    // Create the message template
+    const message = `Hi ClearCosmetics! I have a question about ${treatmentName}. My question is: ${question}`;
+
+    // Encode the message for URL
+    const encodedMessage = encodeURIComponent(message);
+
+    // Create WhatsApp URL
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+    console.log('Sending question to WhatsApp:', {
+        treatment: treatmentName,
+        question: question,
+        url: whatsappUrl
+    });
+
+    // Open WhatsApp
+    window.open(whatsappUrl, '_blank');
+
+    // Close modal
+    closeQuestionModal();
+}
+
+function getTreatmentName() {
+    // Get the treatment name from the page title or heading
+    const pageTitle = document.title;
+    const mainHeading = document.querySelector('h1');
+
+    if (pageTitle && pageTitle.includes(' - ClearCosmetics')) {
+        return pageTitle.split(' - ClearCosmetics')[0];
+    } else if (mainHeading) {
+        return mainHeading.textContent.trim();
+    } else {
+        return 'your treatments'; // Fallback
+    }
+}
+
+// Make question modal functions globally accessible
+window.openQuestionModal = openQuestionModal;
+window.closeQuestionModal = closeQuestionModal;
+window.sendQuestionToWhatsApp = sendQuestionToWhatsApp;

@@ -282,11 +282,32 @@
                 <p>Book your consultation today and discover how non-surgical rhinoplasty can help you achieve the nose shape you've always wanted - without surgery.</p>
                 <div class="cta-buttons">
                     <a href="../index.html#booking" class="btn btn-primary">Book Consultation ✨</a>
-                    <a href="../index.html#contact" class="btn btn-secondary">Ask a Question</a>
+                    <button class="btn btn-secondary" onclick="openQuestionModal()">Ask a Question</button>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Question Popup Modal -->
+    <div id="questionModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Ask a Question About Non-Surgical Rhinoplasty</h3>
+                <button class="modal-close" onclick="closeQuestionModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Have a question about our non-surgical rhinoplasty treatments? Type your question below and we'll help you via WhatsApp.</p>
+                <textarea id="questionText" placeholder="Type your question here..." maxlength="500"></textarea>
+                <div class="character-count">
+                    <span id="charCount">0</span>/500
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeQuestionModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="sendQuestionToWhatsApp()">Send on WhatsApp</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
