@@ -75,15 +75,78 @@
                 }, { passive: true });
             }
 
+            // Fix ALL buttons and clickable elements aggressively
+
+            // Fix enquire now buttons (including bottom sticky one)
+            const enquireButtons = document.querySelectorAll('a[href="#enquiry"], .btn[href*="#enquiry"], .sticky-btn.book-btn');
+            enquireButtons.forEach(btn => {
+                btn.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    console.log('Enquire button touched, scrolling to enquiry section');
+                    const enquirySection = document.getElementById('enquiry');
+                    if (enquirySection) {
+                        enquirySection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }, { passive: false });
+            });
+
             // Fix treatment cards
-            const treatmentCards = document.querySelectorAll('.treatment-card, .service-card');
+            const treatmentCards = document.querySelectorAll('.treatment-card, .service-card, .treatment-grid .btn');
             treatmentCards.forEach(card => {
-                const link = card.querySelector('a');
-                if (link) {
+                let targetUrl = null;
+
+                // Find the target URL
+                if (card.href) {
+                    targetUrl = card.href;
+                } else {
+                    const link = card.querySelector('a');
+                    if (link) targetUrl = link.href;
+                }
+
+                if (targetUrl) {
                     card.addEventListener('touchend', function(e) {
                         e.preventDefault();
-                        window.location.href = link.href;
-                    });
+                        console.log('Treatment card touched, navigating to:', targetUrl);
+                        window.location.href = targetUrl;
+                    }, { passive: false });
+
+                    card.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        console.log('Treatment card clicked, navigating to:', targetUrl);
+                        window.location.href = targetUrl;
+                    }, { passive: false });
+                }
+            });
+
+            // Fix ALL buttons with onclick or href
+            const allButtons = document.querySelectorAll('button, .btn, a');
+            allButtons.forEach(btn => {
+                if (btn.onclick || btn.href) {
+                    btn.addEventListener('touchend', function(e) {
+                        console.log('Button touched:', this.className, this.href || 'onclick function');
+
+                        // Don't prevent default for WhatsApp (already handled above)
+                        if (this.href && this.href.includes('wa.me')) return;
+
+                        // Handle other buttons
+                        if (this.onclick) {
+                            e.preventDefault();
+                            this.onclick(e);
+                        } else if (this.href) {
+                            e.preventDefault();
+                            if (this.href.includes('#')) {
+                                // Internal scroll
+                                const targetId = this.href.split('#')[1];
+                                const target = document.getElementById(targetId);
+                                if (target) {
+                                    target.scrollIntoView({ behavior: 'smooth' });
+                                }
+                            } else {
+                                // External link
+                                window.location.href = this.href;
+                            }
+                        }
+                    }, { passive: false });
                 }
             });
 
