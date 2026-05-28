@@ -2,22 +2,167 @@
 
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all components
-    initNavigation();
-    initSliders();
-    initChatbot();
-    initAnimations();
-    initFormHandling();
-    initSmoothScrolling();
-    initVideoPlayback();
-    initWaitlistPopup();
-    initTouchFeedback();
-    initChatbotAssistantPopup();
-    initHeroCarousel();
-    initMiniVideo();
-    initResultsSliderProper();
-    // Booking system removed - using enquiry system instead
+    console.log('DOM Content Loaded - Starting initialization...');
+    console.log('User Agent:', navigator.userAgent);
+
+    // Initialize all components with error handling
+    try {
+        initNavigation();
+        console.log('✓ Navigation initialized');
+    } catch (e) {
+        console.error('❌ Navigation failed:', e);
+    }
+
+    try {
+        initSliders();
+        console.log('✓ Sliders initialized');
+    } catch (e) {
+        console.error('❌ Sliders failed:', e);
+    }
+
+    try {
+        initChatbot();
+        console.log('✓ Chatbot initialized');
+    } catch (e) {
+        console.error('❌ Chatbot failed:', e);
+    }
+
+    try {
+        initAnimations();
+        console.log('✓ Animations initialized');
+    } catch (e) {
+        console.error('❌ Animations failed:', e);
+    }
+
+    try {
+        initFormHandling();
+        console.log('✓ Form handling initialized');
+    } catch (e) {
+        console.error('❌ Form handling failed:', e);
+    }
+
+    try {
+        initSmoothScrolling();
+        console.log('✓ Smooth scrolling initialized');
+    } catch (e) {
+        console.error('❌ Smooth scrolling failed:', e);
+    }
+
+    try {
+        initVideoPlayback();
+        console.log('✓ Video playback initialized');
+    } catch (e) {
+        console.error('❌ Video playback failed:', e);
+    }
+
+    try {
+        initWaitlistPopup();
+        console.log('✓ Waitlist popup initialized');
+    } catch (e) {
+        console.error('❌ Waitlist popup failed:', e);
+    }
+
+    try {
+        initTouchFeedback();
+        console.log('✓ Touch feedback initialized');
+    } catch (e) {
+        console.error('❌ Touch feedback failed:', e);
+    }
+
+    try {
+        initChatbotAssistantPopup();
+        console.log('✓ Chatbot assistant initialized');
+    } catch (e) {
+        console.error('❌ Chatbot assistant failed:', e);
+    }
+
+    try {
+        initHeroCarousel();
+        console.log('✓ Hero carousel initialized');
+    } catch (e) {
+        console.error('❌ Hero carousel failed:', e);
+    }
+
+    try {
+        initMiniVideo();
+        console.log('✓ Mini video initialized');
+    } catch (e) {
+        console.error('❌ Mini video failed:', e);
+    }
+
+    try {
+        initResultsSliderProper();
+        console.log('✓ Results slider initialized');
+    } catch (e) {
+        console.error('❌ Results slider failed:', e);
+    }
+
+    console.log('All initialization attempts completed');
+
+    // Mobile fallback - ensure basic functionality works
+    setTimeout(() => {
+        addMobileFallbacks();
+    }, 1000);
 });
+
+// Mobile fallback functionality
+function addMobileFallbacks() {
+    console.log('Adding mobile fallbacks...');
+
+    // Fallback for WhatsApp buttons
+    const whatsappButtons = document.querySelectorAll('a[href*="wa.me"], .whatsapp-btn, .whatsapp-enquiry-btn');
+    whatsappButtons.forEach(button => {
+        if (!button.onclick) {
+            button.addEventListener('click', function(e) {
+                console.log('WhatsApp button clicked:', this.href);
+                if (this.href && this.href.includes('wa.me')) {
+                    window.open(this.href, '_blank');
+                }
+            });
+        }
+    });
+
+    // Fallback for form submission
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm && !contactForm.dataset.fallbackAdded) {
+        contactForm.dataset.fallbackAdded = 'true';
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.log('Form submission fallback triggered');
+
+            // Get form data
+            const name = document.getElementById('contact-name')?.value?.trim() || '';
+            const email = document.getElementById('contact-email')?.value?.trim() || '';
+            const phone = document.getElementById('contact-phone')?.value?.trim() || '';
+            const treatment = document.getElementById('interested-treatment')?.value || '';
+            const message = document.getElementById('contact-message')?.value?.trim() || '';
+
+            if (!name || !email || !treatment || !message) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            // Create WhatsApp message
+            const whatsappMessage = `Hi ClearCosmetics! I'm interested in your treatments.
+
+CONTACT DETAILS:
+👤 Name: ${name}
+📧 Email: ${email}
+📱 Phone: ${phone || 'Not provided'}
+💉 Interested Treatment: ${treatment}
+
+MESSAGE:
+${message}
+
+Thank you!`;
+
+            const whatsappUrl = `https://wa.me/353831622444?text=${encodeURIComponent(whatsappMessage)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+    }
+
+    console.log('Mobile fallbacks added');
+}
 
 // Navigation functionality
 function initNavigation() {
