@@ -2055,3 +2055,78 @@ function getTreatmentName() {
 window.openQuestionModal = openQuestionModal;
 window.closeQuestionModal = closeQuestionModal;
 window.sendQuestionToWhatsApp = sendQuestionToWhatsApp;
+
+// Mobile fixes specifically for question modal buttons
+function fixMobileQuestionButtons() {
+    console.log('Fixing mobile question modal buttons');
+
+    // Fix "Ask a Question" buttons
+    const questionButtons = document.querySelectorAll('button[onclick*="openQuestionModal"]');
+    questionButtons.forEach(btn => {
+        btn.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Question button touched, opening modal');
+            openQuestionModal();
+        }, { passive: false });
+    });
+
+    // Fix modal buttons when modal exists
+    const modal = document.getElementById('questionModal');
+    if (modal) {
+        // Fix close button
+        const closeBtn = modal.querySelector('.modal-close');
+        if (closeBtn) {
+            closeBtn.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('Close button touched');
+                closeQuestionModal();
+            }, { passive: false });
+        }
+
+        // Fix cancel button
+        const cancelBtn = modal.querySelector('button[onclick*="closeQuestionModal"]');
+        if (cancelBtn) {
+            cancelBtn.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('Cancel button touched');
+                closeQuestionModal();
+            }, { passive: false });
+        }
+
+        // Fix send button
+        const sendBtn = modal.querySelector('button[onclick*="sendQuestionToWhatsApp"]');
+        if (sendBtn) {
+            sendBtn.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('Send button touched');
+                sendQuestionToWhatsApp();
+            }, { passive: false });
+        }
+    }
+}
+
+// Mobile detection for question modal fixes
+const isMobileDevice = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+
+// Add mobile fixes to existing mobile fix system
+if (isMobileDevice) {
+    console.log('Mobile detected - applying question modal fixes');
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(() => {
+            fixMobileQuestionButtons();
+        }, 500);
+    });
+
+    // Also apply fixes after modal is opened
+    const originalOpenModal = openQuestionModal;
+    openQuestionModal = function() {
+        originalOpenModal();
+        setTimeout(() => {
+            fixMobileQuestionButtons();
+        }, 100);
+    };
+}

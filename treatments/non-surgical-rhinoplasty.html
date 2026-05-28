@@ -16,6 +16,91 @@
 
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="treatment-page.css">
+
+    <!-- Immediate mobile fix for question modal buttons -->
+    <script>
+        (function() {
+            if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768) {
+                console.log('Mobile detected - Setting up immediate question modal fixes');
+
+                document.addEventListener('DOMContentLoaded', function() {
+                    console.log('DOM loaded - Applying mobile question modal fixes');
+
+                    // Fix the main "Ask a Question" button immediately
+                    setTimeout(function() {
+                        const questionBtn = document.querySelector('button[onclick*="openQuestionModal"]');
+                        if (questionBtn) {
+                            console.log('Found question button, adding touch handler');
+                            questionBtn.addEventListener('touchend', function(e) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                console.log('Question button touched on mobile');
+                                if (window.openQuestionModal) {
+                                    window.openQuestionModal();
+                                }
+                            }, { passive: false });
+                        }
+                    }, 100);
+
+                    // Fix modal buttons when they appear
+                    const observer = new MutationObserver(function(mutations) {
+                        mutations.forEach(function(mutation) {
+                            if (mutation.type === 'childList' || mutation.type === 'attributes') {
+                                const modal = document.getElementById('questionModal');
+                                if (modal && modal.classList.contains('active')) {
+                                    console.log('Modal is now active, fixing mobile buttons');
+
+                                    // Fix close button
+                                    const closeBtn = modal.querySelector('.modal-close');
+                                    if (closeBtn) {
+                                        closeBtn.addEventListener('touchend', function(e) {
+                                            e.preventDefault();
+                                            console.log('Close button touched');
+                                            if (window.closeQuestionModal) {
+                                                window.closeQuestionModal();
+                                            }
+                                        }, { passive: false });
+                                    }
+
+                                    // Fix send button
+                                    const sendBtn = modal.querySelector('button[onclick*="sendQuestionToWhatsApp"]');
+                                    if (sendBtn) {
+                                        sendBtn.addEventListener('touchend', function(e) {
+                                            e.preventDefault();
+                                            console.log('Send button touched');
+                                            if (window.sendQuestionToWhatsApp) {
+                                                window.sendQuestionToWhatsApp();
+                                            }
+                                        }, { passive: false });
+                                    }
+
+                                    // Fix cancel button
+                                    const cancelBtn = modal.querySelector('button[onclick*="closeQuestionModal"]:not(.modal-close)');
+                                    if (cancelBtn) {
+                                        cancelBtn.addEventListener('touchend', function(e) {
+                                            e.preventDefault();
+                                            console.log('Cancel button touched');
+                                            if (window.closeQuestionModal) {
+                                                window.closeQuestionModal();
+                                            }
+                                        }, { passive: false });
+                                    }
+                                }
+                            }
+                        });
+                    });
+
+                    // Start observing
+                    observer.observe(document.body, {
+                        childList: true,
+                        subtree: true,
+                        attributes: true,
+                        attributeFilter: ['class']
+                    });
+                });
+            }
+        })();
+    </script>
 </head>
 <body>
     <!-- Navigation -->
