@@ -2168,15 +2168,45 @@ section {
 }
 
 .contact-link {
-    color: var(--secondary-color);
     text-decoration: none;
     transition: var(--transition);
-    font-weight: 500;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 6px;
+    display: inline-block;
 }
 
-.contact-link:hover {
-    color: var(--primary-color);
-    text-decoration: underline;
+.email-link {
+    color: #e74c3c;
+    background-color: rgba(231, 76, 60, 0.1);
+}
+
+.email-link:hover {
+    color: #ffffff;
+    background-color: #e74c3c;
+    transform: translateY(-1px);
+}
+
+.whatsapp-link {
+    color: #25d366;
+    background-color: rgba(37, 211, 102, 0.1);
+}
+
+.whatsapp-link:hover {
+    color: #ffffff;
+    background-color: #25d366;
+    transform: translateY(-1px);
+}
+
+.instagram-link {
+    color: #e1306c;
+    background-color: rgba(225, 48, 108, 0.1);
+}
+
+.instagram-link:hover {
+    color: #ffffff;
+    background-color: #e1306c;
+    transform: translateY(-1px);
 }
 
 .contact-form {
