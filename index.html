@@ -14,6 +14,76 @@
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- MOBILE FIX: Immediate script for mobile button functionality -->
+    <script>
+        console.log('Mobile fix script loading...');
+
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        function fixMobileButtons() {
+            if (!isMobile()) return;
+
+            console.log('Applying mobile fixes...');
+
+            // Wait for DOM
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', fixMobileButtons);
+                return;
+            }
+
+            // Fix WhatsApp links with aggressive approach
+            const whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
+            whatsappLinks.forEach(link => {
+                link.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('WhatsApp link touched:', this.href);
+                    window.open(this.href, '_blank');
+                }, { passive: false });
+
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('WhatsApp link clicked:', this.href);
+                    window.open(this.href, '_blank');
+                }, { passive: false });
+            });
+
+            // Fix chatbot button
+            const chatbotBtn = document.querySelector('.chatbot-btn');
+            if (chatbotBtn) {
+                chatbotBtn.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    alert('AI Chat feature coming soon! Please use WhatsApp for now.');
+                });
+            }
+
+            // Fix treatment cards
+            const treatmentCards = document.querySelectorAll('.treatment-card, .service-card');
+            treatmentCards.forEach(card => {
+                const link = card.querySelector('a');
+                if (link) {
+                    card.addEventListener('touchend', function(e) {
+                        e.preventDefault();
+                        window.location.href = link.href;
+                    });
+                }
+            });
+
+            console.log('Mobile fixes applied successfully');
+        }
+
+        // Apply fixes immediately and on DOM ready
+        if (isMobile()) {
+            fixMobileButtons();
+            // Also try again after a short delay
+            setTimeout(fixMobileButtons, 500);
+            setTimeout(fixMobileButtons, 2000);
+        }
+    </script>
+
     <!-- Payment Gateway Scripts -->
     <script src="https://js.stripe.com/v3/"></script>
 
