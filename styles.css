@@ -1545,7 +1545,19 @@ section {
     }
 
     .enquiry-content {
-        padding: 0 1rem;
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    .enquiry {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .enquiry .container {
+        padding-left: 20px;
+        padding-right: 20px;
+        margin: 0 auto;
     }
 }
 
@@ -1959,6 +1971,28 @@ section {
 .single-card {
     max-width: 600px;
     margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .single-card {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .enquiry-card.single-card {
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .enquiry-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 0;
+        margin: 0 auto;
+        max-width: 100%;
+    }
 }
 
 .enquiry-buttons .btn i {
