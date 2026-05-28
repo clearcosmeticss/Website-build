@@ -90,37 +90,32 @@
                 }, { passive: false });
             });
 
-            // Fix treatment cards
-            const treatmentCards = document.querySelectorAll('.treatment-card, .service-card, .treatment-grid .btn');
-            treatmentCards.forEach(card => {
-                let targetUrl = null;
-
-                // Find the target URL
-                if (card.href) {
-                    targetUrl = card.href;
-                } else {
-                    const link = card.querySelector('a');
-                    if (link) targetUrl = link.href;
-                }
-
-                if (targetUrl) {
-                    card.addEventListener('touchend', function(e) {
+            // Fix treatment card BUTTONS only (not the whole card)
+            const treatmentButtons = document.querySelectorAll('.treatment-card .btn, .service-card .btn, .treatment-grid .btn');
+            treatmentButtons.forEach(btn => {
+                if (btn.href) {
+                    btn.addEventListener('touchend', function(e) {
                         e.preventDefault();
-                        console.log('Treatment card touched, navigating to:', targetUrl);
-                        window.location.href = targetUrl;
+                        console.log('Treatment button touched, navigating to:', this.href);
+                        window.location.href = this.href;
                     }, { passive: false });
 
-                    card.addEventListener('click', function(e) {
+                    btn.addEventListener('click', function(e) {
                         e.preventDefault();
-                        console.log('Treatment card clicked, navigating to:', targetUrl);
-                        window.location.href = targetUrl;
+                        console.log('Treatment button clicked, navigating to:', this.href);
+                        window.location.href = this.href;
                     }, { passive: false });
                 }
             });
 
-            // Fix ALL buttons with onclick or href
+            // Fix ALL buttons with onclick or href (but NOT treatment card containers)
             const allButtons = document.querySelectorAll('button, .btn, a');
             allButtons.forEach(btn => {
+                // Skip if this is a treatment card container (not a button)
+                if (btn.classList.contains('treatment-card') || btn.classList.contains('service-card')) {
+                    return; // Don't add handlers to card containers
+                }
+
                 if (btn.onclick || btn.href) {
                     btn.addEventListener('touchend', function(e) {
                         console.log('Button touched:', this.className, this.href || 'onclick function');

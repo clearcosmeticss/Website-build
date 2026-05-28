@@ -354,6 +354,15 @@ p {
     .card, .treatment-card {
         padding: 16px;
     }
+
+    /* Ensure treatment cards don't have pointer cursor - only buttons should */
+    .treatment-card, .service-card {
+        cursor: default !important;
+    }
+
+    .treatment-card .btn, .service-card .btn {
+        cursor: pointer !important;
+    }
 }
 
 /* Mobile-First Buttons */
