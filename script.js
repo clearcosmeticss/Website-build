@@ -102,7 +102,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mobile fallback - ensure basic functionality works
     setTimeout(() => {
         addMobileFallbacks();
-    }, 1000);
+    }, 100);
+
+    // Immediate mobile fixes
+    addImmediateMobileFixes();
 });
 
 // Mobile fallback functionality
@@ -162,6 +165,69 @@ Thank you!`;
     }
 
     console.log('Mobile fallbacks added');
+}
+
+// Immediate mobile fixes - direct approach
+function addImmediateMobileFixes() {
+    console.log('Adding immediate mobile fixes...');
+
+    // Fix all WhatsApp links
+    document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+        if (!link.onclick) {
+            link.onclick = function(e) {
+                e.preventDefault();
+                window.location.href = this.href;
+                return false;
+            };
+        }
+    });
+
+    // Fix enquiry buttons
+    document.querySelectorAll('.btn[href*="wa.me"]').forEach(btn => {
+        if (!btn.onclick) {
+            btn.onclick = function(e) {
+                e.preventDefault();
+                window.location.href = this.href;
+                return false;
+            };
+        }
+    });
+
+    // Fix treatment card links
+    document.querySelectorAll('.treatment-card').forEach(card => {
+        if (!card.onclick) {
+            const link = card.querySelector('a') || card.querySelector('[href]');
+            if (link) {
+                card.style.cursor = 'pointer';
+                card.onclick = function() {
+                    window.location.href = link.href;
+                };
+            }
+        }
+    });
+
+    // Fix any remaining buttons with href
+    document.querySelectorAll('a, .btn').forEach(element => {
+        if (element.href && !element.onclick) {
+            element.onclick = function(e) {
+                if (this.href) {
+                    if (this.href.includes('wa.me')) {
+                        e.preventDefault();
+                        window.open(this.href, '_blank');
+                        return false;
+                    } else if (this.href.includes('#')) {
+                        // Internal navigation - let it work normally
+                        return true;
+                    } else {
+                        window.location.href = this.href;
+                        return true;
+                    }
+                }
+            };
+        }
+    });
+
+    console.log('Immediate mobile fixes added');
 }
 
 // Navigation functionality

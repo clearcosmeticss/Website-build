@@ -560,10 +560,10 @@
                         <h3>Enquire Now</h3>
                         <p>Get in touch with us via email or WhatsApp. We'll get back to you within 24 hours with all the information you need.</p>
                         <div class="enquiry-buttons">
-                            <a href="mailto:Clearcosmeticss@gmail.com?subject=Treatment Enquiry&body=Hi ClearCosmetics,%0A%0AI'm interested in learning more about your treatments. Please contact me to discuss:%0A%0A- Treatment of interest:%0A- Preferred clinic (Dublin/Marbella):%0A- Contact number:%0A- Any specific questions:%0A%0AThank you!" class="btn btn-primary">
+                            <a href="mailto:Clearcosmeticss@gmail.com?subject=Treatment Enquiry&body=Hi ClearCosmetics,%0A%0AI'm interested in learning more about your treatments. Please contact me to discuss:%0A%0A- Treatment of interest:%0A- Preferred clinic (Dublin/Marbella):%0A- Contact number:%0A- Any specific questions:%0A%0AThank you!" class="btn btn-primary" onclick="window.location.href=this.href; return true;">
                                 <i class="fas fa-envelope"></i> Send Email
                             </a>
-                            <a href="https://wa.me/353831622444?text=Hi%20ClearCosmetics!%20I'm%20interested%20in%20learning%20more%20about%20your%20treatments.%20Could%20you%20please%20provide%20information%20about%20your%20services%20and%20availability?" target="_blank" class="btn btn-primary">
+                            <a href="https://wa.me/353831622444?text=Hi%20ClearCosmetics!%20I'm%20interested%20in%20learning%20more%20about%20your%20treatments.%20Could%20you%20please%20provide%20information%20about%20your%20services%20and%20availability?" target="_blank" class="btn btn-primary" onclick="window.open(this.href, '_blank'); return false;">
                                 <i class="fab fa-whatsapp"></i> WhatsApp Us
                             </a>
                         </div>
@@ -682,11 +682,11 @@
 
     <!-- Bottom Button Bar -->
     <div class="mobile-sticky">
-        <a href="https://wa.me/353831622444" class="sticky-btn whatsapp-btn" target="_blank">
+        <a href="https://wa.me/353831622444" class="sticky-btn whatsapp-btn" target="_blank" onclick="window.open(this.href, '_blank'); return false;">
             <i class="fab fa-whatsapp"></i>
         </a>
         <a href="#enquiry" class="sticky-btn book-btn">Enquire Now ✨</a>
-        <button class="sticky-btn chatbot-btn" onclick="toggleChat()">
+        <button class="sticky-btn chatbot-btn" onclick="toggleChat(); if(typeof toggleChat === 'undefined') { alert('AI Chat coming soon!'); }">
             <i class="fas fa-comments"></i>
         </button>
     </div>
