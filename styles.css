@@ -41,9 +41,13 @@
 }
 
 /* Image Styling */
-.logo {
+.logo-text {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--secondary-color);
+    display: flex;
+    align-items: center;
     height: 40px;
-    width: auto;
 }
 
 .hero-img {
@@ -460,20 +464,14 @@ p {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     gap: 20px;
 }
 
-.nav-logo {
-    display: flex;
-    align-items: center;
-}
-
 .nav-brand {
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 
@@ -482,6 +480,13 @@ p {
     color: var(--secondary-color);
     margin: 0;
     font-size: 1.8rem;
+}
+
+.nav-brand a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .nav-menu {

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Appointment - ClearCosmetics | Dublin & Marbella</title>
+    <meta name="description" content="Book your aesthetic treatment or free consultation at ClearCosmetics. Clinics in Dublin and Marbella — limited clinic days, book up to 3 months ahead.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="booking.css">
+    <style>
+        @keyframes pulse {
+            0% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.05); }
+            100% { transform: translateX(-50%) scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <div class="logo-text">✨</div>
+                    <h2>ClearCosmetics</h2>
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="index.html#treatments" class="nav-link">Treatments</a>
+                <a href="index.html#locations" class="nav-link">Locations</a>
+                <a href="index.html#testimonials" class="nav-link">Reviews</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+                <a href="book.html" class="nav-link btn-nav">Book Now ✨</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="booking-hero">
+        <div class="container">
+            <h1 class="section-title">Book Your Appointment</h1>
+            <p class="booking-hero-subtitle">Choose your clinic, select your appointment type, and secure your slot. Our clinics run on limited days each month — book early to avoid disappointment.</p>
+        </div>
+    </section>
+
+    <section class="booking-page">
+        <div class="container">
+            <div class="booking-layout">
+                <div class="booking-main">
+                    <div class="booking-steps">
+                        <div class="booking-step-indicator active" data-step="1">
+                            <span>1</span> Appointment Type
+                        </div>
+                        <div class="booking-step-indicator" data-step="2">
+                            <span>2</span> Select Date & Time
+                        </div>
+                        <div class="booking-step-indicator" data-step="3">
+                            <span>3</span> Secure with Deposit
+                        </div>
+                    </div>
+
+                    <!-- Step 1: Appointment Type -->
+                    <div class="booking-panel active" data-step="1">
+                        <h3>What type of appointment?</h3>
+                        <div class="appointment-type-cards" id="appointment-type-cards"></div>
+                        <div class="treatment-select-group" id="treatment-select-group">
+                            <label for="treatment-interest">Select Treatment(s) *</label>
+                            <select id="treatment-interest" multiple style="display: none;"></select>
+                            <div id="treatment-dropdown" class="treatment-dropdown">
+                                <div class="dropdown-header">
+                                    <span id="selected-treatments-text">Choose your treatment(s)</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="dropdown-list" id="treatment-list"></div>
+                            </div>
+                            <div id="selected-treatments-display" class="selected-treatments-display"></div>
+                        </div>
+                        <div class="booking-nav-buttons">
+                            <div></div>
+                            <button type="button" class="btn btn-primary" id="btn-step-1-next">Continue <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Calendar -->
+                    <div class="booking-panel" data-step="2">
+                        <div class="booking-confirmation-banner" id="booking-confirmation">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>Booking confirmed!</strong>
+                                <p style="margin:0;font-size:0.9rem;">You'll receive a confirmation email shortly. We can't wait to see you!</p>
+                            </div>
+                        </div>
+
+                        <div class="calcom-setup-notice" id="calcom-setup-notice" style="display:none;">
+                            <h4><i class="fas fa-info-circle"></i> Cal.com Setup Required</h4>
+                            <p>Your Cal.com account needs to be connected. Update booking-config.js or contact us via WhatsApp to book manually.</p>
+                        </div>
+
+                        <div class="booking-step-notice">
+                            <h3>Choose your date & time</h3>
+                            <p><strong>Important:</strong> Please select your preferred time slot and enter your details. Before your appointment is confirmed, you'll be directed to secure payment for your deposit.</p>
+                        </div>
+
+                        <div class="payment-flow-banner" style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #2196f3; border-radius: 8px; padding: 16px; margin-bottom: 20px; text-align: center;">
+                            <i class="fas fa-info-circle" style="color: #1976d2; font-size: 1.2rem; margin-right: 8px;"></i>
+                            <strong style="color: #1976d2;">Select your time → Enter details → Pay deposit → Booking confirmed</strong>
+                        </div>
+
+                        <div id="calcom-embed"></div>
+
+                        <div class="payment-notice" id="payment-notice" style="display:none;">
+                            <div class="notice-content">
+                                <i class="fas fa-info-circle"></i>
+                                <div>
+                                    <h4>Booking Complete!</h4>
+                                    <p>Now secure your appointment with a deposit payment.</p>
+                                    <p><strong>Note:</strong> Your deposit will be deducted from the total treatment cost on the day of your appointment.</p>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-primary" id="btn-proceed-to-payment">
+                                Pay Deposit & Confirm <i class="fas fa-credit-card"></i>
+                            </button>
+                        </div>
+
+                        <div class="booking-nav-buttons">
+                            <button type="button" class="btn btn-back" id="btn-step-2-back"><i class="fas fa-arrow-left"></i> Back</button>
+                            <button type="button" class="btn btn-primary" id="btn-proceed-to-payment" style="display:none;">Continue to Payment <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Payment -->
+                    <div class="booking-panel" data-step="3">
+                        <h3>Secure your appointment</h3>
+                        <p>Pay a deposit to confirm your booking. <strong>Your deposit will be deducted from the total treatment cost on the day of your appointment.</strong></p>
+
+                        <div class="payment-summary">
+                            <div class="treatment-details">
+                                <h4 id="payment-treatment-title">Treatment Details</h4>
+                                <div class="price-breakdown">
+                                    <div class="price-item">
+                                        <span>Treatment Cost</span>
+                                        <span id="total-price">€0</span>
+                                    </div>
+                                    <div class="price-item deposit-highlight">
+                                        <span>Deposit Required</span>
+                                        <span id="deposit-amount">€0</span>
+                                    </div>
+                                    <div class="price-item remaining">
+                                        <span>Pay at Appointment</span>
+                                        <span id="remaining-amount">€0</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="payment-methods">
+                            <h4>Choose Payment Method</h4>
+                            <div class="payment-options">
+                                <button type="button" class="payment-option-btn active" data-method="card">
+                                    <i class="fas fa-credit-card"></i>
+                                    <span>Card Payment</span>
+                                    <small>Visa, Mastercard, etc.</small>
+                                </button>
+                                <button type="button" class="payment-option-btn" data-method="paypal">
+                                    <i class="fab fa-paypal"></i>
+                                    <span>PayPal</span>
+                                    <small>Pay with PayPal account</small>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="payment-form" id="payment-form">
+                            <div class="card-payment" id="card-payment">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="card-number">Card Number</label>
+                                        <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="expiry-date">Expiry Date</label>
+                                        <input type="text" id="expiry-date" placeholder="MM/YY" maxlength="5">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cvv">CVV</label>
+                                        <input type="text" id="cvv" placeholder="123" maxlength="4">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="card-name">Cardholder Name</label>
+                                        <input type="text" id="card-name" placeholder="Full name on card">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="paypal-payment" id="paypal-payment" style="display: none;">
+                                <div class="paypal-container">
+                                    <p>You will be redirected to PayPal to complete your payment.</p>
+                                    <div id="paypal-button-container"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="payment-security">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Your payment information is secure and encrypted</span>
+                        </div>
+
+                        <div class="booking-nav-buttons">
+                            <button type="button" class="btn btn-back" id="btn-step-3-back"><i class="fas fa-arrow-left"></i> Back</button>
+                            <button type="button" class="btn btn-primary" id="btn-complete-booking">
+                                <span id="payment-button-text">Pay Deposit €0</span>
+                                <i class="fas fa-lock"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="booking-sidebar">
+                    <div class="sidebar-card">
+                        <h4>Your Booking</h4>
+                        <div class="sidebar-summary-item">
+                            <span class="label">Clinic</span>
+                            <span class="value" id="summary-clinic">—</span>
+                        </div>
+                        <div class="sidebar-summary-item">
+                            <span class="label">Appointment</span>
+                            <span class="value" id="summary-type">—</span>
+                        </div>
+                        <div class="sidebar-summary-item">
+                            <span class="label">Treatment</span>
+                            <span class="value" id="summary-treatment">—</span>
+                        </div>
+                        <div class="sidebar-summary-item">
+                            <span class="label">Total Cost</span>
+                            <span class="value" id="summary-price">—</span>
+                        </div>
+                        <div class="sidebar-summary-item">
+                            <span class="label">Deposit</span>
+                            <span class="value" id="summary-deposit">—</span>
+                        </div>
+                        <div class="sidebar-note">
+                            <small><i class="fas fa-info-circle"></i> Deposit will be deducted from total cost on appointment day</small>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-card">
+                        <h4>Clinic Schedule</h4>
+                        <div class="clinic-info">
+                            <p><i class="fas fa-calendar-alt"></i> 2-3 clinic days per month</p>
+                            <p><i class="fas fa-clock"></i> 10:00 AM - 8:00 PM</p>
+                            <p><i class="fas fa-coffee"></i> Break: 2:20 PM - 3:20 PM</p>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-card">
+                        <h4>Before You Book</h4>
+                        <ul id="booking-policies"></ul>
+                    </div>
+
+                    <div class="sidebar-card sidebar-contact">
+                        <h4>Need Help?</h4>
+                        <p>Can't find a suitable time? Message us directly.</p>
+                        <a href="https://wa.me/353831622444?text=Hi%20ClearCosmetics!%20I%20need%20help%20booking%20an%20appointment." class="btn btn-primary" target="_blank">
+                            <i class="fab fa-whatsapp"></i> WhatsApp Us
+                        </a>
+                        <a href="mailto:Clearcosmeticss@gmail.com?subject=Booking%20Enquiry" class="btn btn-secondary">
+                            <i class="fas fa-envelope"></i> Email Us
+                        </a>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ClearCosmetics</h3>
+                    <p>Premium aesthetics clinics in Dublin and Marbella, specializing in natural, confidence-boosting treatments.</p>
+                    <div class="social-links">
+                        <a href="https://instagram.com/clearcosmetics_" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://tiktok.com/@clearcosmetics_" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://facebook.com/clearcosmetics" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://wa.me/353831622444" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#treatments">Treatments</a></li>
+                        <li><a href="book.html">Book Now</a></li>
+                        <li><a href="index.html#locations">Locations</a></li>
+                        <li><a href="index.html#membership">Membership</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>Dublin: (+353) 83 162 2444</li>
+                        <li>Marbella: (+353) 83 162 2444</li>
+                        <li>Clearcosmeticss@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ClearCosmetics. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="mobile-sticky">
+        <a href="https://wa.me/353831622444" class="sticky-btn whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="book.html" class="sticky-btn book-btn">Book Now ✨</a>
+    </div>
+
+    <script src="booking-config.js"></script>
+    <script src="booking.js"></script>
+</body>
+</html>
