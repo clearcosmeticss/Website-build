@@ -10,8 +10,8 @@
     --accent-pink: #f5e6e0;
 
     /* Typography */
-    --font-heading: 'Playfair Display', serif;
-    --font-body: 'Inter', sans-serif;
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Lato', sans-serif;
 
     /* Mobile-First Spacing - Enhanced for mobile */
     --section-padding: 48px 0;
