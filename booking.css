@@ -1,67 +1,79 @@
-/* ClearCosmetics Booking Page */
+/* ClearCosmetics Booking Page - Luxury Redesign */
 
 .booking-hero {
-    padding: 120px 0 48px;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--white) 100%);
+    padding: 120px var(--space-32) var(--space-96);
+    background: var(--cc-bg);
     text-align: center;
 }
 
 .booking-hero .section-title {
-    margin-bottom: 12px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(44px, 5.5vw, 64px);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    margin-bottom: var(--space-24);
+    color: var(--cc-text);
 }
 
 .booking-hero-subtitle {
-    max-width: 640px;
-    margin: 0 auto;
-    color: var(--gray);
-    font-size: 1.05rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
     line-height: 1.7;
+    color: var(--cc-muted);
+    max-width: 620px;
+    margin: 0 auto;
 }
 
 .booking-page {
-    padding: 48px 0 80px;
-    background: var(--light-gray);
+    padding: var(--space-64) 0 var(--space-96);
+    background: var(--cc-bg);
 }
 
 .booking-layout {
     display: grid;
-    grid-template-columns: 1fr 340px;
-    gap: 32px;
+    grid-template-columns: 1fr 360px;
+    gap: var(--space-48);
     align-items: start;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 var(--space-32);
 }
 
 .booking-main {
-    background: var(--white);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
+    background: var(--cc-bg);
+    border: 1px solid var(--cc-border);
+    border-radius: 16px;
     overflow: hidden;
 }
 
 .booking-steps {
     display: flex;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-    background: var(--white);
+    border-bottom: 1px solid var(--cc-border);
+    background: var(--cc-bg);
 }
 
 .booking-step-indicator {
     flex: 1;
-    padding: 18px 12px;
+    padding: var(--space-24) var(--space-16);
     text-align: center;
-    font-size: 0.85rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
     font-weight: 500;
-    color: var(--gray);
-    border-bottom: 3px solid transparent;
-    transition: var(--transition);
+    letter-spacing: 0.03em;
+    color: var(--cc-muted);
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
 }
 
 .booking-step-indicator.active {
-    color: var(--secondary-color);
-    border-bottom-color: var(--secondary-color);
-    background: rgba(245, 230, 224, 0.35);
+    color: var(--cc-text);
+    border-bottom-color: var(--cc-text);
+    background: transparent;
 }
 
 .booking-step-indicator.completed {
-    color: var(--secondary-color);
+    color: var(--cc-text);
 }
 
 .booking-step-indicator span {
@@ -71,21 +83,22 @@
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    background: var(--light-gray);
-    font-size: 0.75rem;
-    margin-right: 8px;
+    background: var(--cc-border);
+    font-size: 12px;
+    margin-right: var(--space-8);
+    font-family: 'Inter', sans-serif;
 }
 
 .booking-step-indicator.active span,
 .booking-step-indicator.completed span {
-    background: var(--secondary-color);
-    color: var(--white);
+    background: var(--cc-text);
+    color: var(--cc-bg);
 }
 
 .booking-panel {
     display: none;
-    padding: 32px;
-    animation: fadeIn 0.35s ease;
+    padding: var(--space-48) var(--space-32);
+    animation: fadeIn 0.3s ease;
 }
 
 .booking-panel.active {
@@ -98,39 +111,45 @@
 }
 
 .booking-panel h3 {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    margin-bottom: 8px;
-    color: var(--secondary-color);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3.5vw, 36px);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    margin-bottom: var(--space-32);
+    color: var(--cc-text);
 }
 
 .booking-panel > p {
-    color: var(--gray);
-    margin-bottom: 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--cc-muted);
+    margin-bottom: var(--space-32);
 }
 
 .clinic-cards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: var(--space-24);
+    margin-bottom: var(--space-48);
 }
 
 .clinic-select-card {
-    border: 2px solid transparent;
-    border-radius: var(--border-radius);
+    border: 1px solid var(--cc-border);
+    border-radius: 12px;
     overflow: hidden;
     cursor: pointer;
-    background: var(--white);
-    box-shadow: var(--shadow);
-    transition: var(--transition);
+    background: var(--cc-bg);
+    transition: all 0.3s ease;
     text-align: left;
 }
 
 .clinic-select-card:hover,
 .clinic-select-card.selected {
-    border-color: var(--secondary-color);
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-hover);
+    border-color: var(--cc-text);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
 .clinic-select-card img {
@@ -140,350 +159,290 @@
 }
 
 .clinic-select-card .clinic-card-body {
-    padding: 20px;
+    padding: var(--space-24);
 }
 
 .clinic-select-card h4 {
-    font-family: var(--font-heading);
-    font-size: 1.2rem;
-    margin-bottom: 6px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    margin-bottom: var(--space-8);
+    color: var(--cc-text);
 }
 
 .clinic-select-card p {
-    font-size: 0.9rem;
-    color: var(--gray);
-    margin-bottom: 12px;
-    line-height: 1.5;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--cc-muted);
+    margin-bottom: var(--space-16);
+    line-height: 1.6;
 }
 
 .clinic-info p {
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
-    font-size: 0.9rem;
-    color: var(--gray);
+    gap: var(--space-8);
+    margin-bottom: var(--space-8);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--cc-muted);
 }
 
 .clinic-info i {
-    color: var(--secondary-color);
+    color: var(--cc-accent);
     width: 16px;
 }
 
 .appointment-type-cards {
     display: grid;
-    gap: 16px;
+    gap: var(--space-16);
+    margin-bottom: var(--space-48);
 }
 
 .appointment-type-card {
     display: flex;
     align-items: flex-start;
-    gap: 16px;
-    padding: 20px;
-    border: 2px solid rgba(0, 0, 0, 0.08);
-    border-radius: var(--border-radius-small);
+    gap: var(--space-16);
+    padding: var(--space-24);
+    border: 1px solid var(--cc-border);
+    border-radius: 12px;
     cursor: pointer;
-    transition: var(--transition);
+    transition: all 0.3s ease;
 }
 
 .appointment-type-card:hover,
 .appointment-type-card.selected {
-    border-color: var(--secondary-color);
-    background: rgba(245, 230, 224, 0.25);
+    border-color: var(--cc-text);
+    background: #FAFAFA;
 }
 
 .appointment-type-icon {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: var(--primary-color);
+    background: #FAFAFA;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    color: var(--cc-accent);
+    font-size: 20px;
 }
 
-.appointment-type-icon i {
-    font-size: 1.1rem;
-    color: var(--secondary-color);
+.appointment-type-content h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    margin-bottom: var(--space-8);
+    color: var(--cc-text);
 }
 
-.appointment-type-card h4 {
-    font-size: 1.05rem;
-    margin-bottom: 4px;
+.appointment-type-content p {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--cc-muted);
+    margin: 0;
 }
 
-.appointment-type-card .duration {
-    font-size: 0.8rem;
-    color: var(--gray);
-    margin-bottom: 6px;
-}
-
-.appointment-type-card p {
-    font-size: 0.9rem;
-    color: var(--gray);
-    line-height: 1.5;
+.appointment-type-content .price {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--cc-accent);
+    margin-top: var(--space-8);
+    letter-spacing: 0.03em;
 }
 
 .treatment-select-group {
-    margin-bottom: 24px;
+    margin-bottom: var(--space-48);
 }
 
 .treatment-select-group label {
     display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
     font-weight: 500;
-    margin-bottom: 8px;
-}
-
-.treatment-select-group select {
-    width: 100%;
-    padding: 12px 16px;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    border-radius: var(--border-radius-small);
-    font-family: var(--font-body);
-    font-size: 1rem;
-    background: var(--white);
+    color: var(--cc-text);
+    margin-bottom: var(--space-12);
 }
 
 .treatment-dropdown {
     position: relative;
-    width: 100%;
-    margin-bottom: 16px;
+    border: 1px solid var(--cc-border);
+    border-radius: 12px;
+    background: var(--cc-bg);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.treatment-dropdown:hover {
+    border-color: var(--cc-text);
 }
 
 .dropdown-header {
+    padding: var(--space-16) var(--space-20);
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 12px 16px;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    border-radius: var(--border-radius-small);
-    background: var(--white);
-    cursor: pointer;
-    transition: var(--transition);
+    justify-content: space-between;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: var(--cc-text);
 }
 
-.dropdown-header:hover {
-    border-color: var(--secondary-color);
+.dropdown-header i {
+    color: var(--cc-muted);
+    font-size: 12px;
+    transition: transform 0.3s ease;
 }
 
-.dropdown-header.active {
-    border-color: var(--secondary-color);
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+.treatment-dropdown.open .dropdown-header i {
+    transform: rotate(180deg);
 }
 
 .dropdown-list {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: var(--white);
-    border: 1px solid var(--secondary-color);
-    border-top: none;
-    border-radius: 0 0 var(--border-radius-small) var(--border-radius-small);
-    max-height: 300px;
-    overflow-y: auto;
-    z-index: 1000;
     display: none;
+    max-height: 240px;
+    overflow-y: auto;
+    border-top: 1px solid var(--cc-border);
 }
 
-.dropdown-list.show {
+.treatment-dropdown.open .dropdown-list {
     display: block;
 }
 
-.treatment-option {
-    padding: 12px 16px;
-    cursor: pointer;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    transition: var(--transition);
+.dropdown-list label {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    padding: var(--space-12) var(--space-20);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--cc-text);
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-.treatment-option:hover {
-    background: var(--primary-color);
+.dropdown-list label:hover {
+    background: #FAFAFA;
 }
 
-.treatment-option.selected {
-    background: var(--primary-color);
-    color: var(--secondary-color);
-}
-
-.treatment-option:last-child {
-    border-bottom: none;
-}
-
-.treatment-price {
-    font-weight: 500;
-    color: var(--secondary-color);
+.dropdown-list input[type="checkbox"] {
+    margin-right: var(--space-12);
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
 }
 
 .selected-treatments-display {
-    display: none;
-    margin-bottom: 16px;
-}
-
-.selected-treatments-display.show {
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-8);
+    margin-top: var(--space-16);
 }
 
 .selected-treatment-tag {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    background: var(--primary-color);
-    color: var(--secondary-color);
-    padding: 8px 12px;
-    margin: 4px 4px 4px 0;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 500;
+    gap: var(--space-8);
+    padding: var(--space-8) var(--space-16);
+    background: #FAFAFA;
+    border: 1px solid var(--cc-border);
+    border-radius: 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--cc-text);
 }
 
-.remove-treatment {
+.selected-treatment-tag button {
+    background: none;
+    border: none;
+    color: var(--cc-muted);
     cursor: pointer;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: var(--secondary-color);
-    color: var(--white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.7rem;
+    padding: 0;
+    font-size: 14px;
+    line-height: 1;
 }
 
-.remove-treatment:hover {
-    background: #333;
+.selected-treatment-tag button:hover {
+    color: var(--cc-text);
 }
 
 .booking-nav-buttons {
     display: flex;
+    gap: var(--space-16);
     justify-content: space-between;
-    gap: 12px;
-    margin-top: 28px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.booking-nav-buttons .btn-back {
-    background: transparent;
-    color: var(--secondary-color);
-    border: 2px solid var(--secondary-color);
-}
-
-.booking-nav-buttons .btn-back:hover {
-    background: var(--secondary-color);
-    color: var(--white);
-}
-
-#calendly-embed {
-    min-height: 680px;
-    margin: -8px -16px 0;
-}
-
-#calendly-embed iframe {
-    min-width: 100%;
-    height: 680px;
-}
-
-/* Hide unwanted Cal.com form elements */
-#calendly-embed iframe {
-    /* These styles will be injected into the iframe if possible */
-}
-
-/* Custom styles to clean up the booking form */
-.cal-booking-form {
-    /* Target Cal.com form elements */
-}
-
-/* Hide location field and add guests in Cal.com */
-iframe[src*="cal.com"] {
-    /* Cal.com iframe styling */
-}
-
-.calendly-loading {
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    min-height: 400px;
-    color: var(--gray);
-    gap: 16px;
+    padding-top: var(--space-32);
+    border-top: 1px solid var(--cc-border);
 }
 
-.calendly-loading i {
-    font-size: 2rem;
-    color: var(--secondary-color);
+.btn {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: var(--cc-text);
+    color: var(--cc-bg);
+    border: 1px solid var(--cc-text);
+    border-radius: 8px;
+    padding: 0 28px;
+    height: 48px;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-8);
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-.calendly-setup-notice {
-    background: #fff8e6;
-    border: 1px solid #f0d78c;
-    border-radius: var(--border-radius-small);
-    padding: 20px;
-    margin-bottom: 20px;
+.btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
 }
 
-.calendly-setup-notice h4 {
-    color: #8a6d00;
-    margin-bottom: 8px;
+.btn-back {
+    background: transparent;
+    color: var(--cc-text);
 }
 
-.calendly-setup-notice p {
-    font-size: 0.9rem;
-    color: #6b5600;
-    line-height: 1.6;
+.btn-secondary {
+    background: transparent;
+    color: var(--cc-text);
+}
+
+.btn-secondary:hover {
+    background: var(--cc-text);
+    color: var(--cc-bg);
 }
 
 .booking-sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    position: sticky;
+    top: var(--space-32);
 }
 
 .sidebar-card {
-    background: var(--white);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    padding: 24px;
+    background: var(--cc-bg);
+    border: 1px solid var(--cc-border);
+    border-radius: 12px;
+    padding: var(--space-32);
+    margin-bottom: var(--space-24);
 }
 
 .sidebar-card h4 {
-    font-family: var(--font-heading);
-    font-size: 1.1rem;
-    margin-bottom: 16px;
-    color: var(--secondary-color);
-}
-
-.sidebar-card ul {
-    list-style: none;
-}
-
-.sidebar-card ul li {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    margin-bottom: 12px;
-    font-size: 0.9rem;
-    color: var(--gray);
-    line-height: 1.5;
-}
-
-.sidebar-card ul li i {
-    color: var(--secondary-color);
-    margin-top: 3px;
-    flex-shrink: 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    margin-bottom: var(--space-24);
+    color: var(--cc-text);
 }
 
 .sidebar-summary-item {
     display: flex;
     justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-    font-size: 0.9rem;
+    align-items: flex-start;
+    padding: var(--space-16) 0;
+    border-bottom: 1px solid var(--cc-border);
 }
 
 .sidebar-summary-item:last-child {
@@ -491,13 +450,40 @@ iframe[src*="cal.com"] {
 }
 
 .sidebar-summary-item .label {
-    color: var(--gray);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--cc-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .sidebar-summary-item .value {
-    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--cc-text);
     text-align: right;
-    max-width: 60%;
+}
+
+.sidebar-note {
+    margin-top: var(--space-16);
+    padding: var(--space-16);
+    background: #FAFAFA;
+    border-radius: 8px;
+}
+
+.sidebar-note small {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--cc-muted);
+    line-height: 1.5;
+}
+
+.sidebar-note i {
+    color: var(--cc-accent);
+    margin-right: var(--space-8);
 }
 
 .sidebar-contact {
@@ -505,247 +491,80 @@ iframe[src*="cal.com"] {
 }
 
 .sidebar-contact p {
-    font-size: 0.9rem;
-    color: var(--gray);
-    margin-bottom: 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--cc-muted);
+    margin-bottom: var(--space-24);
 }
 
 .sidebar-contact .btn {
     width: 100%;
-    margin-bottom: 8px;
+    justify-content: center;
+    margin-bottom: var(--space-12);
 }
-
 
 .booking-confirmation-banner {
     display: none;
-    background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
-    border-radius: var(--border-radius-small);
-    padding: 16px 20px;
-    margin-bottom: 20px;
-    align-items: center;
-    gap: 12px;
+    background: #e8f5e9;
+    border: 1px solid #4caf50;
+    border-radius: 12px;
+    padding: var(--space-24);
+    margin-bottom: var(--space-32);
+    align-items: flex-start;
+    gap: var(--space-16);
 }
 
-.booking-confirmation-banner.visible {
+.booking-confirmation-banner.show {
     display: flex;
 }
 
 .booking-confirmation-banner i {
-    font-size: 1.5rem;
+    color: #4caf50;
+    font-size: 24px;
+}
+
+.booking-confirmation-banner strong {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2e7d32;
+    display: block;
+    margin-bottom: var(--space-8);
+}
+
+.booking-confirmation-banner p {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
     color: #2e7d32;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 968px) {
     .booking-layout {
         grid-template-columns: 1fr;
+        padding: 0 var(--space-24);
     }
 
-    /* Main booking section comes first */
-    .booking-main {
-        order: 1;
-    }
-
-    /* Sidebar comes second, with reordered cards */
     .booking-sidebar {
-        order: 2;
-        display: flex;
-        flex-direction: column;
-    }
-
-    /* Reorder sidebar cards within the sidebar */
-    .sidebar-card:nth-child(1) { /* Your Booking */
-        order: 4;
-    }
-
-    .sidebar-card:nth-child(2) { /* Clinic Schedule */
-        order: 3;
-    }
-
-    .sidebar-card:nth-child(3) { /* Before You Book */
-        order: 2;
-    }
-
-    .sidebar-card:nth-child(4) { /* Need Help */
-        order: 5;
-    }
-
-    /* Center the contact buttons */
-    .sidebar-contact {
-        text-align: center;
-    }
-
-    .sidebar-contact .btn {
-        width: auto !important;
-        min-width: 180px;
-        margin: 0 auto 12px auto !important;
-        display: block;
-    }
-}
-
-/* Payment Styles */
-.payment-summary {
-    background: var(--primary-color);
-    border-radius: var(--border-radius-small);
-    padding: 20px;
-    margin-bottom: 24px;
-}
-
-.payment-summary h4 {
-    margin-bottom: 16px;
-    font-family: var(--font-heading);
-}
-
-.price-breakdown {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.price-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 0;
-    font-size: 0.95rem;
-}
-
-.price-item.deposit-highlight {
-    font-weight: 600;
-    color: var(--secondary-color);
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 12px 0;
-}
-
-.price-item.remaining {
-    color: var(--gray);
-    font-size: 0.9rem;
-}
-
-.payment-methods {
-    margin-bottom: 24px;
-}
-
-.payment-methods h4 {
-    margin-bottom: 16px;
-    font-family: var(--font-heading);
-}
-
-.payment-options {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-}
-
-.payment-option-btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 16px;
-    border: 2px solid rgba(0, 0, 0, 0.08);
-    border-radius: var(--border-radius-small);
-    background: var(--white);
-    cursor: pointer;
-    transition: var(--transition);
-    text-align: center;
-}
-
-.payment-option-btn:hover,
-.payment-option-btn.active {
-    border-color: var(--secondary-color);
-    background: rgba(245, 230, 224, 0.25);
-}
-
-.payment-option-btn i {
-    font-size: 1.5rem;
-    margin-bottom: 8px;
-    color: var(--secondary-color);
-}
-
-.payment-option-btn span {
-    font-weight: 500;
-    margin-bottom: 4px;
-}
-
-.payment-option-btn small {
-    font-size: 0.8rem;
-    color: var(--gray);
-}
-
-.payment-form {
-    margin-bottom: 24px;
-}
-
-.form-row {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-    margin-bottom: 16px;
-}
-
-.form-row:has(.form-group:nth-child(2)) {
-    grid-template-columns: 2fr 1fr;
-}
-
-.form-group label {
-    display: block;
-    font-weight: 500;
-    margin-bottom: 6px;
-    font-size: 0.9rem;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 12px 16px;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    border-radius: var(--border-radius-small);
-    font-family: var(--font-body);
-    font-size: 1rem;
-    transition: var(--transition);
-}
-
-.form-group input:focus {
-    outline: none;
-    border-color: var(--secondary-color);
-    box-shadow: 0 0 0 3px rgba(34, 34, 34, 0.1);
-}
-
-.paypal-container {
-    text-align: center;
-    padding: 40px 20px;
-}
-
-.paypal-container p {
-    margin-bottom: 20px;
-    color: var(--gray);
-}
-
-.payment-security {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-size: 0.9rem;
-    color: var(--gray);
-    margin-bottom: 20px;
-}
-
-.payment-security i {
-    color: var(--secondary-color);
-}
-
-@media (max-width: 768px) {
-    .booking-hero {
-        padding: 100px 0 32px;
+        position: static;
     }
 
     .clinic-cards {
         grid-template-columns: 1fr;
     }
+}
+
+@media (max-width: 768px) {
+    .booking-hero {
+        padding: var(--space-64) var(--space-24);
+    }
+
+    .booking-steps {
+        font-size: 11px;
+    }
 
     .booking-step-indicator {
-        font-size: 0.75rem;
-        padding: 14px 6px;
+        padding: var(--space-16) var(--space-8);
     }
 
     .booking-step-indicator span {
@@ -753,18 +572,15 @@ iframe[src*="cal.com"] {
     }
 
     .booking-panel {
-        padding: 20px 16px;
+        padding: var(--space-32) var(--space-24);
     }
 
-    #calendly-embed {
-        margin: 0 -8px;
+    .booking-nav-buttons {
+        flex-direction: column-reverse;
     }
 
-    .payment-options {
-        grid-template-columns: 1fr;
-    }
-
-    .form-row:has(.form-group:nth-child(2)) {
-        grid-template-columns: 1fr;
+    .booking-nav-buttons .btn {
+        width: 100%;
+        justify-content: center;
     }
 }
