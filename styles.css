@@ -2872,9 +2872,9 @@ section {
   left: 0;
   right: 0;
   display: none;
-  align-items: center;
-  justify-content: space-around;
-  padding: 8px 16px;
+  align-items: stretch;
+  justify-content: space-between;
+  padding: 0;
   background: var(--cc-bg);
   border-top: 1px solid var(--cc-border);
   z-index: 999;
@@ -2883,47 +2883,56 @@ section {
 
 @media (max-width: 768px) {
   .mobile-sticky {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
 .sticky-btn {
   font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  font-size: 9px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0;
+  text-transform: capitalize;
   background: transparent;
   color: var(--cc-text);
   border: none;
-  border-radius: 8px;
-  padding: 8px 12px;
+  border-right: 1px solid var(--cc-border);
+  padding: 14px 8px;
   cursor: pointer;
   text-decoration: none;
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 4px;
-  flex: 1;
+  gap: 6px;
   transition: all 0.2s ease;
 }
 
+.sticky-btn:last-child {
+  border-right: none;
+}
+
 .sticky-btn i {
-  font-size: 18px;
+  font-size: 22px;
   color: var(--cc-text);
 }
 
 .sticky-btn span {
   white-space: nowrap;
-  max-width: 100%;
+  font-size: 10px;
   text-align: center;
 }
 
-.sticky-btn:hover,
 .sticky-btn:active {
   background: var(--cc-border);
   color: var(--cc-text);
+}
+
+@media (hover: hover) {
+  .sticky-btn:hover {
+    background: rgba(184, 169, 154, 0.1);
+  }
 }
 
 .book-btn {
