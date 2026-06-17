@@ -114,8 +114,8 @@ body {
   align-items: center;
   border-top: 1px solid var(--cc-border);
   padding: 32px 0;
-  clear: both;
-  margin-top: 48px;
+  margin-top: 64px;
+  width: 100%;
 }
 .trust-item {
   flex: 1;
@@ -123,6 +123,7 @@ body {
   flex-direction: column;
   gap: 4px;
   padding: 0 32px;
+  white-space: nowrap;
 }
 .trust-item:first-child { padding-left: 0; }
 .trust-num {
@@ -2836,41 +2837,35 @@ section {
 
 /* Bottom Button Bar */
 .mobile-sticky {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 16px 20px 20px 20px; /* Extra bottom padding for safe area */
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(15px);
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    z-index: 999;
-    gap: 12px;
-    /* Add safe area padding for newer phones */
-    padding-bottom: max(20px, env(safe-area-inset-bottom));
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: var(--cc-bg);
+  border-top: 1px solid var(--cc-border);
+  z-index: 999;
 }
 
 .sticky-btn {
-    padding: 14px 18px;
-    border-radius: 28px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 48px; /* Better touch target */
-    min-width: 48px;
-    flex: 1;
-    max-width: 120px;
-    min-width: 80px;
-    background-color: #2c3e50;
-    color: var(--white);
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--cc-text);
+  color: var(--cc-bg);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .book-btn {
