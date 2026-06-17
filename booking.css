@@ -1355,3 +1355,10 @@ iframe[src*="cal.com"] {
     background: rgba(184, 169, 154, 0.1);
   }
 }
+
+/* Hide chatbot on booking page */
+.chatbot,
+.chatbot-btn,
+.chatbot-toggle {
+  display: none !important;
+}
