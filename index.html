@@ -182,14 +182,11 @@
             </div>
             <div class="nav-menu" id="nav-menu">
                 <a href="#home" class="nav-link">Home</a>
+                <a href="treatments.html" class="nav-link">Treatments</a>
+                <a href="results.html" class="nav-link">Results</a>
                 <a href="about.html" class="nav-link">About</a>
-                <a href="#treatments" class="nav-link">Treatments</a>
-                <a href="#locations" class="nav-link">Locations</a>
-                <a href="#testimonials" class="nav-link">Reviews</a>
-                <a href="#contact" class="nav-link">Contact</a>
-                <a href="book.html" class="nav-link btn-nav">Book Now ✨</a>
-            </div>
-            <div class="nav-toggle" id="nav-toggle">
+                <a href="book.html" class="nav-link btn-nav">Book Now</a>
+            </div>            <div class="nav-toggle" id="nav-toggle">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -238,114 +235,53 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="images/roxzi-headshot.png" alt="Roxzi - ClearCosmetics Specialist" class="professional-headshot">
-                </div>
-                <div class="about-text">
-                    <h2 class="section-title">About ClearCosmetics</h2>
-                    <p class="about-description">ClearCosmetics is led by an international aesthetics specialist with over 8 years of experience and clinics across Ireland and Spain. Our philosophy is simple: safe, professional treatments that deliver subtle, natural enhancements — never overdone.</p>
-                    <p class="about-description">Every client is treated like family, and every face is approached with artistry and care. We believe in enhancing your natural beauty while maintaining the authentic you.</p>
-                    <div class="about-highlights">
-                        <div class="highlight">
-                            <i class="fas fa-shield-alt"></i>
-                            <span>Safety First</span>
-                        </div>
-                        <div class="highlight">
-                            <i class="fas fa-globe"></i>
-                            <span>International Expertise</span>
-                        </div>
-                        <div class="highlight">
-                            <i class="fas fa-heart"></i>
-                            <span>Natural Results</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Philosophy Section -->
+    <section class="philosophy-section">
+        <div class="container" style="max-width: 800px; padding: var(--space-96) var(--space-32); text-align: center;">
+            <h2 style="font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 48px); line-height: 1.15; letter-spacing: -0.015em; margin-bottom: var(--space-32); color: var(--cc-text);">Subtle. Balanced. Intentional.</h2>
+            <p style="font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 300; line-height: 1.7; color: var(--cc-muted); margin-bottom: var(--space-48);">We believe the best aesthetic work is never obvious. It restores confidence without altering identity — refining what already exists rather than replacing it. Our approach prioritises proportion, symmetry, and natural expression.</p>
         </div>
     </section>
 
-    <!-- Treatments Section -->
-    <section id="treatments" class="treatments">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Our Treatments</h2>
-                <p class="section-subtitle">Explore our full range of advanced aesthetic treatments — from dermal fillers and anti-wrinkle injections to skin boosters, fat dissolving, and more. Each treatment is tailored to you, ensuring results that are natural, long-lasting, and confidence-boosting.</p>
+    <!-- Treatments Preview Section -->
+    <section class="treatments">
+        <div class="container" style="max-width: 1140px; padding: var(--space-96) var(--space-32);">
+            <div class="section-header" style="text-align: center; margin-bottom: var(--space-64);">
+                <h2 style="font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 48px); line-height: 1.15; letter-spacing: -0.015em; margin-bottom: var(--space-24); color: var(--cc-text);">Our Treatments</h2>
+                <p style="font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 300; line-height: 1.7; color: var(--cc-muted); max-width: 620px; margin: 0 auto;">Curated treatments designed to enhance your natural features with precision and care.</p>
             </div>
-            <div class="treatments-grid">
-                <a href="treatments/dermal-fillers.html" class="treatment-card-link">
-                    <div class="treatment-card">
-                        <div class="treatment-icon">
-                            <i class="fas fa-syringe"></i>
-                        </div>
-                        <h3>Dermal Fillers</h3>
-                        <p>Restore volume and smooth lines for a youthful, natural appearance</p>
-                        <span class="btn btn-outline">Learn More</span>
+            <div class="treatments-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-32); margin-bottom: var(--space-48);">
+                <div class="treatment-card" style="padding: var(--space-32); background: var(--cc-bg); border: 1px solid var(--cc-border); border-radius: 12px; text-align: center;">
+                    <div class="treatment-icon" style="font-size: 32px; color: var(--cc-accent); margin-bottom: var(--space-16);">
+                        <i class="fas fa-syringe"></i>
                     </div>
-                </a>
-                <a href="treatments/anti-wrinkle.html" class="treatment-card-link">
-                    <div class="treatment-card">
-                        <div class="treatment-icon">
-                            <i class="fas fa-magic"></i>
-                        </div>
-                        <h3>Anti-Wrinkle</h3>
-                        <p>Smooth dynamic wrinkles and prevent new lines from forming</p>
-                        <span class="btn btn-outline">Learn More</span>
+                    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 24px; margin-bottom: var(--space-16); color: var(--cc-text);">Dermal Fillers</h3>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.6; color: var(--cc-muted);">Restore volume and smooth lines for a youthful appearance</p>
+                </div>
+                <div class="treatment-card" style="padding: var(--space-32); background: var(--cc-bg); border: 1px solid var(--cc-border); border-radius: 12px; text-align: center;">
+                    <div class="treatment-icon" style="font-size: 32px; color: var(--cc-accent); margin-bottom: var(--space-16);">
+                        <i class="fas fa-magic"></i>
                     </div>
-                </a>
-                <a href="treatments/non-surgical-rhinoplasty.html" class="treatment-card-link">
-                    <div class="treatment-card">
-                        <div class="treatment-icon">
-                            <i class="fas fa-user-md"></i>
-                        </div>
-                        <h3>Non-Surgical Rhinoplasty</h3>
-                        <p>Reshape and refine your nose without surgery using dermal fillers</p>
-                        <span class="btn btn-outline">Learn More</span>
+                    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 24px; margin-bottom: var(--space-16); color: var(--cc-text);">Anti-Wrinkle</h3>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.6; color: var(--cc-muted);">Smooth dynamic wrinkles while preserving natural movement</p>
+                </div>
+                <div class="treatment-card" style="padding: var(--space-32); background: var(--cc-bg); border: 1px solid var(--cc-border); border-radius: 12px; text-align: center;">
+                    <div class="treatment-icon" style="font-size: 32px; color: var(--cc-accent); margin-bottom: var(--space-16);">
+                        <i class="fas fa-user-md"></i>
                     </div>
-                </a>
-                <a href="treatments/skin-boosters.html" class="treatment-card-link">
-                    <div class="treatment-card">
-                        <div class="treatment-icon">
-                            <i class="fas fa-tint"></i>
-                        </div>
-                        <h3>Skin Boosters</h3>
-                        <p>Deep hydration and skin quality improvement from within</p>
-                        <span class="btn btn-outline">Learn More</span>
+                    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 24px; margin-bottom: var(--space-16); color: var(--cc-text);">Rhinoplasty</h3>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.6; color: var(--cc-muted);">Reshape and refine your nose without surgery</p>
+                </div>
+                <div class="treatment-card" style="padding: var(--space-32); background: var(--cc-bg); border: 1px solid var(--cc-border); border-radius: 12px; text-align: center;">
+                    <div class="treatment-icon" style="font-size: 32px; color: var(--cc-accent); margin-bottom: var(--space-16);">
+                        <i class="fas fa-tint"></i>
                     </div>
-                </a>
-                <a href="treatments/fat-dissolving.html" class="treatment-card-link">
-                    <div class="treatment-card">
-                        <div class="treatment-icon">
-                            <i class="fas fa-fire"></i>
-                        </div>
-                        <h3>Fat Dissolving</h3>
-                        <p>Non-surgical reduction of stubborn fat deposits</p>
-                        <span class="btn btn-outline">Learn More</span>
-                    </div>
-                </a>
-                <a href="treatments/polynucleotides.html" class="treatment-card-link">
-                    <div class="treatment-card">
-                        <div class="treatment-icon">
-                            <i class="fas fa-dna"></i>
-                        </div>
-                        <h3>Polynucleotides</h3>
-                        <p>Advanced skin regeneration and collagen stimulation</p>
-                        <span class="btn btn-outline">Learn More</span>
-                    </div>
-                </a>
-                <a href="treatments/packages.html" class="treatment-card-link">
-                    <div class="treatment-card">
-                        <div class="treatment-icon">
-                            <i class="fas fa-gift"></i>
-                        </div>
-                        <h3>Treatment Packages</h3>
-                        <p>Curated combinations for comprehensive aesthetic enhancement</p>
-                        <span class="btn btn-outline">Learn More</span>
-                    </div>
-                </a>
+                    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 24px; margin-bottom: var(--space-16); color: var(--cc-text);">Skin Boosters</h3>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.6; color: var(--cc-muted);">Deep hydration and skin quality improvement</p>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <a href="treatments.html" style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; background: transparent; color: var(--cc-text); border: 1px solid var(--cc-text); border-radius: 8px; padding: 0 28px; height: 48px; display: inline-flex; align-items: center; transition: all 0.2s;">View All Treatments →</a>
             </div>
         </div>
     </section>
@@ -824,13 +760,13 @@
 
     <!-- Bottom Button Bar -->
     <div class="mobile-sticky">
-        <a href="#home" class="sticky-btn">
-            <i class="fas fa-home"></i>
-            <span>Home</span>
-        </a>
-        <a href="#treatments" class="sticky-btn">
+        <a href="treatments.html" class="sticky-btn">
             <i class="fas fa-syringe"></i>
             <span>Treatments</span>
+        </a>
+        <a href="results.html" class="sticky-btn">
+            <i class="fas fa-images"></i>
+            <span>Results</span>
         </a>
         <a href="book.html" class="sticky-btn">
             <i class="fas fa-calendar-check"></i>
