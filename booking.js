@@ -1414,13 +1414,16 @@
         // Add date parameter to focus on the selected date
         let calcomUrlWithDate = calcomUrl + `?date=${dateStr}`;
 
-        // Add selected treatments to the booking name
+        // Add selected treatments to multiple Cal.com parameters
         if (state.selectedTreatments && state.selectedTreatments.length > 0) {
             const treatmentNames = state.selectedTreatments.join(', ');
-            calcomUrlWithDate += `&name=${encodeURIComponent(treatmentNames)}`;
+            // Try multiple parameters to ensure treatment info appears somewhere in Cal.com
+            calcomUrlWithDate += `&guest=${encodeURIComponent(treatmentNames)}`;
+            calcomUrlWithDate += `&notes=${encodeURIComponent(treatmentNames)}`;
+            calcomUrlWithDate += `&location=${encodeURIComponent(treatmentNames)}`;
         }
 
-        console.log('Cal.com URL with date:', calcomUrlWithDate);
+        console.log('Cal.com URL with date and treatments:', calcomUrlWithDate);
 
         // Create Cal.com iframe
         const embedContainer = document.getElementById('calcom-time-embed');
