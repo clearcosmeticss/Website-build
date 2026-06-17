@@ -1,12 +1,25 @@
 :root {
+  /* Luxury Color Palette */
   --cc-bg: #FAF8F6;
   --cc-text: #1C1C1C;
   --cc-muted: #6E6A66;
   --cc-border: #E8E2DC;
   --cc-accent: #B8A99A;
+
+  /* Layout Constraints */
   --cc-max: 1140px;
   --cc-text-max: 620px;
   --cc-hero-max: 580px;
+
+  /* 8pt Grid Spacing System */
+  --space-8: 8px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-48: 48px;
+  --space-64: 64px;
+  --space-96: 96px;
+  --space-128: 128px;
 }
 body {
   background-color: var(--cc-bg);
