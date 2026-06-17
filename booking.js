@@ -1412,7 +1412,14 @@
         console.log('Cal.com URL:', calcomUrl);
 
         // Add date parameter to focus on the selected date
-        const calcomUrlWithDate = calcomUrl + `?date=${dateStr}`;
+        let calcomUrlWithDate = calcomUrl + `?date=${dateStr}`;
+
+        // Add selected treatments to the booking name
+        if (state.selectedTreatments && state.selectedTreatments.length > 0) {
+            const treatmentNames = state.selectedTreatments.join(', ');
+            calcomUrlWithDate += `&name=${encodeURIComponent(treatmentNames)}`;
+        }
+
         console.log('Cal.com URL with date:', calcomUrlWithDate);
 
         // Create Cal.com iframe
