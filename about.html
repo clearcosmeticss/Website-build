@@ -16,11 +16,12 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 
     <style>
         /* About Page Specific Styles */
         .about-hero {
-            padding: var(--space-96) var(--space-32);
+            padding: 120px var(--space-32) var(--space-96);
             background: var(--cc-bg);
             text-align: center;
         }
@@ -227,23 +228,26 @@
 <body>
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="container">
-            <div class="nav-wrapper">
-                <a href="index.html" class="logo">ClearCosmetics</a>
-                <ul class="nav-menu">
-                    <li><a href="index.html#home" class="nav-link">Home</a></li>
-                    <li><a href="about.html" class="nav-link active">About</a></li>
-                    <li><a href="index.html#treatments" class="nav-link">Treatments</a></li>
-                    <li><a href="index.html#locations" class="nav-link">Locations</a></li>
-                    <li><a href="index.html#testimonials" class="nav-link">Reviews</a></li>
-                    <li><a href="index.html#contact" class="nav-link">Contact</a></li>
-                    <li><a href="book.html" class="nav-link btn-nav">Book Now ✨</a></li>
-                </ul>
-                <button class="mobile-menu-toggle" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="images/logo.png" alt="ClearCosmetics Logo" class="logo">
+            </div>
+            <div class="nav-brand">
+                <h2>ClearCosmetics</h2>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="index.html#treatments" class="nav-link">Treatments</a>
+                <a href="index.html#locations" class="nav-link">Locations</a>
+                <a href="index.html#testimonials" class="nav-link">Reviews</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+                <a href="book.html" class="nav-link btn-nav">Book Now ✨</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
         </div>
     </nav>
@@ -260,7 +264,7 @@
     <section class="about-section">
         <div class="about-grid">
             <div class="about-image-wrap">
-                <img src="images/dermal-filler-treatment.png" alt="Professional aesthetic treatment" class="about-image">
+                <img src="images/roxzi-headshot.png" alt="Roxzi - Advanced Aesthetic Practitioner" class="about-image">
             </div>
             <div class="about-content">
                 <h2>Meet Roxzi</h2>
