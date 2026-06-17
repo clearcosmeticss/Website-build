@@ -191,6 +191,7 @@ html, body {
     linear-gradient(90deg, rgba(212,180,100,0.03) 1px, transparent 1px);
   background-size: 60px 60px;
   animation: grid-drift 60s linear infinite;
+  pointer-events: none;
 }
 @keyframes grid-drift { from { background-position: 0 0; } to { background-position: 60px 60px; } }
 
@@ -642,6 +643,9 @@ h1, h2, h3, h4, h5, h6 {
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%;
 }
 
 body {
@@ -650,11 +654,14 @@ body {
     color: var(--secondary-color);
     background-color: var(--white);
     overflow-x: hidden;
+    overflow-y: auto;
     padding-bottom: 80px;
     font-size: 16px;
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    position: relative;
 }
 
 /* Mobile-First Container */
