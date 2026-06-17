@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About ClearCosmetics & Roxzi | Our Story & Philosophy</title>
+    <meta name="description" content="Meet Roxzi and learn about ClearCosmetics - our philosophy, expertise, and commitment to natural, refined aesthetic treatments in Dublin and Marbella.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* About Page Specific Styles */
+        .about-hero {
+            padding: var(--space-96) var(--space-32);
+            background: var(--cc-bg);
+            text-align: center;
+        }
+
+        .about-hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(44px, 5.5vw, 64px);
+            line-height: 1.1;
+            letter-spacing: -0.015em;
+            margin-bottom: var(--space-24);
+            color: var(--cc-text);
+        }
+
+        .about-hero p {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--cc-muted);
+            max-width: 620px;
+            margin: 0 auto var(--space-48);
+        }
+
+        .about-section {
+            padding: var(--space-96) 0;
+            max-width: 1140px;
+            margin: 0 auto;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-64);
+            align-items: center;
+            padding: 0 var(--space-32);
+            margin-bottom: var(--space-96);
+        }
+
+        .about-grid.reverse {
+            direction: rtl;
+        }
+
+        .about-grid.reverse > * {
+            direction: ltr;
+        }
+
+        .about-image-wrap {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 3 / 4;
+            background: var(--cc-border);
+        }
+
+        .about-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .about-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(32px, 4vw, 48px);
+            line-height: 1.15;
+            letter-spacing: -0.015em;
+            margin-bottom: var(--space-32);
+            color: var(--cc-text);
+        }
+
+        .about-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(24px, 3vw, 32px);
+            line-height: 1.2;
+            margin-bottom: var(--space-16);
+            color: var(--cc-text);
+        }
+
+        .about-content p {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--cc-muted);
+            margin-bottom: var(--space-24);
+            max-width: 100%;
+        }
+
+        .credentials-list {
+            list-style: none;
+            padding: 0;
+            margin: var(--space-32) 0;
+        }
+
+        .credentials-list li {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--cc-text);
+            padding: var(--space-16) 0;
+            border-bottom: 1px solid var(--cc-border);
+            display: flex;
+            align-items: center;
+            gap: var(--space-16);
+        }
+
+        .credentials-list li:first-child {
+            border-top: 1px solid var(--cc-border);
+        }
+
+        .credentials-list li i {
+            color: var(--cc-accent);
+            font-size: 16px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-32);
+            padding: 0 var(--space-32);
+            margin-top: var(--space-64);
+        }
+
+        .value-card {
+            padding: var(--space-32);
+            background: var(--cc-bg);
+            border: 1px solid var(--cc-border);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .value-card i {
+            font-size: 32px;
+            color: var(--cc-accent);
+            margin-bottom: var(--space-16);
+        }
+
+        .value-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            margin-bottom: var(--space-16);
+        }
+
+        .value-card p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--cc-muted);
+            margin: 0;
+        }
+
+        .cta-section {
+            padding: var(--space-96) var(--space-32);
+            text-align: center;
+            background: var(--cc-bg);
+            border-top: 1px solid var(--cc-border);
+        }
+
+        .cta-section h2 {
+            margin-bottom: var(--space-32);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: var(--space-16);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .about-hero {
+                padding: var(--space-64) var(--space-24);
+            }
+
+            .about-section {
+                padding: var(--space-64) 0;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-48);
+                padding: 0 var(--space-24);
+                margin-bottom: var(--space-64);
+            }
+
+            .about-grid.reverse {
+                direction: ltr;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+                padding: 0 var(--space-24);
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">ClearCosmetics</a>
+                <ul class="nav-menu">
+                    <li><a href="index.html#home" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link active">About</a></li>
+                    <li><a href="index.html#treatments" class="nav-link">Treatments</a></li>
+                    <li><a href="index.html#locations" class="nav-link">Locations</a></li>
+                    <li><a href="index.html#testimonials" class="nav-link">Reviews</a></li>
+                    <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                    <li><a href="book.html" class="nav-link btn-nav">Book Now ✨</a></li>
+                </ul>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Hero -->
+    <section class="about-hero">
+        <div class="container">
+            <h1>Where Clinical Expertise<br>Meets Natural Artistry</h1>
+            <p>The story of ClearCosmetics and Roxzi — dedicated to subtle, refined aesthetic treatments that enhance your natural beauty.</p>
+        </div>
+    </section>
+
+    <!-- Roxzi's Story Section -->
+    <section class="about-section">
+        <div class="about-grid">
+            <div class="about-image-wrap">
+                <img src="images/roxzi-headshot.png" alt="Roxzi - Founder of ClearCosmetics" class="about-image">
+            </div>
+            <div class="about-content">
+                <h2>Meet Roxzi</h2>
+                <p>Roxzi is an advanced aesthetic practitioner with over 8 years of experience specializing in natural, balanced results. Her approach is rooted in facial harmony, precision technique, and an understanding that the best aesthetic work should never appear "done".</p>
+                <p>Every treatment is delivered with a focus on safety, subtlety, and long-term aesthetic balance. Roxzi believes in enhancing your natural features — not changing them.</p>
+                <p>Her philosophy is simple: <em>subtle transformations that restore confidence without altering identity.</em></p>
+            </div>
+        </div>
+
+        <div class="about-grid reverse">
+            <div class="about-content">
+                <h2>Our Philosophy</h2>
+                <h3>Subtle. Balanced. Intentional.</h3>
+                <p>We believe the best aesthetic work is never obvious. It restores confidence without altering identity — refining what already exists rather than replacing it.</p>
+                <p>Our approach prioritises proportion, symmetry, and natural expression. We're not focused on trends or overfilled results. We focus on refined, medically guided enhancements that elevate natural beauty with precision and care.</p>
+                <p>At ClearCosmetics, every client is treated like family, and every face is approached with artistry, clinical expertise, and care.</p>
+            </div>
+            <div class="about-image-wrap">
+                <img src="images/roxzi-professional.jpg" alt="ClearCosmetics Clinic" class="about-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Credentials & Experience -->
+    <section class="about-section">
+        <div class="container">
+            <div style="max-width: 620px; margin: 0 auto var(--space-64); text-align: center;">
+                <h2>Professional Excellence</h2>
+                <p>Roxzi's expertise is built on years of training, continuous education, and a commitment to the highest standards of aesthetic medicine.</p>
+            </div>
+            <div style="max-width: 800px; margin: 0 auto; padding: 0 var(--space-32);">
+                <ul class="credentials-list">
+                    <li><i class="fas fa-check-circle"></i> <span>8+ Years of Clinical Experience in Advanced Aesthetics</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>Certified in Advanced Injectable Techniques</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>5,000+ Treatments Performed</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>Specialist in Facial Anatomy & Natural Enhancement</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>Clinics in Dublin & Marbella</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>Trusted by Clients Across the UK & Europe</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values -->
+    <section class="about-section" style="background: #FAFAFA;">
+        <div class="container">
+            <div style="max-width: 620px; margin: 0 auto var(--space-48); text-align: center;">
+                <h2>Our Core Values</h2>
+                <p>Everything we do is guided by these principles.</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Safety First</h3>
+                    <p>Every treatment follows strict medical protocols and uses only premium, FDA-approved products.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-eye"></i>
+                    <h3>Natural Results</h3>
+                    <p>We enhance, never alter. Our goal is subtle refinement that maintains your unique features.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Personalized Care</h3>
+                    <p>Every treatment is tailored to your facial structure, goals, and natural anatomy.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Continuous Learning</h3>
+                    <p>Roxzi stays at the forefront of aesthetic medicine through ongoing education and training.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-comments"></i>
+                    <h3>Honest Communication</h3>
+                    <p>We provide realistic expectations and honest advice about what will work best for you.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-gem"></i>
+                    <h3>Premium Quality</h3>
+                    <p>We use only the highest quality products and maintain the highest standards of care.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Begin Your Journey?</h2>
+            <p style="max-width: 620px; margin: 0 auto var(--space-48); font-size: 16px; color: var(--cc-muted);">Book a consultation with Roxzi to discuss your goals and discover a tailored treatment plan designed just for you.</p>
+            <div class="cta-buttons">
+                <a href="book.html" class="btn btn-primary btn-large">Book Consultation</a>
+                <a href="https://wa.me/353831622444?text=Hi%20ClearCosmetics!%20I'd%20like%20to%20learn%20more%20about%20your%20treatments." target="_blank" class="btn btn-secondary">WhatsApp Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>ClearCosmetics</h3>
+                    <p>The Art of Natural Enhancement</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="index.html#treatments">Treatments</a>
+                    <a href="book.html">Book</a>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p>Dublin & Marbella</p>
+                    <p>+353 83 162 2444</p>
+                    <p>clearcosmeticss@gmail.com</p>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow</h4>
+                    <a href="https://instagram.com/clearcosmetics_" target="_blank">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ClearCosmetics. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Sticky Bar -->
+    <div class="mobile-sticky">
+        <a href="book.html" class="sticky-btn">Book Now</a>
+        <a href="https://wa.me/353831622444" target="_blank" class="sticky-btn">WhatsApp</a>
+    </div>
+</body>
+</html>
