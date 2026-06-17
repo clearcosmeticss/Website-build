@@ -8,9 +8,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="booking-styles.css">
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="booking.css">
     <style>
         @keyframes pulse {
@@ -31,10 +31,12 @@
             </div>
             <div class="nav-menu" id="nav-menu">
                 <a href="index.html" class="nav-link">Home</a>
-                <a href="treatments.html" class="nav-link">Treatments</a>
-                <a href="results.html" class="nav-link">Results</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="book.html" class="nav-link btn-nav">Book Now</a>
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="index.html#treatments" class="nav-link">Treatments</a>
+                <a href="index.html#locations" class="nav-link">Locations</a>
+                <a href="index.html#testimonials" class="nav-link">Reviews</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+                <a href="book.html" class="nav-link btn-nav">Book Now ✨</a>
             </div>
             <div class="nav-toggle" id="nav-toggle">
                 <span class="bar"></span>
@@ -299,11 +301,10 @@
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="treatments.html">Treatments</a></li>
-                        <li><a href="results.html">Results</a></li>
-                        <li><a href="about.html">About</a></li>
+                        <li><a href="index.html#treatments">Treatments</a></li>
                         <li><a href="book.html">Book Now</a></li>
+                        <li><a href="index.html#locations">Locations</a></li>
+                        <li><a href="index.html#membership">Membership</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -322,10 +323,22 @@
     </footer>
 
     <div class="mobile-sticky">
-        <a href="https://wa.me/353831622444" class="sticky-btn whatsapp-btn" target="_blank">
-            <i class="fab fa-whatsapp"></i>
+        <a href="index.html" class="sticky-btn">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
         </a>
-        <a href="book.html" class="sticky-btn book-btn">Book Now ✨</a>
+        <a href="treatments.html" class="sticky-btn">
+            <i class="fas fa-syringe"></i>
+            <span>Treatments</span>
+        </a>
+        <a href="book.html" class="sticky-btn">
+            <i class="fas fa-calendar-check"></i>
+            <span>Book</span>
+        </a>
+        <a href="https://wa.me/353831622444" class="sticky-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            <span>WhatsApp</span>
+        </a>
     </div>
 
     <script src="booking-config.js"></script>
