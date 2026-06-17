@@ -95,9 +95,11 @@ body {
 }
 .btn-hero-secondary:hover { border-color: var(--cc-accent); }
 .hero-image-wrap {
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
   border-radius: 16px;
   overflow: hidden;
-  aspect-ratio: 4 / 5;
   background: var(--cc-border);
 }
 .hero-image {
@@ -112,6 +114,8 @@ body {
   align-items: center;
   border-top: 1px solid var(--cc-border);
   padding: 32px 0;
+  clear: both;
+  margin-top: 48px;
 }
 .trust-item {
   flex: 1;
