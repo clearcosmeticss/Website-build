@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results Gallery | ClearCosmetics</title>
+    <meta name="description" content="See real results from ClearCosmetics treatments. Subtle, natural enhancements delivered with precision and expertise.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+
+    <style>
+        .results-hero {
+            padding: 120px var(--space-32) var(--space-96);
+            background: var(--cc-bg);
+            text-align: center;
+        }
+
+        .results-hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(44px, 5.5vw, 64px);
+            line-height: 1.1;
+            letter-spacing: -0.015em;
+            margin-bottom: var(--space-24);
+            color: var(--cc-text);
+        }
+
+        .results-hero p {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--cc-muted);
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        .results-section {
+            padding: var(--space-96) 0;
+            max-width: 1140px;
+            margin: 0 auto;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: var(--space-32);
+            padding: 0 var(--space-32);
+            margin-bottom: var(--space-96);
+        }
+
+        .result-card {
+            background: var(--cc-bg);
+            border: 1px solid var(--cc-border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .result-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .result-image-wrap {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: var(--cc-border);
+            overflow: hidden;
+        }
+
+        .result-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .result-info {
+            padding: var(--space-24);
+            text-align: center;
+        }
+
+        .result-treatment {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--cc-accent);
+            margin-bottom: var(--space-8);
+        }
+
+        .result-description {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 1.6;
+            color: var(--cc-muted);
+        }
+
+        .cta-section {
+            padding: var(--space-96) var(--space-32);
+            text-align: center;
+            background: var(--cc-bg);
+            border-top: 1px solid var(--cc-border);
+        }
+
+        .cta-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(32px, 4vw, 48px);
+            line-height: 1.15;
+            letter-spacing: -0.015em;
+            margin-bottom: var(--space-24);
+            color: var(--cc-text);
+        }
+
+        .cta-section p {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--cc-muted);
+            max-width: 620px;
+            margin: 0 auto var(--space-48);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: var(--space-16);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .results-hero {
+                padding: var(--space-64) var(--space-24);
+            }
+
+            .results-section {
+                padding: var(--space-64) 0;
+            }
+
+            .results-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-24);
+                padding: 0 var(--space-24);
+                margin-bottom: var(--space-64);
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="images/logo.png" alt="ClearCosmetics Logo" class="logo">
+            </div>
+            <div class="nav-brand">
+                <h2>ClearCosmetics</h2>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="treatments.html" class="nav-link">Treatments</a>
+                <a href="results.html" class="nav-link">Results</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="book.html" class="nav-link btn-nav">Book Now</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="results-hero">
+        <div class="container">
+            <h1>Results That Speak<br>For Themselves</h1>
+            <p>Subtle transformations designed to enhance, not exaggerate. See real results from ClearCosmetics treatments.</p>
+        </div>
+    </section>
+
+    <section class="results-section">
+        <div class="results-grid">
+            <div class="result-card">
+                <div class="result-image-wrap">
+                    <img src="images/result-1.jpg" alt="Natural lip enhancement result" class="result-image">
+                </div>
+                <div class="result-info">
+                    <div class="result-treatment">Lip Enhancement</div>
+                    <p class="result-description">Subtle volume and definition maintaining natural softness.</p>
+                </div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-image-wrap">
+                    <img src="images/result-2.jpg" alt="Facial balancing result" class="result-image">
+                </div>
+                <div class="result-info">
+                    <div class="result-treatment">Facial Balancing</div>
+                    <p class="result-description">Refined facial harmony and proportion.</p>
+                </div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-image-wrap">
+                    <img src="images/result-3.jpg" alt="Anti-wrinkle treatment result" class="result-image">
+                </div>
+                <div class="result-info">
+                    <div class="result-treatment">Anti-Wrinkle</div>
+                    <p class="result-description">Softened expression lines with preserved movement.</p>
+                </div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-image-wrap">
+                    <img src="images/result-4.jpg" alt="Skin rejuvenation result" class="result-image">
+                </div>
+                <div class="result-info">
+                    <div class="result-treatment">Skin Rejuvenation</div>
+                    <p class="result-description">Improved texture, tone, and overall glow.</p>
+                </div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-image-wrap">
+                    <img src="images/result-5.jpg" alt="Natural enhancement result" class="result-image">
+                </div>
+                <div class="result-info">
+                    <div class="result-treatment">Dermal Fillers</div>
+                    <p class="result-description">Restored volume maintaining natural contours.</p>
+                </div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-image-wrap">
+                    <img src="images/result-6.jpg" alt="Subtle refinement result" class="result-image">
+                </div>
+                <div class="result-info">
+                    <div class="result-treatment">Lip Enhancement</div>
+                    <p class="result-description">Balanced shape and refined proportion.</p>
+                </div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-image-wrap">
+                    <img src="images/result-7.jpg" alt="Jaw contouring result" class="result-image">
+                </div>
+                <div class="result-info">
+                    <div class="result-treatment">Facial Balancing</div>
+                    <p class="result-description">Enhanced jawline definition and symmetry.</p>
+                </div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-image-wrap">
+                    <img src="images/result-8.jpg" alt="Natural lip result" class="result-image">
+                </div>
+                <div class="result-info">
+                    <div class="result-treatment">Lip Enhancement</div>
+                    <p class="result-description">Natural volume with soft, refined edges.</p>
+                </div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-image-wrap">
+                    <img src="images/result-9.jpg" alt="Cheek enhancement result" class="result-image">
+                </div>
+                <div class="result-info">
+                    <div class="result-treatment">Dermal Fillers</div>
+                    <p class="result-description">Subtle cheek lift and contour enhancement.</p>
+                </div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-image-wrap">
+                    <img src="images/result-10.jpg" alt="Skin treatment result" class="result-image">
+                </div>
+                <div class="result-info">
+                    <div class="result-treatment">Skin Boosters</div>
+                    <p class="result-description">Hydrated, radiant skin with improved texture.</p>
+                </div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-image-wrap">
+                    <img src="images/result-11.jpg" alt="Facial enhancement result" class="result-image">
+                </div>
+                <div class="result-info">
+                    <div class="result-treatment">Facial Balancing</div>
+                    <p class="result-description">Harmonious facial proportions and balance.</p>
+                </div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-image-wrap">
+                    <img src="images/result-12.jpg" alt="Anti-aging result" class="result-image">
+                </div>
+                <div class="result-info">
+                    <div class="result-treatment">Anti-Wrinkle</div>
+                    <p class="result-description">Refreshed appearance with natural expression.</p>
+                </div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-image-wrap">
+                    <img src="images/result-13.jpg" alt="Lip filler result" class="result-image">
+                </div>
+                <div class="result-info">
+                    <div class="result-treatment">Lip Enhancement</div>
+                    <p class="result-description">Balanced, proportionate lip definition.</p>
+                </div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-image-wrap">
+                    <img src="images/result-14.jpg" alt="Natural facial result" class="result-image">
+                </div>
+                <div class="result-info">
+                    <div class="result-treatment">Dermal Fillers</div>
+                    <p class="result-description">Restored facial volume and youthful contours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Begin Your Journey?</h2>
+            <p>Book a consultation with Roxzi to discuss your goals and discover a tailored treatment plan designed just for you.</p>
+            <div class="cta-buttons">
+                <a href="book.html" class="btn btn-primary btn-large">Book Consultation</a>
+                <a href="https://wa.me/353831622444?text=Hi%20ClearCosmetics!%20I'd%20like%20to%20learn%20more%20about%20your%20treatments." target="_blank" class="btn btn-secondary">WhatsApp Us</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>ClearCosmetics</h3>
+                    <p>The Art of Natural Enhancement</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="treatments.html">Treatments</a>
+                    <a href="results.html">Results</a>
+                    <a href="about.html">About</a>
+                    <a href="book.html">Book</a>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p>Dublin & Marbella</p>
+                    <p>+353 83 162 2444</p>
+                    <p>clearcosmeticss@gmail.com</p>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow</h4>
+                    <a href="https://instagram.com/clearcosmetics_" target="_blank">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ClearCosmetics. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="mobile-sticky">
+        <a href="index.html" class="sticky-btn">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="treatments.html" class="sticky-btn">
+            <i class="fas fa-syringe"></i>
+            <span>Treatments</span>
+        </a>
+        <a href="book.html" class="sticky-btn">
+            <i class="fas fa-calendar-check"></i>
+            <span>Book</span>
+        </a>
+        <a href="https://wa.me/353831622444" class="sticky-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            <span>WhatsApp</span>
+        </a>
+    </div>
+</body>
+</html>
