@@ -58,6 +58,8 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 body {
@@ -68,6 +70,9 @@ body {
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
 }
 
 /* ============================================
@@ -217,7 +222,8 @@ a:hover {
    ============================================ */
 .hero {
   background: var(--luxury-bg);
-  overflow: hidden;
+  overflow: visible;
+  position: relative;
 }
 
 .hero-container {
@@ -664,6 +670,7 @@ a:hover {
     z-index: 999;
     transform: translateY(0);
     transition: transform var(--transition-base);
+    pointer-events: auto;
   }
 
   .mobile-sticky.hidden {
