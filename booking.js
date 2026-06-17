@@ -1414,13 +1414,11 @@
         // Add date parameter to focus on the selected date
         let calcomUrlWithDate = calcomUrl + `?date=${dateStr}`;
 
-        // Add selected treatments to multiple Cal.com parameters
+        // Prefill the custom Cal.com question with selected treatments
         if (state.selectedTreatments && state.selectedTreatments.length > 0) {
             const treatmentNames = state.selectedTreatments.join(', ');
-            // Try multiple parameters to ensure treatment info appears somewhere in Cal.com
-            calcomUrlWithDate += `&guest=${encodeURIComponent(treatmentNames)}`;
-            calcomUrlWithDate += `&notes=${encodeURIComponent(treatmentNames)}`;
-            calcomUrlWithDate += `&location=${encodeURIComponent(treatmentNames)}`;
+            // Prefill the custom question: "please list the treatment/s you are getting below"
+            calcomUrlWithDate += `&${encodeURIComponent('please list the treatment/s you are getting below')}=${encodeURIComponent(treatmentNames)}`;
         }
 
         console.log('Cal.com URL with date and treatments:', calcomUrlWithDate);
