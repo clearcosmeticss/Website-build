@@ -75,10 +75,10 @@ img {
 }
 .hero-title em { font-style: italic; font-weight: 400; }
 .hero-subtitle {
-  font-family: 'Inter', sans-serif;
-  font-weight: 300;
-  font-size: 16px;
-  line-height: 1.7;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.6;
   color: var(--cc-muted);
   max-width: var(--cc-text-max);
   margin: 0 0 40px;
