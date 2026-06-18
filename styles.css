@@ -21,12 +21,27 @@
   --space-96: 96px;
   --space-128: 128px;
 }
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--cc-bg);
   color: var(--cc-text);
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  will-change: transform;
+  transform: translateZ(0);
 }
 .hero {
   background: var(--cc-bg);
