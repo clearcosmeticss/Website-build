@@ -1,5 +1,9 @@
 /* ClearCosmetics Booking Page */
 
+*:not(.sticky-btn):not(.sticky-btn *) {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .booking-hero {
     padding: 120px 0 48px;
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--white) 100%);
