@@ -317,7 +317,7 @@
     <!-- Roxzi Teaser Section -->
     <section class="roxzi-teaser" style="padding: var(--space-96) var(--space-32);">
         <div class="container" style="max-width: 1140px; margin: 0 auto;">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-64); align-items: center;">
+            <div class="roxzi-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-64); align-items: center;">
                 <div style="border-radius: 16px; overflow: hidden; aspect-ratio: 2 / 3;">
                     <img src="images/roxzi-headshot.png" alt="Roxzi - Advanced Aesthetic Practitioner" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
@@ -329,6 +329,41 @@
             </div>
         </div>
     </section>
+
+    <style>
+        @media (max-width: 768px) {
+            .roxzi-teaser {
+                padding: var(--space-64) var(--space-24) !important;
+            }
+            .roxzi-grid {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 0 !important;
+                text-align: center !important;
+            }
+            .roxzi-grid > div:first-child {
+                order: 2;
+                margin: var(--space-32) auto !important;
+                max-width: 360px !important;
+                aspect-ratio: 1 / 1 !important;
+            }
+            .roxzi-grid > div:last-child {
+                order: 1;
+            }
+            .roxzi-grid h2 {
+                margin-bottom: var(--space-24) !important;
+            }
+            .roxzi-grid p {
+                max-width: 100% !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+                margin-bottom: var(--space-32) !important;
+            }
+            .roxzi-grid a {
+                margin: var(--space-32) auto 0 !important;
+            }
+        }
+    </style>
 
     <!-- Final CTA Section -->
     <section class="final-cta" style="background: #FAFAFA; padding: var(--space-96) var(--space-32); text-align: center;">
