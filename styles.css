@@ -3210,6 +3210,11 @@ section {
     }
 
     /* Enhanced Navigation for Mobile */
+    .nav-container {
+        padding: 0 12px;
+        gap: 12px;
+    }
+
     .nav-menu {
         position: fixed;
         left: -100%;
