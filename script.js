@@ -1856,12 +1856,6 @@ function initTouchFeedback() {
             this.style.opacity = '';
         }, { passive: true });
 
-        // Prevent double tap zoom on buttons
-        if (element.classList.contains('btn') || element.classList.contains('sticky-btn')) {
-            element.addEventListener('touchend', function(e) {
-                e.preventDefault();
-            });
-        }
     });
 
     // Enhanced focus management for keyboard navigation
