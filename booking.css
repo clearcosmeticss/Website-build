@@ -1,7 +1,11 @@
 /* ClearCosmetics Booking Page */
 
-*:not(.sticky-btn):not(.sticky-btn *) {
+* {
   -webkit-tap-highlight-color: transparent;
+}
+
+.sticky-btn, .sticky-btn * {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1) !important;
 }
 
 .booking-hero {
