@@ -4125,3 +4125,9 @@ textarea:focus {
         font-size: 2.5rem;
     }
 }
+.calcom-links { display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+.calcom-type-btn { display: flex; align-items: center; gap: 16px; padding: 24px; background: #FAF8F6; border: 1px solid #E8E2DC; border-radius: 12px; text-decoration: none; color: #1C1C1C; font-family: 'Inter', sans-serif; transition: border-color 0.2s; }
+.calcom-type-btn:hover { border-color: #B8A99A; }
+.calcom-type-btn i { font-size: 1.5rem; color: #B8A99A; min-width: 24px; }
+.calcom-type-btn span { font-weight: 500; font-size: 16px; display: block; }
+.calcom-type-btn small { font-size: 13px; color: #6E6A66; display: block; margin-top: 4px; }
