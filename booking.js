@@ -112,7 +112,7 @@
                     <div class="appointment-card-icon"><i class="fas fa-comments"></i></div>
                     <div class="appointment-card-content">
                         <h4 class="appointment-card-title">Free Consultation</h4>
-                        <p class="appointment-card-description">Discuss your goals, ask questions, and get a personalised treatment plan tailored to your unique features.</p>
+                        <p class="appointment-card-description">Meet with Roxzi to discuss your aesthetic goals, explore treatment options, and receive a personalised plan tailored specifically to your unique facial features and desired outcomes.</p>
                         <div class="appointment-card-price">Complimentary · 20 minutes</div>
                     </div>
                 </div>
@@ -123,7 +123,7 @@
                     <div class="appointment-card-icon"><i class="fas fa-syringe"></i></div>
                     <div class="appointment-card-content">
                         <h4 class="appointment-card-title">Single Treatment</h4>
-                        <p class="appointment-card-description">Book one specific treatment. Perfect for touch-ups or maintenance of your existing results.</p>
+                        <p class="appointment-card-description">Book one specific treatment such as dermal fillers, anti-wrinkle injections, or skin boosters — perfect for maintenance appointments or targeted enhancements to achieve your desired look.</p>
                         <div class="appointment-card-price">From €150 · 20–30 minutes</div>
                     </div>
                 </div>
@@ -134,7 +134,7 @@
                     <div class="appointment-card-icon"><i class="fas fa-sparkles"></i></div>
                     <div class="appointment-card-content">
                         <h4 class="appointment-card-title">Multiple Treatments</h4>
-                        <p class="appointment-card-description">Combine multiple treatments in one session for comprehensive results and better value.</p>
+                        <p class="appointment-card-description">Combine multiple treatments in a single comprehensive session to address various areas and achieve balanced, harmonious results across your entire face while receiving better overall value.</p>
                         <div class="appointment-card-price">From €375 · 40–60 minutes</div>
                     </div>
                 </div>
