@@ -106,28 +106,37 @@
         }
 
         container.innerHTML = `
-            <button type="button" class="appointment-type-card" data-type="consultation">
-                <div class="appointment-type-icon"><i class="fas fa-comments"></i></div>
-                <div>
-                    <h4>Free Consultation</h4>
-                    <div class="duration">20 minutes</div>
-                    <p>Discuss your goals, ask questions, and get a personalised treatment plan.</p>
+            <button type="button" class="appointment-card" data-type="consultation">
+                <div class="appointment-card-radio"></div>
+                <div class="appointment-card-header">
+                    <div class="appointment-card-icon"><i class="fas fa-comments"></i></div>
+                    <div class="appointment-card-content">
+                        <h4 class="appointment-card-title">Free Consultation</h4>
+                        <p class="appointment-card-description">Discuss your goals, ask questions, and get a personalised treatment plan tailored to your unique features.</p>
+                        <div class="appointment-card-price">Complimentary · 20 minutes</div>
+                    </div>
                 </div>
             </button>
-            <button type="button" class="appointment-type-card" data-type="treatment">
-                <div class="appointment-type-icon"><i class="fas fa-syringe"></i></div>
-                <div>
-                    <h4>Single Treatment</h4>
-                    <div class="duration">20 minutes</div>
-                    <p>Book one specific treatment. Perfect for touch-ups or single procedures.</p>
+            <button type="button" class="appointment-card" data-type="treatment">
+                <div class="appointment-card-radio"></div>
+                <div class="appointment-card-header">
+                    <div class="appointment-card-icon"><i class="fas fa-syringe"></i></div>
+                    <div class="appointment-card-content">
+                        <h4 class="appointment-card-title">Single Treatment</h4>
+                        <p class="appointment-card-description">Book one specific treatment. Perfect for touch-ups or maintenance of your existing results.</p>
+                        <div class="appointment-card-price">From €150 · 20–30 minutes</div>
+                    </div>
                 </div>
             </button>
-            <button type="button" class="appointment-type-card" data-type="multiple">
-                <div class="appointment-type-icon"><i class="fas fa-magic"></i></div>
-                <div>
-                    <h4>Multiple Treatments</h4>
-                    <div class="duration">40–60 minutes</div>
-                    <p>Combine multiple treatments in one session for the best results and value.</p>
+            <button type="button" class="appointment-card" data-type="multiple">
+                <div class="appointment-card-radio"></div>
+                <div class="appointment-card-header">
+                    <div class="appointment-card-icon"><i class="fas fa-sparkles"></i></div>
+                    <div class="appointment-card-content">
+                        <h4 class="appointment-card-title">Multiple Treatments</h4>
+                        <p class="appointment-card-description">Combine multiple treatments in one session for comprehensive results and better value.</p>
+                        <div class="appointment-card-price">From €375 · 40–60 minutes</div>
+                    </div>
                 </div>
             </button>
         `;
