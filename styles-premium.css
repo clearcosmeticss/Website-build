@@ -1398,10 +1398,9 @@ a {
    ============================================ */
 
 .crop-bottom-half {
-    object-position: center bottom !important;
-    transform: scale(2) translateY(-25%) !important;
+    object-position: center 100% !important;
 }
 
 .treatment-image-wrap:hover .crop-bottom-half {
-    transform: scale(2.1) translateY(-25%) !important;
+    transform: scale(1.05) !important;
 }
