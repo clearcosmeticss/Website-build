@@ -1392,3 +1392,16 @@ a {
         font-size: var(--text-sm);
     }
 }
+
+/* ============================================
+   IMAGE CROPPING - Show only "After" section
+   ============================================ */
+
+.crop-bottom-half {
+    object-position: center bottom !important;
+    transform: scale(2) translateY(-25%) !important;
+}
+
+.treatment-image-wrap:hover .crop-bottom-half {
+    transform: scale(2.1) translateY(-25%) !important;
+}
