@@ -1772,7 +1772,7 @@ a {
     }
 
     .booking-main {
-        padding: var(--space-4);
+        padding: var(--space-4) var(--space-1);
     }
 
     .booking-steps {
