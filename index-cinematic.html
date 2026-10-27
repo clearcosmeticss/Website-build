@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0D0D0D">
+    <title>ClearCosmetics - Premium Aesthetics | Dublin & Marbella</title>
+    <meta name="description" content="Natural beauty, elevated. Expert aesthetic treatments in Dublin and Marbella. Subtle enhancements that celebrate your natural features.">
+
+    <!-- Preload Critical Assets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Fonts: SF Pro Display fallback + Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="styles-cinematic.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav" id="main-nav">
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+            <span class="nav-toggle-line"></span>
+            <span class="nav-toggle-line"></span>
+            <span class="nav-toggle-line"></span>
+        </button>
+
+        <div class="nav-brand">ClearCosmetics</div>
+
+        <a href="book.html" class="nav-book-btn">Book</a>
+    </nav>
+
+    <!-- Full-Screen Mobile Menu -->
+    <div class="menu-overlay" id="menu-overlay">
+        <div class="menu-content">
+            <button class="menu-close" id="menu-close" aria-label="Close menu">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <nav class="menu-nav">
+                <a href="#home" class="menu-link" data-number="01">Home</a>
+                <a href="treatments.html" class="menu-link" data-number="02">Treatments</a>
+                <a href="results.html" class="menu-link" data-number="03">Results</a>
+                <a href="about.html" class="menu-link" data-number="04">About</a>
+                <a href="book.html" class="menu-link menu-link-cta" data-number="05">Book Now</a>
+            </nav>
+
+            <div class="menu-footer">
+                <div class="menu-contact">
+                    <a href="https://wa.me/353831622444" target="_blank" class="menu-social">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="https://instagram.com/clearcosmetics_" target="_blank" class="menu-social">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                </div>
+                <p class="menu-locations">Dublin · Marbella</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <img src="images/Clinic Treatment Image .jpg" alt="ClearCosmetics clinic" class="hero-image" loading="eager">
+            <div class="hero-overlay"></div>
+        </div>
+
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="hero-title-line">Natural beauty,</span>
+                <span class="hero-title-line">elevated</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                Expert aesthetic treatments that enhance your natural features. Dublin & Marbella.
+            </p>
+
+            <div class="hero-ctas">
+                <a href="book.html" class="btn btn-primary">
+                    Book Consultation
+                </a>
+                <a href="#philosophy" class="btn btn-secondary">
+                    Explore <i class="fas fa-arrow-down"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-scroll-hint">
+            <span class="scroll-text">Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="philosophy" id="philosophy">
+        <div class="philosophy-image">
+            <img src="images/Lip Fillers After.jpg" alt="Natural lip enhancement results" loading="lazy">
+        </div>
+
+        <div class="philosophy-content">
+            <h2 class="section-title">Our approach</h2>
+
+            <p class="section-text">
+                We believe in subtle enhancements that celebrate your unique beauty. Each treatment is tailored to your individual features, goals, and lifestyle.
+            </p>
+
+            <p class="section-text">
+                Led by experienced practitioners, we combine medical precision with artistic sensibility to deliver natural-looking results you'll love.
+            </p>
+
+            <a href="about.html" class="text-link">
+                Meet our team <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Treatments Carousel -->
+    <section class="treatments" id="treatments">
+        <div class="treatments-header">
+            <h2 class="section-title">Treatments</h2>
+            <p class="section-subtitle">Swipe to explore</p>
+        </div>
+
+        <div class="treatments-carousel">
+            <div class="treatment-card" data-treatment="dermal-fillers">
+                <div class="treatment-card-image">
+                    <img src="images/Lip Fillers 1ml.jpg" alt="Dermal fillers" loading="lazy">
+                </div>
+                <div class="treatment-card-content">
+                    <h3 class="treatment-card-title">Dermal Fillers</h3>
+                    <p class="treatment-card-desc">Restore volume, enhance contours, smooth fine lines</p>
+                    <div class="treatment-card-meta">
+                        <span class="treatment-price">From €180</span>
+                        <span class="treatment-duration">20 mins</span>
+                    </div>
+                    <a href="treatments.html#dermal-fillers" class="treatment-card-link">
+                        Learn more <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="treatment-card" data-treatment="botox">
+                <div class="treatment-card-image">
+                    <img src="images/Botox After.jpg" alt="Botox treatment" loading="lazy">
+                </div>
+                <div class="treatment-card-content">
+                    <h3 class="treatment-card-title">Botox</h3>
+                    <p class="treatment-card-desc">Smooth wrinkles, prevent lines, refresh your appearance</p>
+                    <div class="treatment-card-meta">
+                        <span class="treatment-price">From €150</span>
+                        <span class="treatment-duration">20 mins</span>
+                    </div>
+                    <a href="treatments.html#botox" class="treatment-card-link">
+                        Learn more <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="treatment-card" data-treatment="skin-boosters">
+                <div class="treatment-card-image">
+                    <img src="images/Neck polynucleotides.jpg" alt="Skin boosters" loading="lazy">
+                </div>
+                <div class="treatment-card-content">
+                    <h3 class="treatment-card-title">Skin Boosters</h3>
+                    <p class="treatment-card-desc">Deep hydration, improved texture, radiant glow</p>
+                    <div class="treatment-card-meta">
+                        <span class="treatment-price">From €250</span>
+                        <span class="treatment-duration">30 mins</span>
+                    </div>
+                    <a href="treatments.html#skin-boosters" class="treatment-card-link">
+                        Learn more <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="treatment-card" data-treatment="packages">
+                <div class="treatment-card-image">
+                    <img src="images/3ml packages.jpg" alt="Package deals" loading="lazy">
+                </div>
+                <div class="treatment-card-content">
+                    <h3 class="treatment-card-title">Packages</h3>
+                    <p class="treatment-card-desc">Combine treatments for complete facial rejuvenation</p>
+                    <div class="treatment-card-meta">
+                        <span class="treatment-price">From €375</span>
+                        <span class="treatment-duration">60 mins</span>
+                    </div>
+                    <a href="treatments.html#packages" class="treatment-card-link">
+                        Learn more <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="treatments-footer">
+            <a href="treatments.html" class="btn btn-secondary">View all treatments</a>
+        </div>
+    </section>
+
+    <!-- Results Gallery -->
+    <section class="results" id="results">
+        <div class="results-header">
+            <h2 class="section-title">Real results</h2>
+            <p class="section-subtitle">Natural enhancements, confident clients</p>
+        </div>
+
+        <div class="results-grid">
+            <div class="result-item">
+                <img src="images/Lips before and after.jpg" alt="Lip enhancement before and after" loading="lazy">
+                <div class="result-overlay">
+                    <span class="result-label">Lip Enhancement</span>
+                </div>
+            </div>
+
+            <div class="result-item">
+                <img src="images/smile lines before.jpg" alt="Smile lines before and after" loading="lazy">
+                <div class="result-overlay">
+                    <span class="result-label">Smile Lines</span>
+                </div>
+            </div>
+
+            <div class="result-item">
+                <img src="images/3ml package before and after.jpg" alt="Full face rejuvenation" loading="lazy">
+                <div class="result-overlay">
+                    <span class="result-label">3ml Package</span>
+                </div>
+            </div>
+
+            <div class="result-item">
+                <img src="images/4ml package before and after .jpg" alt="4ml package results" loading="lazy">
+                <div class="result-overlay">
+                    <span class="result-label">4ml Package</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="results-footer">
+            <a href="results.html" class="btn btn-secondary">View full gallery</a>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="social-proof">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">2,500+</div>
+                <div class="stat-label">Happy Clients</div>
+            </div>
+
+            <div class="stat-item">
+                <div class="stat-number">5★</div>
+                <div class="stat-label">Average Rating</div>
+            </div>
+
+            <div class="stat-item">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+
+            <div class="stat-item">
+                <div class="stat-number">2</div>
+                <div class="stat-label">Premium Locations</div>
+            </div>
+        </div>
+
+        <div class="testimonial">
+            <div class="testimonial-quote">
+                "The most natural-looking results I've ever had. Roxzi truly understands facial aesthetics and takes the time to listen to what you want."
+            </div>
+            <div class="testimonial-author">— Sarah M., Dublin</div>
+        </div>
+    </section>
+
+    <!-- Locations -->
+    <section class="locations" id="locations">
+        <h2 class="section-title-center">Visit us</h2>
+
+        <div class="location-cards">
+            <div class="location-card">
+                <div class="location-image">
+                    <img src="images/dublin-clinic.jpg" alt="Dublin clinic" loading="lazy" onerror="this.style.display='none'">
+                    <div class="location-overlay">
+                        <div class="location-flag">🇮🇪</div>
+                    </div>
+                </div>
+                <div class="location-content">
+                    <h3 class="location-title">Dublin</h3>
+                    <p class="location-address">
+                        PrestigeLash Academy<br>
+                        337 S Circular Rd<br>
+                        Dublin 8, D08 WP49
+                    </p>
+                    <p class="location-schedule">
+                        <i class="fas fa-calendar"></i> 2-3 days per month
+                    </p>
+                    <a href="book.html" class="btn btn-primary">Book Dublin</a>
+                </div>
+            </div>
+
+            <div class="location-card">
+                <div class="location-image">
+                    <img src="images/marbella-clinic.jpg" alt="Marbella clinic" loading="lazy" onerror="this.style.display='none'">
+                    <div class="location-overlay">
+                        <div class="location-flag">🇪🇸</div>
+                    </div>
+                </div>
+                <div class="location-content">
+                    <h3 class="location-title">Marbella</h3>
+                    <p class="location-address">
+                        Casas Sevilla 2<br>
+                        Av. Playas del Duque<br>
+                        29660 Marbella
+                    </p>
+                    <p class="location-schedule">
+                        <i class="fas fa-calendar"></i> Limited availability
+                    </p>
+                    <a href="book.html" class="btn btn-primary">Book Marbella</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta">
+        <div class="cta-bg">
+            <img src="images/testimonial-1.jpg" alt="Happy client" loading="lazy">
+            <div class="cta-overlay"></div>
+        </div>
+
+        <div class="cta-content">
+            <h2 class="cta-title">Ready to begin?</h2>
+            <p class="cta-text">
+                Book your free consultation and discover how we can help you achieve your aesthetic goals.
+            </p>
+
+            <div class="cta-buttons">
+                <a href="book.html" class="btn btn-primary btn-large">
+                    Book Free Consultation
+                </a>
+                <a href="https://wa.me/353831622444?text=Hi! I'd like to learn more about treatments at ClearCosmetics" target="_blank" class="btn btn-secondary btn-large">
+                    <i class="fab fa-whatsapp"></i> WhatsApp Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>ClearCosmetics</h3>
+                <p>Natural beauty, elevated</p>
+            </div>
+
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Explore</h4>
+                    <a href="treatments.html">Treatments</a>
+                    <a href="results.html">Results</a>
+                    <a href="about.html">About</a>
+                    <a href="book.html">Book Now</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <a href="tel:+353831622444">+353 83 162 2444</a>
+                    <a href="mailto:clearcosmeticss@gmail.com">clearcosmeticss@gmail.com</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Follow</h4>
+                    <a href="https://instagram.com/clearcosmetics_" target="_blank">Instagram</a>
+                    <a href="https://tiktok.com/@clearcosmetics_" target="_blank">TikTok</a>
+                    <a href="https://facebook.com/clearcosmetics" target="_blank">Facebook</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 ClearCosmetics. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Floating Book Button (Mobile) -->
+    <a href="book.html" class="floating-book-btn" id="floating-book">
+        <i class="fas fa-calendar-check"></i>
+        <span class="floating-book-text">Book</span>
+    </a>
+
+    <script src="script-cinematic.js"></script>
+</body>
+</html>
