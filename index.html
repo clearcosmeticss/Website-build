@@ -2,575 +2,293 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0A0A0A">
     <title>ClearCosmetics - Premium Aesthetics | Dublin & Marbella</title>
-    <meta name="description" content="ClearCosmetics specialises in advanced non-surgical treatments that enhance your natural beauty. Clinics in Dublin and Marbella.">
+    <meta name="description" content="Advanced non-surgical aesthetic treatments. Natural enhancement delivered with medical precision. Clinics in Dublin and Marbella.">
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
-
-    <!-- Font Awesome for Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- MOBILE FIX: Immediate script for mobile button functionality -->
-    <script>
-        console.log('Mobile fix script loading...');
-
-        function isMobile() {
-            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        }
-
-        function fixMobileButtons() {
-            if (!isMobile()) return;
-
-            console.log('Applying mobile fixes...');
-
-            // Wait for DOM
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', fixMobileButtons);
-                return;
-            }
-
-            // Fix WhatsApp links with aggressive approach
-            const whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
-            whatsappLinks.forEach(link => {
-                link.addEventListener('touchend', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    console.log('WhatsApp link touched:', this.href);
-                    window.open(this.href, '_blank');
-                }, { passive: false });
-
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    console.log('WhatsApp link clicked:', this.href);
-                    window.open(this.href, '_blank');
-                }, { passive: false });
-            });
-
-            // Fix chatbot button - allow real functionality
-            const chatbotBtn = document.querySelector('.chatbot-btn');
-            if (chatbotBtn) {
-                // Add mobile-friendly touch handler that works with the existing functionality
-                chatbotBtn.addEventListener('touchend', function(e) {
-                    e.stopPropagation(); // Don't prevent default, let onclick work
-                    console.log('Chatbot button touched - letting onclick handle it');
-
-                    // Small delay to let the onclick fire, then check if chatbot opened
-                    setTimeout(() => {
-                        if (typeof toggleChat === 'function') {
-                            console.log('toggleChat function is available');
-                        } else {
-                            console.log('toggleChat function not found, trying manual toggle');
-                            const chatbot = document.getElementById('chatbot');
-                            if (chatbot) {
-                                chatbot.classList.toggle('active');
-                                console.log('Chatbot toggled manually');
-                            }
-                        }
-                    }, 50);
-                }, { passive: true });
-            }
-
-            // Fix ALL buttons and clickable elements aggressively
-
-            // Fix enquire now buttons (including bottom sticky one)
-            const enquireButtons = document.querySelectorAll('a[href="#enquiry"], .btn[href*="#enquiry"], .sticky-btn.book-btn');
-            enquireButtons.forEach(btn => {
-                btn.addEventListener('touchend', function(e) {
-                    e.preventDefault();
-                    console.log('Enquire button touched, scrolling to enquiry section');
-                    const enquirySection = document.getElementById('enquiry');
-                    if (enquirySection) {
-                        enquirySection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                }, { passive: false });
-            });
-
-            // Fix treatment card BUTTONS only (not the whole card)
-            const treatmentButtons = document.querySelectorAll('.treatment-card .btn, .service-card .btn, .treatment-grid .btn');
-            treatmentButtons.forEach(btn => {
-                if (btn.href) {
-                    btn.addEventListener('touchend', function(e) {
-                        e.preventDefault();
-                        console.log('Treatment button touched, navigating to:', this.href);
-                        window.location.href = this.href;
-                    }, { passive: false });
-
-                    btn.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        console.log('Treatment button clicked, navigating to:', this.href);
-                        window.location.href = this.href;
-                    }, { passive: false });
-                }
-            });
-
-            // Fix ALL buttons with onclick or href (but NOT treatment card containers)
-            const allButtons = document.querySelectorAll('button, .btn, a');
-            allButtons.forEach(btn => {
-                // Skip if this is a treatment card container (not a button)
-                if (btn.classList.contains('treatment-card') || btn.classList.contains('service-card')) {
-                    return; // Don't add handlers to card containers
-                }
-
-                if (btn.onclick || btn.href) {
-                    btn.addEventListener('touchend', function(e) {
-                        console.log('Button touched:', this.className, this.href || 'onclick function');
-
-                        // Don't prevent default for WhatsApp (already handled above)
-                        if (this.href && this.href.includes('wa.me')) return;
-
-                        // Handle other buttons
-                        if (this.onclick) {
-                            e.preventDefault();
-                            this.onclick(e);
-                        } else if (this.href) {
-                            e.preventDefault();
-                            if (this.href.includes('#')) {
-                                // Internal scroll
-                                const targetId = this.href.split('#')[1];
-                                const target = document.getElementById(targetId);
-                                if (target) {
-                                    target.scrollIntoView({ behavior: 'smooth' });
-                                }
-                            } else {
-                                // External link
-                                window.location.href = this.href;
-                            }
-                        }
-                    }, { passive: false });
-                }
-            });
-
-            console.log('Mobile fixes applied successfully');
-        }
-
-        // Apply fixes immediately and on DOM ready
-        if (isMobile()) {
-            fixMobileButtons();
-            // Also try again after a short delay
-            setTimeout(fixMobileButtons, 500);
-            setTimeout(fixMobileButtons, 2000);
-        }
-    </script>
-
-    <!-- Payment Gateway Scripts -->
-    <script src="https://js.stripe.com/v3/"></script>
-
-    <!-- EmailJS for email notifications -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function(){
-            emailjs.init("YOUR_EMAILJS_PUBLIC_KEY"); // Replace with your EmailJS public key
-        })();
-    </script>
-
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-premium.css">
 </head>
 <body>
+
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="nav" id="main-nav">
         <div class="nav-container">
-            <div class="nav-logo">
-                <img src="images/logo.png" alt="ClearCosmetics Logo" class="logo">
-            </div>
-            <div class="nav-brand">
-                <h2>ClearCosmetics</h2>
-            </div>
-            <div class="nav-menu" id="nav-menu">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="treatments.html" class="nav-link">Treatments</a>
-                <a href="results.html" class="nav-link">Results</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="book.html" class="nav-link btn-nav">Book Now</a>
-            </div>            <div class="nav-toggle" id="nav-toggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-brand">ClearCosmetics</div>
+
+            <a href="book.html" class="nav-book">Book</a>
         </div>
     </nav>
 
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay" id="menu-overlay">
+        <div class="menu-content">
+            <button class="menu-close" id="menu-close">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <nav class="menu-nav">
+                <a href="#home" class="menu-link">Home</a>
+                <a href="treatments.html" class="menu-link">Treatments</a>
+                <a href="results.html" class="menu-link">Results</a>
+                <a href="about.html" class="menu-link">About</a>
+                <a href="book.html" class="menu-link menu-link-highlight">Book Consultation</a>
+            </nav>
+
+            <div class="menu-footer">
+                <div class="menu-social">
+                    <a href="https://wa.me/353831622444" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://instagram.com/clearcosmetics_" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+                <p class="menu-locations">Dublin · Marbella</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-grid">
-            <div class="hero-inner">
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-grid">
+                <!-- Text Content -->
                 <div class="hero-content">
-                    <p class="hero-eyebrow">Advanced Aesthetics — Dublin &amp; Marbella</p>
-                    <h1 class="hero-title">The Art Of<br>Natural <em>Enhancement.</em></h1>
-                    <p class="hero-subtitle">Non-surgical treatments delivered with precision, clinical expertise, and a commitment to results that enhance — never alter.</p>
+                    <p class="hero-eyebrow">Advanced Aesthetics — Dublin & Marbella</p>
+
+                    <h1 class="hero-title">
+                        The Art Of<br>
+                        Natural <em>Enhancement</em>
+                    </h1>
+
+                    <p class="hero-subtitle">
+                        Non-surgical treatments delivered with precision, clinical expertise, and a commitment to results that enhance — never alter.
+                    </p>
+
                     <div class="hero-ctas">
-                        <a href="book.html" class="btn-hero-primary">Book Consultation</a>
-                        <a href="#treatments" class="btn-hero-secondary">View Treatments</a>
+                        <a href="book.html" class="btn btn-primary">
+                            Book Consultation
+                        </a>
+                        <a href="treatments.html" class="btn btn-secondary">
+                            View Treatments
+                        </a>
                     </div>
                 </div>
-                <div class="hero-image-wrap">
-                    <img src="images/dermal-filler-treatment.png" alt="Professional dermal filler treatment" class="hero-image">
+
+                <!-- Hero Image -->
+                <div class="hero-image-container">
+                    <div class="hero-image-wrap">
+                        <img src="images/dermal-filler-treatment.png" alt="Professional aesthetic treatment" class="hero-image" loading="eager">
+                    </div>
                 </div>
             </div>
+
+            <!-- Trust Bar -->
             <div class="hero-trust">
                 <div class="trust-item">
-                    <span class="trust-num">8+</span>
-                    <span class="trust-label">Years Experience</span>
+                    <div class="trust-number">10+</div>
+                    <div class="trust-label">Years Experience</div>
                 </div>
+
                 <div class="trust-divider"></div>
+
                 <div class="trust-item">
-                    <span class="trust-num">5,000+</span>
-                    <span class="trust-label">Treatments Performed</span>
+                    <div class="trust-number">2,500+</div>
+                    <div class="trust-label">Happy Clients</div>
                 </div>
+
                 <div class="trust-divider"></div>
+
                 <div class="trust-item">
-                    <span class="trust-num">Medical</span>
-                    <span class="trust-label">Led Practice</span>
+                    <div class="trust-number">Medical</div>
+                    <div class="trust-label">Led Practice</div>
                 </div>
+
                 <div class="trust-divider"></div>
+
                 <div class="trust-item">
-                    <span class="trust-num">UK &amp; EU</span>
-                    <span class="trust-label">Clients</span>
+                    <div class="trust-number">2</div>
+                    <div class="trust-label">Premium Locations</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Philosophy Section -->
-    <section class="philosophy-section">
-        <div class="container" style="max-width: 800px; padding: var(--space-96) var(--space-32); text-align: center;">
-            <h2 style="font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 48px); line-height: 1.15; letter-spacing: -0.015em; margin-bottom: var(--space-32); color: var(--cc-text);">Subtle. Balanced. Intentional.</h2>
-            <p style="font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 300; line-height: 1.7; color: var(--cc-muted); margin-bottom: var(--space-48);">We believe the best aesthetic work is never obvious. It restores confidence without altering identity — refining what already exists rather than replacing it. Our approach prioritises proportion, symmetry, and natural expression.</p>
-        </div>
-    </section>
+    <section class="philosophy">
+        <div class="philosophy-container">
+            <h2 class="philosophy-title">Subtle. Balanced. Intentional.</h2>
 
-    <!-- Treatments Preview Section -->
-    <section class="treatments" style="padding: var(--space-96) var(--space-32);">
-        <div class="container" style="max-width: 1140px; margin: 0 auto;">
-            <div style="text-align: center; margin-bottom: var(--space-64);">
-                <h2 style="font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 48px); line-height: 1.15; letter-spacing: -0.015em; margin-bottom: var(--space-24); color: var(--cc-text);">Precision Treatments</h2>
-                <p style="font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 300; line-height: 1.7; color: var(--cc-muted); max-width: 620px; margin: 0 auto;">Each treatment is tailored to your facial structure, goals, and natural anatomy.</p>
-            </div>
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-48); margin-bottom: var(--space-64);">
-                <div style="padding: var(--space-48) var(--space-32); border-top: 1px solid var(--cc-border); transition: all 0.3s ease;">
-                    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 28px; margin-bottom: var(--space-16); color: var(--cc-text);">Lip Enhancement</h3>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 300; line-height: 1.7; color: var(--cc-muted); margin-bottom: var(--space-24);">Refined volume and shape designed to maintain softness and natural proportion.</p>
-                    <a href="treatments.html" style="font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 400; color: var(--cc-text); text-decoration: none; border-bottom: 1px solid var(--cc-text); padding-bottom: 2px; transition: all 0.2s;">Learn More →</a>
-                </div>
-                <div style="padding: var(--space-48) var(--space-32); border-top: 1px solid var(--cc-border); transition: all 0.3s ease;">
-                    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 28px; margin-bottom: var(--space-16); color: var(--cc-text);">Non-Surgical Rhinoplasty</h3>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 300; line-height: 1.7; color: var(--cc-muted); margin-bottom: var(--space-24);">Reshape and refine your nose without surgery or downtime.</p>
-                    <a href="treatments.html" style="font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 400; color: var(--cc-text); text-decoration: none; border-bottom: 1px solid var(--cc-text); padding-bottom: 2px; transition: all 0.2s;">Learn More →</a>
-                </div>
-                <div style="padding: var(--space-48) var(--space-32); border-top: 1px solid var(--cc-border); transition: all 0.3s ease;">
-                    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 28px; margin-bottom: var(--space-16); color: var(--cc-text);">Facial Balancing</h3>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 300; line-height: 1.7; color: var(--cc-muted); margin-bottom: var(--space-24);">Strategic enhancement to improve harmony across facial features.</p>
-                    <a href="treatments.html" style="font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 400; color: var(--cc-text); text-decoration: none; border-bottom: 1px solid var(--cc-text); padding-bottom: 2px; transition: all 0.2s;">Learn More →</a>
-                </div>
-                <div style="padding: var(--space-48) var(--space-32); border-top: 1px solid var(--cc-border); transition: all 0.3s ease;">
-                    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 28px; margin-bottom: var(--space-16); color: var(--cc-text);">Skin Rejuvenation</h3>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 300; line-height: 1.7; color: var(--cc-muted); margin-bottom: var(--space-24);">Improving texture, glow, and overall skin quality.</p>
-                    <a href="treatments.html" style="font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 400; color: var(--cc-text); text-decoration: none; border-bottom: 1px solid var(--cc-text); padding-bottom: 2px; transition: all 0.2s;">Learn More →</a>
-                </div>
-            </div>
-            <div style="text-align: center; padding-top: var(--space-32); border-top: 1px solid var(--cc-border);">
-                <a href="treatments.html" style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; background: transparent; color: var(--cc-text); border: 1px solid var(--cc-text); border-radius: 8px; padding: 0 32px; height: 48px; display: inline-flex; align-items: center; transition: all 0.2s;">View All Treatments →</a>
-            </div>
-        </div>
-        <style>
-            @media (max-width: 768px) {
-                .treatments div[style*="grid-template-columns: repeat(2, 1fr)"] {
-                    grid-template-columns: 1fr !important;
-                    gap: 0 !important;
-                }
-                .treatments div[style*="padding: var(--space-48)"] {
-                    padding: var(--space-32) var(--space-24) !important;
-                }
-            }
-        </style>
-    </section>
+            <div class="philosophy-content">
+                <p class="philosophy-text">
+                    We believe the best aesthetic work is never obvious. It restores confidence without altering identity — refining what already exists rather than replacing it.
+                </p>
 
-    <!-- Results Teaser Section -->
-    <section class="results-teaser" style="background: #FAFAFA; padding: var(--space-96) var(--space-32);">
-        <div class="container" style="max-width: 1140px; margin: 0 auto;">
-            <div style="text-align: center; margin-bottom: var(--space-64);">
-                <h2 style="font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 48px); line-height: 1.15; letter-spacing: -0.015em; margin-bottom: var(--space-24); color: var(--cc-text);">Results That Speak</h2>
-                <p style="font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 300; line-height: 1.7; color: var(--cc-muted); max-width: 620px; margin: 0 auto;">Subtle transformations that enhance, never exaggerate.</p>
-            </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-24); margin-bottom: var(--space-48);">
-                <div style="border-radius: 12px; overflow: hidden; background: white;">
-                    <img src="images/Botox Before.jpg" alt="Before treatment" style="width: 100%; height: auto; display: block;">
-                </div>
-                <div style="border-radius: 12px; overflow: hidden; background: white;">
-                    <img src="images/Botox After.jpg" alt="After treatment" style="width: 100%; height: auto; display: block;">
-                </div>
-                <div style="border-radius: 12px; overflow: hidden; background: white;">
-                    <img src="images/Dermal Lips After.jpg" alt="Treatment result" style="width: 100%; height: auto; display: block;">
-                </div>
-            </div>
-            <div style="text-align: center;">
-                <a href="results.html" style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; background: transparent; color: var(--cc-text); border: 1px solid var(--cc-text); border-radius: 8px; padding: 0 28px; height: 48px; display: inline-flex; align-items: center; transition: all 0.2s;">See Full Results →</a>
+                <p class="philosophy-text">
+                    Our approach prioritises proportion, symmetry, and natural expression.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Roxzi Teaser Section -->
-    <section class="roxzi-teaser" style="padding: var(--space-96) var(--space-32);">
-        <div class="container" style="max-width: 1140px; margin: 0 auto;">
-            <div class="roxzi-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-64); align-items: center;">
-                <div style="border-radius: 16px; overflow: hidden; aspect-ratio: 2 / 3;">
-                    <img src="images/roxzi-headshot.png" alt="Roxzi - Advanced Aesthetic Practitioner" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div>
-                    <h2 style="font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 48px); line-height: 1.15; letter-spacing: -0.015em; margin-bottom: var(--space-32); color: var(--cc-text);">Meet Roxzi</h2>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 300; line-height: 1.7; color: var(--cc-muted); margin-bottom: var(--space-24);">An advanced aesthetic practitioner with over 8 years of experience specializing in natural, balanced results. Her approach is rooted in facial harmony, precision technique, and an understanding that the best aesthetic work should never appear "done".</p>
-                    <a href="about.html" style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; background: transparent; color: var(--cc-text); border: 1px solid var(--cc-text); border-radius: 8px; padding: 0 28px; height: 48px; display: inline-flex; align-items: center; transition: all 0.2s;">About Roxzi →</a>
-                </div>
+    <!-- Treatments Preview -->
+    <section class="treatments-preview">
+        <div class="treatments-container">
+            <div class="treatments-header">
+                <h2 class="section-title">Treatments</h2>
+                <a href="treatments.html" class="text-link">View all <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="treatments-grid">
+                <a href="treatments.html#dermal-fillers" class="treatment-card">
+                    <div class="treatment-image">
+                        <img src="images/Lip Fillers 1ml.jpg" alt="Dermal Fillers" loading="lazy">
+                    </div>
+                    <div class="treatment-content">
+                        <h3 class="treatment-name">Dermal Fillers</h3>
+                        <p class="treatment-desc">Restore volume, enhance contours</p>
+                        <span class="treatment-from">From €180</span>
+                    </div>
+                </a>
+
+                <a href="treatments.html#botox" class="treatment-card">
+                    <div class="treatment-image">
+                        <img src="images/botox before and after.jpg" alt="Botox before and after" loading="lazy">
+                    </div>
+                    <div class="treatment-content">
+                        <h3 class="treatment-name">Botox</h3>
+                        <p class="treatment-desc">Smooth lines, refresh appearance</p>
+                        <span class="treatment-from">From €150</span>
+                    </div>
+                </a>
+
+                <a href="treatments.html#skin-boosters" class="treatment-card">
+                    <div class="treatment-image">
+                        <img src="images/Neck polynucleotides.jpg" alt="Skin Boosters" loading="lazy">
+                    </div>
+                    <div class="treatment-content">
+                        <h3 class="treatment-name">Skin Boosters</h3>
+                        <p class="treatment-desc">Deep hydration, radiant glow</p>
+                        <span class="treatment-from">From €250</span>
+                    </div>
+                </a>
+
+                <a href="treatments.html#packages" class="treatment-card">
+                    <div class="treatment-image">
+                        <img src="images/package deals hero image.jpg" alt="Treatment packages" loading="lazy">
+                    </div>
+                    <div class="treatment-content">
+                        <h3 class="treatment-name">Packages</h3>
+                        <p class="treatment-desc">Complete facial rejuvenation</p>
+                        <span class="treatment-from">From €375</span>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
 
-    <style>
-        @media (max-width: 768px) {
-            .roxzi-teaser {
-                padding: var(--space-64) var(--space-24) !important;
-            }
-            .roxzi-grid {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 0 !important;
-                text-align: center !important;
-            }
-            .roxzi-grid > div:first-child {
-                order: 2;
-                margin: var(--space-32) auto !important;
-                max-width: 360px !important;
-                aspect-ratio: 1 / 1 !important;
-            }
-            .roxzi-grid > div:last-child {
-                order: 1;
-            }
-            .roxzi-grid h2 {
-                margin-bottom: var(--space-24) !important;
-            }
-            .roxzi-grid p {
-                max-width: 100% !important;
-                margin-left: auto !important;
-                margin-right: auto !important;
-                margin-bottom: var(--space-32) !important;
-            }
-            .roxzi-grid a {
-                margin: var(--space-32) auto 0 !important;
-            }
-        }
-    </style>
+    <!-- Results Showcase -->
+    <section class="results-showcase">
+        <div class="results-container">
+            <div class="results-header">
+                <h2 class="section-title">Real Results</h2>
+                <p class="section-subtitle">Natural enhancements, confident clients</p>
+            </div>
 
-    <!-- Final CTA Section -->
-    <section class="final-cta" style="background: #FAFAFA; padding: var(--space-96) var(--space-32); text-align: center;">
-        <div class="container" style="max-width: 800px; margin: 0 auto;">
-            <h2 style="font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 48px); line-height: 1.15; letter-spacing: -0.015em; margin-bottom: var(--space-24); color: var(--cc-text);">Ready for Subtle, Refined Enhancement?</h2>
-            <p style="font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 300; line-height: 1.7; color: var(--cc-muted); margin-bottom: var(--space-48);">Book a consultation to discuss your goals and discover a tailored treatment plan designed just for you.</p>
-            <div style="display: flex; gap: var(--space-16); justify-content: center; flex-wrap: wrap;">
-                <a href="book.html" style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; background: var(--cc-text); color: var(--cc-bg); border: 1px solid var(--cc-text); border-radius: 8px; padding: 0 32px; height: 56px; display: inline-flex; align-items: center; transition: all 0.2s;">Book Your Consultation</a>
-                <a href="https://wa.me/353831622444" target="_blank" style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; background: transparent; color: var(--cc-text); border: 1px solid var(--cc-text); border-radius: 8px; padding: 0 32px; height: 56px; display: inline-flex; align-items: center; transition: all 0.2s;">WhatsApp Us</a>
+            <div class="results-grid">
+                <div class="result-card">
+                    <img src="images/lip enhancement real result.JPG" alt="Lip enhancement real results" loading="lazy">
+                    <div class="result-label">Lip Enhancement</div>
+                </div>
+
+                <div class="result-card">
+                    <img src="images/rhinoplasty real results.jpg" alt="Non-surgical rhinoplasty results" loading="lazy">
+                    <div class="result-label">Non-Surgical Rhinoplasty</div>
+                </div>
+
+                <div class="result-card">
+                    <img src="images/skin booster real results.jpg" alt="Skin booster treatment results" loading="lazy">
+                    <div class="result-label">Skin Boosters</div>
+                </div>
+
+                <div class="result-card">
+                    <img src="images/packages real results.jpg" alt="Treatment package results" loading="lazy">
+                    <div class="result-label">Packages</div>
+                </div>
+            </div>
+
+            <div class="results-cta">
+                <a href="results.html" class="btn btn-secondary">View Full Gallery</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2 class="cta-title">Ready to begin?</h2>
+            <p class="cta-text">
+                Book your free consultation and discover how we can help you achieve your aesthetic goals.
+            </p>
+            <div class="cta-buttons">
+                <a href="book.html" class="btn btn-primary btn-large">Book Free Consultation</a>
+                <a href="https://wa.me/353831622444" target="_blank" class="btn btn-secondary btn-large">
+                    <i class="fab fa-whatsapp"></i> WhatsApp Us
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
                     <h3>ClearCosmetics</h3>
-                    <p>Premium aesthetics clinics in Dublin and Marbella, specializing in natural, confidence-boosting treatments.</p>
-                    <div class="social-links">
-                        <a href="https://instagram.com/clearcosmetics_" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://tiktok.com/@clearcosmetics_" target="_blank"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://facebook.com/clearcosmetics" target="_blank"><i class="fab fa-facebook"></i></a>
-                        <a href="https://wa.me/353831622444" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                    </div>
+                    <p>Natural beauty, elevated</p>
                 </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#treatments">Treatments</a></li>
-                        <li><a href="#enquiry">Enquire Now</a></li>
-                        <li><a href="#locations">Locations</a></li>
-                        <li><a href="#membership">Membership</a></li>
-                    </ul>
+
+                <div class="footer-links">
+                    <h4>Explore</h4>
+                    <a href="treatments.html">Treatments</a>
+                    <a href="results.html">Results</a>
+                    <a href="about.html">About</a>
+                    <a href="book.html">Book Now</a>
                 </div>
-                <div class="footer-section">
+
+                <div class="footer-links">
                     <h4>Contact</h4>
-                    <ul>
-                        <li>Dublin: (+353) 83 162 2444</li>
-                        <li>Marbella: (+353) 83 162 2444</li>
-                        <li>Clearcosmeticss@gmail.com</li>
-                    </ul>
+                    <a href="tel:+353831622444">+353 83 162 2444</a>
+                    <a href="mailto:clearcosmeticss@gmail.com">clearcosmeticss@gmail.com</a>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Follow</h4>
+                    <a href="https://instagram.com/clearcosmetics_" target="_blank">Instagram</a>
+                    <a href="https://tiktok.com/@clearcosmetics_" target="_blank">TikTok</a>
+                    <a href="https://facebook.com/clearcosmetics" target="_blank">Facebook</a>
                 </div>
             </div>
+
             <div class="footer-bottom">
-                <p>&copy; 2024 ClearCosmetics. All rights reserved.</p>
+                <p>&copy; 2026 ClearCosmetics. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Bottom Button Bar -->
-    <div class="mobile-sticky">
-        <a href="treatments.html" class="sticky-btn">
-            <i class="fas fa-syringe"></i>
-            <span>Treatments</span>
-        </a>
-        <a href="results.html" class="sticky-btn">
-            <i class="fas fa-images"></i>
-            <span>Results</span>
-        </a>
-        <a href="book.html" class="sticky-btn">
-            <i class="fas fa-calendar-check"></i>
-            <span>Book</span>
-        </a>
-        <a href="https://wa.me/353831622444" class="sticky-btn" target="_blank">
-            <i class="fab fa-whatsapp"></i>
-            <span>WhatsApp</span>
-        </a>
-    </div>
+    <!-- Floating Book Button -->
+    <a href="book.html" class="floating-book" id="floating-book">
+        <i class="fas fa-calendar-check"></i>
+    </a>
 
-    <!-- Chatbot -->
-    <div class="chatbot" id="chatbot">
-        <div class="chatbot-header">
-            <h4>ClearCosmetics Assistant</h4>
-            <button class="chatbot-close" onclick="toggleChat()">&times;</button>
-        </div>
-        <div class="chatbot-messages" id="chatbot-messages">
-            <div class="bot-message">
-                <p>Hi! I'm here to help answer any questions about our treatments. What would you like to know?</p>
-            </div>
-        </div>
-        <div class="chatbot-input">
-            <input type="text" id="chat-input" placeholder="Type your question...">
-            <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
-        </div>
-    </div>
-
-    <!-- Waitlist Popup -->
-    <div id="waitlist-popup" class="waitlist-popup">
-        <div class="waitlist-popup-content">
-            <span class="waitlist-popup-close">&times;</span>
-            <h2>Join the ClearCollective Waitlist 💕</h2>
-            <p>Be the first to know when our exclusive membership program launches!</p>
-
-            <form id="waitlist-form" class="waitlist-form">
-                <div class="form-group">
-                    <label for="first-name">First Name *</label>
-                    <input type="text" id="first-name" name="firstName" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="last-name">Last Name *</label>
-                    <input type="text" id="last-name" name="lastName" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email Address *</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" placeholder="+353...">
-                </div>
-
-                <div class="form-group">
-                    <label for="location">Preferred Clinic Location</label>
-                    <select id="location" name="location">
-                        <option value="">Select Location</option>
-                        <option value="dublin">Dublin, Ireland</option>
-                        <option value="marbella">Marbella, Spain</option>
-                        <option value="both">Both Locations</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="interests">Treatments of Interest (Optional)</label>
-                    <div class="checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="interests" value="botox">
-                            <span class="checkmark"></span>
-                            Anti-Wrinkle/Botox
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="interests" value="fillers">
-                            <span class="checkmark"></span>
-                            Dermal Fillers
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="interests" value="skin-boosters">
-                            <span class="checkmark"></span>
-                            Skin Boosters
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="interests" value="fat-dissolving">
-                            <span class="checkmark"></span>
-                            Fat Dissolving
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="interests" value="polynucleotides">
-                            <span class="checkmark"></span>
-                            Polynucleotides
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="hear-about">How did you hear about us?</label>
-                    <select id="hear-about" name="hearAbout">
-                        <option value="">Select Option</option>
-                        <option value="social-media">Social Media</option>
-                        <option value="google">Google Search</option>
-                        <option value="friend-referral">Friend/Referral</option>
-                        <option value="advertisement">Advertisement</option>
-                        <option value="website">Website</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-
-                <div class="form-group checkbox-consent">
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="marketing" id="marketing-consent">
-                        <span class="checkmark"></span>
-                        I would like to receive marketing updates and special offers via email
-                    </label>
-                </div>
-
-                <div class="form-group checkbox-consent">
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="privacy" id="privacy-consent" required>
-                        <span class="checkmark"></span>
-                        I agree to the <a href="#" target="_blank">Privacy Policy</a> and <a href="#" target="_blank">Terms of Service</a> *
-                    </label>
-                </div>
-
-                <button type="submit" class="btn btn-primary waitlist-submit">
-                    <span class="btn-text">Join Waitlist</span>
-                    <span class="btn-loading" style="display: none;">
-                        <i class="fas fa-spinner fa-spin"></i> Submitting...
-                    </span>
-                </button>
-            </form>
-
-            <div id="waitlist-success" class="waitlist-success" style="display: none;">
-                <div class="success-icon">✨</div>
-                <h3>Welcome to the ClearCollective!</h3>
-                <p>Thank you for joining our exclusive waitlist. You'll be the first to know when our membership program launches!</p>
-                <p class="success-note">We'll send you updates to <strong id="submitted-email"></strong></p>
-            </div>
-        </div>
-    </div>
-
-
-    <script src="script.js"></script>
-
-    <!-- Vercel Web Analytics -->
-    <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+    <script src="script-premium.js"></script>
 </body>
 </html>

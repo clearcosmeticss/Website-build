@@ -2,357 +2,309 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Treatments | ClearCosmetics - Dublin & Marbella</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0A0A0A">
+    <title>Treatments | ClearCosmetics - Premium Aesthetics Dublin & Marbella</title>
     <meta name="description" content="Explore our full range of advanced aesthetic treatments — from dermal fillers and anti-wrinkle injections to skin boosters and more.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
-
-    <style>
-        .treatment-detail {
-            padding: var(--space-96) 0;
-            border-bottom: 1px solid var(--cc-border);
-        }
-
-        .treatment-detail:last-of-type {
-            border-bottom: none;
-        }
-
-        .treatment-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-64);
-            align-items: start;
-            max-width: 1140px;
-            margin: 0 auto;
-            padding: 0 var(--space-32);
-        }
-
-        .treatment-grid.reverse {
-            direction: rtl;
-        }
-
-        .treatment-grid.reverse > * {
-            direction: ltr;
-        }
-
-        .treatment-image-wrap {
-            width: 100%;
-            border-radius: 16px;
-            overflow: hidden;
-            aspect-ratio: 4 / 3;
-            background: var(--cc-border);
-        }
-
-        .treatment-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        @media (max-width: 768px) {
-            .treatment-image-wrap {
-                display: none;
-            }
-        }
-
-        .treatment-content h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(32px, 4vw, 48px);
-            line-height: 1.15;
-            letter-spacing: -0.015em;
-            margin-bottom: var(--space-24);
-            color: var(--cc-text);
-        }
-
-        .treatment-content p {
-            font-family: 'Inter', sans-serif;
-            font-size: 16px;
-            font-weight: 300;
-            line-height: 1.7;
-            color: var(--cc-muted);
-            margin-bottom: var(--space-24);
-        }
-
-        .treatment-price {
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            color: var(--cc-accent);
-            margin-bottom: var(--space-32);
-            text-transform: uppercase;
-        }
-
-        .treatment-features {
-            list-style: none;
-            padding: 0;
-            margin: var(--space-32) 0;
-        }
-
-        .treatment-features li {
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            font-weight: 300;
-            color: var(--cc-text);
-            padding: var(--space-12) 0;
-            display: flex;
-            align-items: center;
-            gap: var(--space-12);
-        }
-
-        .treatment-features li i {
-            color: var(--cc-accent);
-            font-size: 12px;
-        }
-
-        @media (max-width: 768px) {
-            .treatment-detail {
-                padding: var(--space-64) 0;
-            }
-
-            .treatment-grid {
-                grid-template-columns: 1fr;
-                gap: var(--space-48);
-                padding: 0 var(--space-24);
-            }
-
-            .treatment-grid.reverse {
-                direction: ltr;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles-premium.css">
 </head>
 <body>
-    <nav class="navbar">
+
+    <!-- Navigation -->
+    <nav class="nav" id="main-nav">
         <div class="nav-container">
-            <div class="nav-logo">
-                <img src="images/logo.png" alt="ClearCosmetics Logo" class="logo">
-            </div>
-            <div class="nav-brand">
-                <h2>ClearCosmetics</h2>
-            </div>
-            <div class="nav-menu" id="nav-menu">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="treatments.html" class="nav-link">Treatments</a>
-                <a href="results.html" class="nav-link">Results</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="book.html" class="nav-link btn-nav">Book Now</a>
-            </div>
-            <div class="nav-toggle" id="nav-toggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-brand">ClearCosmetics</div>
+
+            <a href="book.html" class="nav-book">Book</a>
         </div>
     </nav>
 
-    <section style="padding: 120px var(--space-32) var(--space-96); background: var(--cc-bg); text-align: center;">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <h1 style="font-family: 'Cormorant Garamond', serif; font-size: clamp(44px, 5.5vw, 64px); line-height: 1.1; letter-spacing: -0.015em; margin-bottom: var(--space-24); color: var(--cc-text);">Precision Treatments</h1>
-            <p style="font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 300; line-height: 1.7; color: var(--cc-muted);">Advanced aesthetic treatments designed to enhance your natural features with clinical precision and artistic care.</p>
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay" id="menu-overlay">
+        <div class="menu-content">
+            <button class="menu-close" id="menu-close">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <nav class="menu-nav">
+                <a href="index-premium.html" class="menu-link">Home</a>
+                <a href="treatments-premium.html" class="menu-link">Treatments</a>
+                <a href="results.html" class="menu-link">Results</a>
+                <a href="about.html" class="menu-link">About</a>
+                <a href="book.html" class="menu-link menu-link-highlight">Book Consultation</a>
+            </nav>
+
+            <div class="menu-footer">
+                <div class="menu-social">
+                    <a href="https://wa.me/353831622444" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://instagram.com/clearcosmetics_" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+                <p class="menu-locations">Dublin · Marbella</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="page-hero-container">
+            <p class="page-hero-eyebrow">Advanced Aesthetics</p>
+            <h1 class="page-hero-title">Our Treatments</h1>
+            <p class="page-hero-subtitle">
+                Precision treatments designed to enhance your natural features with clinical expertise and artistic care.
+            </p>
         </div>
     </section>
 
-    <!-- Dermal Fillers -->
-    <section class="treatment-detail">
-        <div class="treatment-grid">
-            <div class="treatment-image-wrap">
-                <img src="images/Lip Fillers Before.jpg" alt="Lip Fillers Before" class="treatment-image">
-            </div>
-            <div class="treatment-content">
-                <h2>Dermal Fillers</h2>
-                <p class="treatment-price">From €180</p>
-                <p>Restore volume, smooth lines, and enhance facial contours for a youthful, natural appearance. Our premium hyaluronic acid fillers are expertly placed to maintain facial harmony and balance.</p>
-                <p>Perfect for lips, cheeks, chin, jawline, and under-eye hollows. Results last between 10-12 months depending on the area treated and product used.</p>
-                <ul class="treatment-features">
-                    <li><i class="fas fa-check-circle"></i> Premium hyaluronic acid fillers</li>
-                    <li><i class="fas fa-check-circle"></i> Natural, balanced results</li>
-                    <li><i class="fas fa-check-circle"></i> Minimal downtime</li>
-                    <li><i class="fas fa-check-circle"></i> Lasts 10-12 months</li>
-                </ul>
-                <a href="book.html" class="btn btn-primary">Book Consultation</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Anti-Wrinkle Treatment -->
-    <section class="treatment-detail">
-        <div class="treatment-grid reverse">
-            <div class="treatment-content">
-                <h2>Anti-Wrinkle Treatment</h2>
-                <p class="treatment-price">From €150</p>
-                <p>Smooth dynamic wrinkles and prevent new lines from forming. This treatment targets forehead lines, frown lines, crow's feet, and bunny lines while preserving your natural facial movement and expression.</p>
-                <p>Results appear within 3-7 days and last 3-4 months. Regular treatments can help prevent lines from deepening over time.</p>
-                <ul class="treatment-features">
-                    <li><i class="fas fa-check-circle"></i> Premium anti-wrinkle injections</li>
-                    <li><i class="fas fa-check-circle"></i> Preserves natural movement</li>
-                    <li><i class="fas fa-check-circle"></i> Results in 3-7 days</li>
-                    <li><i class="fas fa-check-circle"></i> Lasts 3-4 months</li>
-                </ul>
-                <a href="book.html" class="btn btn-primary">Book Consultation</a>
-            </div>
-            <div class="treatment-image-wrap">
-                <img src="images/Botox After.jpg" alt="Anti-Wrinkle Treatment Result" class="treatment-image">
-            </div>
-        </div>
-    </section>
-
-    <!-- Non-Surgical Rhinoplasty -->
-    <section class="treatment-detail">
-        <div class="treatment-grid">
-            <div class="treatment-image-wrap">
-                <img src="images/Rhinoplasty Before & After.jpg" alt="Non-Surgical Rhinoplasty Result" class="treatment-image">
-            </div>
-            <div class="treatment-content">
-                <h2>Non-Surgical Rhinoplasty</h2>
-                <p class="treatment-price">€300</p>
-                <p>Reshape and refine your nose without surgery using precision dermal filler techniques. This treatment can smooth bumps, lift the tip, improve symmetry, and enhance your overall nose profile.</p>
-                <p>Immediate results with no downtime. Effects last between 10-12 months. A consultation is essential to assess suitability.</p>
-                <ul class="treatment-features">
-                    <li><i class="fas fa-check-circle"></i> Non-surgical nose reshaping</li>
-                    <li><i class="fas fa-check-circle"></i> Immediate results</li>
-                    <li><i class="fas fa-check-circle"></i> No downtime</li>
-                    <li><i class="fas fa-check-circle"></i> Lasts 10-12 months</li>
-                </ul>
-                <a href="book.html" class="btn btn-primary">Book Consultation</a>
+    <!-- Treatment: Dermal Fillers -->
+    <section class="treatment-section" id="dermal-fillers">
+        <div class="treatment-container">
+            <div class="treatment-grid">
+                <div class="treatment-visual">
+                    <div class="treatment-image-wrap">
+                        <img src="images/Lip Fillers 1ml.jpg" alt="Dermal Fillers" loading="lazy">
+                    </div>
+                </div>
+                <div class="treatment-info">
+                    <h2 class="treatment-title">Dermal Fillers</h2>
+                    <p class="treatment-price">From €180</p>
+                    <p class="treatment-desc">
+                        Restore volume, smooth lines, and enhance facial contours for a youthful, natural appearance. Our premium hyaluronic acid fillers are expertly placed to maintain facial harmony and balance.
+                    </p>
+                    <p class="treatment-desc">
+                        Perfect for lips, cheeks, chin, jawline, and under-eye hollows. Results last between 10-12 months depending on the area treated and product used.
+                    </p>
+                    <ul class="treatment-features">
+                        <li><i class="fas fa-check"></i> Premium hyaluronic acid fillers</li>
+                        <li><i class="fas fa-check"></i> Natural, balanced results</li>
+                        <li><i class="fas fa-check"></i> Minimal downtime</li>
+                        <li><i class="fas fa-check"></i> Lasts 10-12 months</li>
+                    </ul>
+                    <a href="book.html" class="btn btn-primary">Book Consultation</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Skin Boosters -->
-    <section class="treatment-detail">
-        <div class="treatment-grid reverse">
-            <div class="treatment-content">
-                <h2>Skin Boosters</h2>
-                <p class="treatment-price">From €160</p>
-                <p>Deep hydration and skin quality improvement from within. Micro-injections of hyaluronic acid improve texture, elasticity, and overall glow. Perfect for face, neck, décolletage, and hands.</p>
-                <p>Recommended course: 2-3 treatments spaced 4 weeks apart. Results build over time and last 6-9 months.</p>
-                <ul class="treatment-features">
-                    <li><i class="fas fa-check-circle"></i> Deep skin hydration</li>
-                    <li><i class="fas fa-check-circle"></i> Improves texture & glow</li>
-                    <li><i class="fas fa-check-circle"></i> Minimal downtime</li>
-                    <li><i class="fas fa-check-circle"></i> Lasts 6-9 months</li>
-                </ul>
-                <a href="book.html" class="btn btn-primary">Book Consultation</a>
-            </div>
-            <div class="treatment-image-wrap">
-                <img src="images/Clinic Treatment Image .jpg" alt="Skin Boosters Treatment" class="treatment-image">
-            </div>
-        </div>
-    </section>
-
-    <!-- Fat Dissolving -->
-    <section class="treatment-detail">
-        <div class="treatment-grid">
-            <div class="treatment-content">
-                <h2>Fat Dissolving</h2>
-                <p class="treatment-price">From €200</p>
-                <p>Non-surgical reduction of stubborn fat deposits. Target double chin, jowls, bra bulge, and other problem areas with injectable fat-dissolving treatment. Results are permanent once fat cells are eliminated.</p>
-                <p>Most clients need 2-4 sessions spaced 6-8 weeks apart. Results appear gradually over 6-12 weeks.</p>
-                <ul class="treatment-features">
-                    <li><i class="fas fa-check-circle"></i> Non-surgical fat reduction</li>
-                    <li><i class="fas fa-check-circle"></i> Permanent results</li>
-                    <li><i class="fas fa-check-circle"></i> 2-4 sessions typically needed</li>
-                    <li><i class="fas fa-check-circle"></i> Results in 6-12 weeks</li>
-                </ul>
-                <a href="book.html" class="btn btn-primary">Book Consultation</a>
+    <!-- Treatment: Botox/Anti-Wrinkle -->
+    <section class="treatment-section treatment-section-alt" id="botox">
+        <div class="treatment-container">
+            <div class="treatment-grid treatment-grid-reverse">
+                <div class="treatment-visual">
+                    <div class="treatment-image-wrap">
+                        <img src="images/botox before and after.jpg" alt="Anti-Wrinkle Treatment" loading="lazy">
+                    </div>
+                </div>
+                <div class="treatment-info">
+                    <h2 class="treatment-title">Botox</h2>
+                    <p class="treatment-price">From €150</p>
+                    <p class="treatment-desc">
+                        Smooth dynamic wrinkles and prevent new lines from forming. This treatment targets forehead lines, frown lines, crow's feet, and bunny lines while preserving your natural facial movement and expression.
+                    </p>
+                    <p class="treatment-desc">
+                        Results appear within 3-7 days and last 3-4 months. Regular treatments can help prevent lines from deepening over time.
+                    </p>
+                    <ul class="treatment-features">
+                        <li><i class="fas fa-check"></i> Premium anti-wrinkle injections</li>
+                        <li><i class="fas fa-check"></i> Preserves natural movement</li>
+                        <li><i class="fas fa-check"></i> Results in 3-7 days</li>
+                        <li><i class="fas fa-check"></i> Lasts 3-4 months</li>
+                    </ul>
+                    <a href="book.html" class="btn btn-primary">Book Consultation</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Polynucleotides -->
-    <section class="treatment-detail">
-        <div class="treatment-grid reverse">
-            <div class="treatment-content">
-                <h2>Polynucleotides</h2>
-                <p class="treatment-price">From €250</p>
-                <p>Advanced skin regeneration and collagen stimulation. This bio-regenerative treatment repairs skin at a cellular level, improving texture, tone, elasticity, and overall skin health for long-term rejuvenation.</p>
-                <p>Recommended course: 3 treatments spaced 2-4 weeks apart. Results improve over time and last between 10-12 months.</p>
-                <ul class="treatment-features">
-                    <li><i class="fas fa-check-circle"></i> Cellular skin regeneration</li>
-                    <li><i class="fas fa-check-circle"></i> Stimulates collagen production</li>
-                    <li><i class="fas fa-check-circle"></i> Long-term rejuvenation</li>
-                    <li><i class="fas fa-check-circle"></i> Lasts 10-12 months</li>
-                </ul>
-                <a href="book.html" class="btn btn-primary">Book Consultation</a>
-            </div>
-            <div class="treatment-image-wrap">
-                <img src="images/polynucleotides-result.jpg" alt="Polynucleotides Treatment Result" class="treatment-image">
-            </div>
-        </div>
-    </section>
-
-    <section style="background: #FAFAFA; padding: var(--space-96) var(--space-32); text-align: center;">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <h2 style="font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 48px); line-height: 1.15; letter-spacing: -0.015em; margin-bottom: var(--space-24); color: var(--cc-text);">Not Sure Which Treatment?</h2>
-            <p style="font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 300; line-height: 1.7; color: var(--cc-muted); margin-bottom: var(--space-48);">Book a consultation with Roxzi to discuss your goals and discover a tailored treatment plan designed just for you.</p>
-            <div style="display: flex; gap: var(--space-16); justify-content: center; flex-wrap: wrap;">
-                <a href="book.html" style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; background: var(--cc-text); color: var(--cc-bg); border: 1px solid var(--cc-text); border-radius: 8px; padding: 0 32px; height: 56px; display: inline-flex; align-items: center; transition: all 0.2s;">Book Your Consultation</a>
-                <a href="https://wa.me/353831622444" target="_blank" style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; background: transparent; color: var(--cc-text); border: 1px solid var(--cc-text); border-radius: 8px; padding: 0 32px; height: 56px; display: inline-flex; align-items: center; transition: all 0.2s;">WhatsApp Us</a>
+    <!-- Treatment: Non-Surgical Rhinoplasty -->
+    <section class="treatment-section" id="rhinoplasty">
+        <div class="treatment-container">
+            <div class="treatment-grid">
+                <div class="treatment-visual">
+                    <div class="treatment-image-wrap">
+                        <img src="images/rhinoplasty real results.jpg" alt="Non-Surgical Rhinoplasty" loading="lazy" class="crop-bottom-half">
+                    </div>
+                </div>
+                <div class="treatment-info">
+                    <h2 class="treatment-title">Non-Surgical Rhinoplasty</h2>
+                    <p class="treatment-price">€300</p>
+                    <p class="treatment-desc">
+                        Reshape and refine your nose without surgery using precision dermal filler techniques. This treatment can smooth bumps, lift the tip, improve symmetry, and enhance your overall nose profile.
+                    </p>
+                    <p class="treatment-desc">
+                        Immediate results with no downtime. Effects last between 10-12 months. A consultation is essential to assess suitability.
+                    </p>
+                    <ul class="treatment-features">
+                        <li><i class="fas fa-check"></i> Non-surgical nose reshaping</li>
+                        <li><i class="fas fa-check"></i> Immediate results</li>
+                        <li><i class="fas fa-check"></i> No downtime</li>
+                        <li><i class="fas fa-check"></i> Lasts 10-12 months</li>
+                    </ul>
+                    <a href="book.html" class="btn btn-primary">Book Consultation</a>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Treatment: Skin Boosters -->
+    <section class="treatment-section treatment-section-alt" id="skin-boosters">
+        <div class="treatment-container">
+            <div class="treatment-grid treatment-grid-reverse">
+                <div class="treatment-visual">
+                    <div class="treatment-image-wrap">
+                        <img src="images/skin booster real results.jpg" alt="Skin Boosters" loading="lazy">
+                    </div>
+                </div>
+                <div class="treatment-info">
+                    <h2 class="treatment-title">Skin Boosters</h2>
+                    <p class="treatment-price">From €160</p>
+                    <p class="treatment-desc">
+                        Deep hydration and skin quality improvement from within. Micro-injections of hyaluronic acid improve texture, elasticity, and overall glow. Perfect for face, neck, décolletage, and hands.
+                    </p>
+                    <p class="treatment-desc">
+                        Recommended course: 2-3 treatments spaced 4 weeks apart. Results build over time and last 6-9 months.
+                    </p>
+                    <ul class="treatment-features">
+                        <li><i class="fas fa-check"></i> Deep skin hydration</li>
+                        <li><i class="fas fa-check"></i> Improves texture & glow</li>
+                        <li><i class="fas fa-check"></i> Minimal downtime</li>
+                        <li><i class="fas fa-check"></i> Lasts 6-9 months</li>
+                    </ul>
+                    <a href="book.html" class="btn btn-primary">Book Consultation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatment: Polynucleotides -->
+    <section class="treatment-section" id="polynucleotides">
+        <div class="treatment-container">
+            <div class="treatment-grid">
+                <div class="treatment-visual">
+                    <div class="treatment-image-wrap">
+                        <img src="images/Neck polynucleotides.jpg" alt="Polynucleotides" loading="lazy">
+                    </div>
+                </div>
+                <div class="treatment-info">
+                    <h2 class="treatment-title">Polynucleotides</h2>
+                    <p class="treatment-price">From €250</p>
+                    <p class="treatment-desc">
+                        Advanced skin regeneration and collagen stimulation. This bio-regenerative treatment repairs skin at a cellular level, improving texture, tone, elasticity, and overall skin health for long-term rejuvenation.
+                    </p>
+                    <p class="treatment-desc">
+                        Recommended course: 3 treatments spaced 2-4 weeks apart. Results improve over time and last between 10-12 months.
+                    </p>
+                    <ul class="treatment-features">
+                        <li><i class="fas fa-check"></i> Cellular skin regeneration</li>
+                        <li><i class="fas fa-check"></i> Stimulates collagen production</li>
+                        <li><i class="fas fa-check"></i> Long-term rejuvenation</li>
+                        <li><i class="fas fa-check"></i> Lasts 10-12 months</li>
+                    </ul>
+                    <a href="book.html" class="btn btn-primary">Book Consultation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatment: Packages -->
+    <section class="treatment-section treatment-section-alt" id="packages">
+        <div class="treatment-container">
+            <div class="treatment-grid treatment-grid-reverse">
+                <div class="treatment-visual">
+                    <div class="treatment-image-wrap">
+                        <img src="images/packages real results.jpg" alt="Treatment Packages" loading="lazy" class="crop-bottom-half">
+                    </div>
+                </div>
+                <div class="treatment-info">
+                    <h2 class="treatment-title">Treatment Packages</h2>
+                    <p class="treatment-price">From €375</p>
+                    <p class="treatment-desc">
+                        Complete facial rejuvenation combining multiple treatments for comprehensive, balanced results. Our packages are designed to address multiple concerns and deliver harmonious, natural enhancement.
+                    </p>
+                    <p class="treatment-desc">
+                        Popular packages include lip, cheek, and jaw combinations. Customized to your unique facial structure and aesthetic goals.
+                    </p>
+                    <ul class="treatment-features">
+                        <li><i class="fas fa-check"></i> Multi-area treatment</li>
+                        <li><i class="fas fa-check"></i> Comprehensive results</li>
+                        <li><i class="fas fa-check"></i> Tailored to your goals</li>
+                        <li><i class="fas fa-check"></i> Better value</li>
+                    </ul>
+                    <a href="book.html" class="btn btn-primary">Book Consultation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2 class="cta-title">Not sure which treatment is right for you?</h2>
+            <p class="cta-text">
+                Book a consultation to discuss your goals and discover a tailored treatment plan designed just for you.
+            </p>
+            <div class="cta-buttons">
+                <a href="book.html" class="btn btn-primary btn-large">Book Free Consultation</a>
+                <a href="https://wa.me/353831622444" target="_blank" class="btn btn-secondary btn-large">
+                    <i class="fab fa-whatsapp"></i> WhatsApp Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
+        <div class="footer-container">
+            <div class="footer-grid">
                 <div class="footer-brand">
                     <h3>ClearCosmetics</h3>
-                    <p>The Art of Natural Enhancement</p>
+                    <p>Natural beauty, elevated</p>
                 </div>
+
                 <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <a href="index.html">Home</a>
-                    <a href="treatments.html">Treatments</a>
+                    <h4>Explore</h4>
+                    <a href="treatments-premium.html">Treatments</a>
                     <a href="results.html">Results</a>
                     <a href="about.html">About</a>
-                    <a href="book.html">Book</a>
+                    <a href="book.html">Book Now</a>
                 </div>
-                <div class="footer-contact">
+
+                <div class="footer-links">
                     <h4>Contact</h4>
-                    <p>Dublin & Marbella</p>
-                    <p>+353 83 162 2444</p>
-                    <p>clearcosmeticss@gmail.com</p>
+                    <a href="tel:+353831622444">+353 83 162 2444</a>
+                    <a href="mailto:clearcosmeticss@gmail.com">clearcosmeticss@gmail.com</a>
                 </div>
-                <div class="footer-social">
+
+                <div class="footer-links">
                     <h4>Follow</h4>
-                    <a href="https://instagram.com/clearcosmetics_" target="_blank">
-                        <i class="fab fa-instagram"></i> Instagram
-                    </a>
+                    <a href="https://instagram.com/clearcosmetics_" target="_blank">Instagram</a>
+                    <a href="https://tiktok.com/@clearcosmetics_" target="_blank">TikTok</a>
+                    <a href="https://facebook.com/clearcosmetics" target="_blank">Facebook</a>
                 </div>
             </div>
+
             <div class="footer-bottom">
-                <p>&copy; 2024 ClearCosmetics. All rights reserved.</p>
+                <p>&copy; 2026 ClearCosmetics. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <div class="mobile-sticky">
-        <a href="index.html" class="sticky-btn">
-            <i class="fas fa-home"></i>
-            <span>Home</span>
-        </a>
-        <a href="treatments.html" class="sticky-btn">
-            <i class="fas fa-syringe"></i>
-            <span>Treatments</span>
-        </a>
-        <a href="book.html" class="sticky-btn">
-            <i class="fas fa-calendar-check"></i>
-            <span>Book</span>
-        </a>
-        <a href="https://wa.me/353831622444" class="sticky-btn" target="_blank">
-            <i class="fab fa-whatsapp"></i>
-            <span>WhatsApp</span>
-        </a>
-    </div>
+    <!-- Floating Book Button -->
+    <a href="book.html" class="floating-book" id="floating-book">
+        <i class="fas fa-calendar-check"></i>
+    </a>
+
+    <script src="script-premium.js"></script>
 </body>
 </html>
