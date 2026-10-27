@@ -1802,7 +1802,7 @@ a {
 
 .appointment-card {
     position: relative;
-    padding: var(--space-8);
+    padding: var(--space-6) var(--space-4);
     background: linear-gradient(135deg, #ffffff 0%, var(--warm-white) 100%);
     border: 2px solid var(--border);
     border-radius: 16px;
@@ -1865,10 +1865,10 @@ a {
 
 .appointment-card-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: var(--text-4xl);
+    font-size: var(--text-3xl);
     font-weight: 400;
     color: var(--black);
-    margin-bottom: var(--space-3);
+    margin-bottom: var(--space-2);
     line-height: 1.2;
     max-width: 100%;
 }
