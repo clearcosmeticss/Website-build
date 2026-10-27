@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0A0A0A">
+    <title>Book Your Appointment | ClearCosmetics - Dublin & Marbella</title>
+    <meta name="description" content="Book your aesthetic treatment or free consultation at ClearCosmetics. Clinics in Dublin and Marbella.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="styles-premium.css">
+    <link rel="stylesheet" href="booking.css">
+    <link rel="stylesheet" href="booking-styles.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav" id="main-nav">
+        <div class="nav-container">
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-brand">ClearCosmetics</div>
+
+            <a href="book-premium.html" class="nav-book">Book</a>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay" id="menu-overlay">
+        <div class="menu-content">
+            <button class="menu-close" id="menu-close">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <nav class="menu-nav">
+                <a href="index-premium.html" class="menu-link">Home</a>
+                <a href="treatments-premium.html" class="menu-link">Treatments</a>
+                <a href="results-premium.html" class="menu-link">Results</a>
+                <a href="about-premium.html" class="menu-link">About</a>
+                <a href="book-premium.html" class="menu-link menu-link-highlight">Book Consultation</a>
+            </nav>
+
+            <div class="menu-footer">
+                <div class="menu-social">
+                    <a href="https://wa.me/353831622444" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://instagram.com/clearcosmetics_" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+                <p class="menu-locations">Dublin · Marbella</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="page-hero-container">
+            <p class="page-hero-eyebrow">Secure Your Appointment</p>
+            <h1 class="page-hero-title">Book Your<br>Consultation</h1>
+            <p class="page-hero-subtitle">
+                Choose your clinic, select your appointment type, and secure your slot. Limited availability — book early.
+            </p>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking-page">
+        <div class="container">
+            <div class="booking-layout">
+                <div class="booking-main">
+                    <div class="booking-steps">
+                        <div class="booking-step-indicator active" data-step="1">
+                            <span>1</span> Appointment Type
+                        </div>
+                        <div class="booking-step-indicator" data-step="2">
+                            <span>2</span> Complete Booking
+                        </div>
+                    </div>
+
+                    <!-- Step 1: Appointment Type -->
+                    <div class="booking-panel active" data-step="1">
+                        <h3>What type of appointment?</h3>
+                        <div class="appointment-type-cards" id="appointment-type-cards"></div>
+                        <div class="treatment-select-group" id="treatment-select-group">
+                            <label for="treatment-interest">Select Treatment(s) *</label>
+                            <select id="treatment-interest" multiple style="display: none;"></select>
+                            <div id="treatment-dropdown" class="treatment-dropdown">
+                                <div class="dropdown-header">
+                                    <span id="selected-treatments-text">Choose your treatment(s)</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="dropdown-list" id="treatment-list"></div>
+                            </div>
+                            <div id="selected-treatments-display" class="selected-treatments-display"></div>
+                        </div>
+                        <div class="booking-nav-buttons">
+                            <div></div>
+                            <button type="button" class="btn btn-primary" id="btn-step-1-next">Continue <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Calendar -->
+                    <div class="booking-panel" data-step="2">
+                        <div class="booking-confirmation-banner" id="booking-confirmation">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>Booking confirmed!</strong>
+                                <p style="margin:0;font-size:0.9rem;">You'll receive a confirmation email shortly. We can't wait to see you!</p>
+                            </div>
+                        </div>
+
+                        <div class="calcom-setup-notice" id="calcom-setup-notice" style="display:none;">
+                            <h4><i class="fas fa-info-circle"></i> Cal.com Setup Required</h4>
+                            <p>Your Cal.com account needs to be connected. Update booking-config.js or contact us via WhatsApp to book manually.</p>
+                        </div>
+
+                        <div class="booking-step-notice">
+                            <h3>Choose your date & time</h3>
+                            <p><strong>Important:</strong> Cal.com will guide you through the booking process including date selection, your details, and secure deposit payment.</p>
+                        </div>
+
+                        <div class="payment-flow-banner" style="background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #4caf50; border-radius: 8px; padding: 16px; margin-bottom: 20px; text-align: center;">
+                            <i class="fas fa-shield-check" style="color: #2e7d32; font-size: 1.2rem; margin-right: 8px;"></i>
+                            <strong style="color: #2e7d32;">Secure booking with integrated Stripe payment through Cal.com</strong>
+                        </div>
+
+                        <div id="calcom-embed"></div>
+
+                        <div class="booking-nav-buttons">
+                            <button type="button" class="btn btn-back" id="btn-step-2-back"><i class="fas fa-arrow-left"></i> Back</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Booking Sidebar -->
+                <aside class="booking-sidebar">
+                    <div class="booking-info-card">
+                        <h4><i class="fas fa-map-marker-alt"></i> Our Locations</h4>
+                        <div class="location-item">
+                            <strong>Dublin Clinic</strong>
+                            <p>Premium city centre location</p>
+                        </div>
+                        <div class="location-item">
+                            <strong>Marbella Clinic</strong>
+                            <p>Luxury Costa del Sol clinic</p>
+                        </div>
+                    </div>
+
+                    <div class="booking-info-card">
+                        <h4><i class="fas fa-calendar-check"></i> What to Expect</h4>
+                        <ul>
+                            <li>Detailed consultation</li>
+                            <li>Treatment planning</li>
+                            <li>Professional assessment</li>
+                            <li>All questions answered</li>
+                        </ul>
+                    </div>
+
+                    <div class="booking-info-card">
+                        <h4><i class="fas fa-question-circle"></i> Need Help?</h4>
+                        <p>Have questions about booking?</p>
+                        <a href="https://wa.me/353831622444" class="btn btn-secondary btn-small" target="_blank">
+                            <i class="fab fa-whatsapp"></i> WhatsApp Us
+                        </a>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>ClearCosmetics</h3>
+                    <p>Natural beauty, elevated</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Explore</h4>
+                    <a href="treatments-premium.html">Treatments</a>
+                    <a href="results-premium.html">Results</a>
+                    <a href="about-premium.html">About</a>
+                    <a href="book-premium.html">Book Now</a>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <a href="tel:+353831622444">+353 83 162 2444</a>
+                    <a href="mailto:clearcosmeticss@gmail.com">clearcosmeticss@gmail.com</a>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Follow</h4>
+                    <a href="https://instagram.com/clearcosmetics_" target="_blank">Instagram</a>
+                    <a href="https://tiktok.com/@clearcosmetics_" target="_blank">TikTok</a>
+                    <a href="https://facebook.com/clearcosmetics" target="_blank">Facebook</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 ClearCosmetics. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script-premium.js"></script>
+    <script src="booking-config.js"></script>
+    <script src="booking.js"></script>
+</body>
+</html>
