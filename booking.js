@@ -148,58 +148,67 @@
     }
 
     function renderTreatmentDropdown() {
-        const list = document.getElementById('treatment-list');
-        if (!list) return;
+        const container = document.getElementById('treatment-list');
+        if (!container) return;
 
-        let currentCategory = '';
-        let html = '';
+        // Categorize treatments
+        const categories = {
+            'Dermal Fillers': [],
+            'Botox': [],
+            'Skin Boosters': [],
+            'Polynucleotides': [],
+            'Fat Dissolving': [],
+            'Package Deals': []
+        };
 
         BOOKING_CONFIG.treatments.forEach(function (treatment) {
-            let category = '';
             if (treatment.includes('Polynucleotides')) {
-                category = 'Polynucleotides';
+                categories['Polynucleotides'].push(treatment);
             } else if (treatment.includes('Lip Enhancement') || treatment.includes('Smile Line') ||
                 treatment.includes('Marionnette') || treatment.includes('Nasolabial') ||
                 treatment.includes('Under-Eye') || treatment.includes('Five Point') ||
                 treatment.includes('Non-Surgical Rhinoplasty') || treatment.includes('Dermal Filler Dissolving')) {
-                category = 'Dermal Fillers';
+                categories['Dermal Fillers'].push(treatment);
             } else if (treatment.includes('Botox') || treatment.includes('Nostril') ||
                       treatment.includes('Bunny') || treatment.includes('Jowls') ||
                       treatment.includes('Lip Flip') || treatment.includes('Neck Botox') ||
                       treatment.includes('Trap') || treatment.includes('Buttock') ||
                       treatment.includes('Masseter') || treatment.includes('Hyperhydrosis')) {
-                category = 'Botox';
+                categories['Botox'].push(treatment);
             } else if (treatment.includes('Fat Dissolving')) {
-                category = 'Fat Dissolving';
+                categories['Fat Dissolving'].push(treatment);
             } else if (treatment.includes('Profhilo') || treatment.includes('Seventy') ||
                       treatment.includes('B12') || treatment.includes('Lumi')) {
-                category = 'Skin Boosters';
+                categories['Skin Boosters'].push(treatment);
             } else if (treatment.includes('Package') || treatment.includes('ml Dermal Filler')) {
-                category = 'Package Deals';
-            } else {
-                category = 'Consultation';
+                categories['Package Deals'].push(treatment);
             }
-
-            if (category !== currentCategory) {
-                if (currentCategory !== '') {
-                    html += '<div style="height: 8px;"></div>';
-                }
-                html += '<div class="treatment-category">' + category + '</div>';
-                currentCategory = category;
-            }
-
-            const pricing = BOOKING_CONFIG.pricing.treatment[treatment];
-            const priceText = pricing ? '€' + pricing.price : '';
-
-            html += (
-                '<div class="treatment-option" data-treatment="' + treatment + '">' +
-                    '<span class="treatment-name">' + treatment + '</span>' +
-                    (priceText ? '<span class="treatment-price">' + priceText + '</span>' : '') +
-                '</div>'
-            );
         });
 
-        list.innerHTML = html;
+        let html = '<div class="treatment-categories">';
+
+        Object.keys(categories).forEach(function (categoryName) {
+            const treatments = categories[categoryName];
+            if (treatments.length === 0) return;
+
+            html += '<div class="treatment-category">';
+            html += '<h4 class="treatment-category-title">' + categoryName + '</h4>';
+            html += '<div class="treatment-grid">';
+
+            treatments.forEach(function (treatment) {
+                html += (
+                    '<div class="treatment-option" data-treatment="' + treatment + '">' +
+                        '<div class="treatment-option-checkbox"></div>' +
+                        '<div class="treatment-option-label">' + treatment + '</div>' +
+                    '</div>'
+                );
+            });
+
+            html += '</div></div>';
+        });
+
+        html += '</div>';
+        container.innerHTML = html;
     }
 
     function renderPolicies() {
@@ -218,18 +227,10 @@
             selectAppointmentType(card.dataset.type);
         });
 
-        const dropdown = document.getElementById('treatment-dropdown');
-        const dropdownHeader = document.querySelector('.dropdown-header');
-        const dropdownList = document.getElementById('treatment-list');
+        const treatmentList = document.getElementById('treatment-list');
 
-        if (dropdownHeader) {
-            dropdownHeader.addEventListener('click', function () {
-                dropdownList.classList.toggle('active');
-            });
-        }
-
-        if (dropdownList) {
-            dropdownList.addEventListener('click', function (e) {
+        if (treatmentList) {
+            treatmentList.addEventListener('click', function (e) {
                 const treatmentOption = e.target.closest('.treatment-option');
                 if (!treatmentOption) return;
 
