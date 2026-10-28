@@ -224,9 +224,7 @@
 
         if (dropdownHeader) {
             dropdownHeader.addEventListener('click', function () {
-                dropdown.classList.toggle('open');
-                dropdownList.classList.toggle('show');
-                this.classList.toggle('active');
+                dropdownList.classList.toggle('active');
             });
         }
 
