@@ -316,6 +316,13 @@
         const treatmentGroup = document.getElementById('treatment-select-group');
         if (treatmentGroup) {
             treatmentGroup.style.display = (typeId === 'treatment' || typeId === 'multiple') ? 'block' : 'none';
+
+            // Auto-scroll to treatment list when user selects treatment or multiple
+            if (typeId === 'treatment' || typeId === 'multiple') {
+                setTimeout(function() {
+                    treatmentGroup.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 300);
+            }
         }
 
         updateSummary();
@@ -354,10 +361,11 @@
 
     function goToStep(step) {
         state.step = step;
-        updateUI();
 
-        // Scroll to top of page when changing steps
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Scroll to top IMMEDIATELY before updateUI to prevent flash at bottom
+        window.scrollTo({ top: 0, behavior: 'instant' });
+
+        updateUI();
     }
 
     function updateUI() {
