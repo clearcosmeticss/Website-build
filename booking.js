@@ -361,11 +361,23 @@
 
     function goToStep(step) {
         state.step = step;
-
-        // Scroll to top IMMEDIATELY before updateUI to prevent flash at bottom
-        window.scrollTo({ top: 0, behavior: 'instant' });
-
         updateUI();
+
+        // Scroll to appropriate section based on step
+        if (step === 2) {
+            // Scroll directly to calendar on step 2
+            setTimeout(function() {
+                const calendarSection = document.getElementById('calcom-embed');
+                if (calendarSection) {
+                    calendarSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else {
+                    window.scrollTo({ top: 0, behavior: 'instant' });
+                }
+            }, 100);
+        } else {
+            // Scroll to top for step 1
+            window.scrollTo({ top: 0, behavior: 'instant' });
+        }
     }
 
     function updateUI() {
