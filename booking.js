@@ -355,6 +355,9 @@
     function goToStep(step) {
         state.step = step;
         updateUI();
+
+        // Scroll to top of page when changing steps
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function updateUI() {
@@ -498,6 +501,8 @@
             calcomUrl += `${separator}name=&guests=&notes=${encodeURIComponent('Selected treatments: ' + treatmentsText)}`;
         }
 
+        console.log('Loading Cal.com with URL:', calcomUrl);
+
         // Use Cal.com embed script for proper rendering
         embed.innerHTML = `
             <div style="text-align: center; margin-bottom: 20px;">
@@ -506,46 +511,55 @@
                 <p style="color: var(--muted); font-size: 0.9rem; margin: 0;">Complete your booking below</p>
                 ${state.selectedTreatments.length > 0 ? `<p style="color: var(--gold); font-size: 0.9rem; margin-top: 8px; font-weight: 500;"><strong>Selected:</strong> ${state.selectedTreatments.join(', ')}</p>` : ''}
             </div>
-            <div id="cal-embed-container" style="width: 100%; min-height: 700px;"></div>
+            <div id="cal-embed-container" style="width: 100%; min-height: 700px; background: #f9f9f9; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                <p style="color: var(--muted);">Loading calendar...</p>
+            </div>
         `;
 
-        // Initialize Cal.com embed using their script
-        (function (C, A, L) {
-            let p = function (a, ar) { a.q.push(ar); };
-            let d = C.document;
-            C.Cal = C.Cal || function () {
-                let cal = C.Cal;
-                let ar = arguments;
-                if (!cal.loaded) {
-                    cal.ns = {};
-                    cal.q = cal.q || [];
-                    d.head.appendChild(d.createElement("script")).src = A;
-                    cal.loaded = true;
-                }
-                if (ar[0] === L) {
-                    const api = function () { p(api, arguments); };
-                    const namespace = ar[1];
-                    api.q = api.q || [];
-                    typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar);
-                    return;
-                }
-                p(cal, ar);
-            };
-        })(window, "https://app.cal.com/embed/embed.js", "init");
+        // Wait for DOM to be ready
+        setTimeout(function() {
+            // Initialize Cal.com embed using their script
+            (function (C, A, L) {
+                let p = function (a, ar) { a.q.push(ar); };
+                let d = C.document;
+                C.Cal = C.Cal || function () {
+                    let cal = C.Cal;
+                    let ar = arguments;
+                    if (!cal.loaded) {
+                        cal.ns = {};
+                        cal.q = cal.q || [];
+                        d.head.appendChild(d.createElement("script")).src = A;
+                        cal.loaded = true;
+                    }
+                    if (ar[0] === L) {
+                        const api = function () { p(api, arguments); };
+                        const namespace = ar[1];
+                        api.q = api.q || [];
+                        typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar);
+                        return;
+                    }
+                    p(cal, ar);
+                };
+            })(window, "https://app.cal.com/embed/embed.js", "init");
 
-        Cal("init", { origin: "https://cal.com" });
+            Cal("init", { origin: "https://cal.com" });
 
-        Cal("inline", {
-            elementOrSelector: "#cal-embed-container",
-            calLink: calcomUrl.replace('https://cal.com/', ''),
-            layout: "month_view"
-        });
+            // Extract just the path from the URL
+            const calPath = calcomUrl.replace('https://cal.com/', '');
+            console.log('Cal.com path:', calPath);
 
-        Cal("ui", {
-            "styles": { "branding": { "brandColor": "#B8966F" } },
-            "hideEventTypeDetails": false,
-            "layout": "month_view"
-        });
+            Cal("inline", {
+                elementOrSelector: "#cal-embed-container",
+                calLink: calPath,
+                layout: "month_view"
+            });
+
+            Cal("ui", {
+                "styles": { "branding": { "brandColor": "#B8966F" } },
+                "hideEventTypeDetails": false,
+                "layout": "month_view"
+            });
+        }, 100);
 
         // Listen for Cal.com booking completion (no payment interception!)
         window.addEventListener('message', function(event) {
