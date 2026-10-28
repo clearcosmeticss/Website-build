@@ -1897,28 +1897,45 @@ a {
         padding: var(--space-4) var(--space-1);
     }
 
-    /* Give more width to Cal.com embed on mobile */
-    .booking-panel[data-step="2"] {
+    /* Make Cal.com calendar FULL SCREEN WIDTH on mobile */
+    .booking-page .container {
         padding: 0;
-        margin: 0 calc(-1 * var(--space-1));
+        max-width: 100%;
     }
 
-    .booking-panel[data-step="2"] .booking-step-notice,
+    .booking-panel[data-step="2"] {
+        padding: 0;
+        margin: 0;
+    }
+
+    .booking-panel[data-step="2"] .booking-step-notice {
+        margin: 0 var(--space-3) var(--space-4) var(--space-3);
+    }
+
     .booking-panel[data-step="2"] .payment-flow-banner {
-        margin-left: var(--space-1);
-        margin-right: var(--space-1);
+        margin: 0 var(--space-3) var(--space-4) var(--space-3);
     }
 
     .booking-panel[data-step="2"] .booking-nav-buttons {
-        margin-left: var(--space-1);
-        margin-right: var(--space-1);
+        margin: var(--space-4) var(--space-3) 0 var(--space-3);
     }
 
     #calcom-embed {
         border-radius: 0;
         box-shadow: none;
-        margin-left: 0;
-        margin-right: 0;
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+    }
+
+    #cal-embed-container {
+        width: 100%;
+        padding: 0;
     }
 
     .booking-steps {
