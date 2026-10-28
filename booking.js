@@ -498,24 +498,54 @@
             calcomUrl += `${separator}name=&guests=&notes=${encodeURIComponent('Selected treatments: ' + treatmentsText)}`;
         }
 
-        // Render Cal.com iframe - let it handle payment with its own Stripe integration
+        // Use Cal.com embed script for proper rendering
         embed.innerHTML = `
             <div style="text-align: center; margin-bottom: 20px;">
-                <i class="fas fa-calendar-check" style="color: #4caf50; font-size: 1.5rem; margin-right: 8px;"></i>
-                <h3 style="color: #333; margin-bottom: 8px;">Select Your Date & Time</h3>
-                <p style="color: #666; font-size: 0.9rem; margin: 0;">Complete your booking through Cal.com</p>
-                ${state.selectedTreatments.length > 0 ? `<p style="color: #2196f3; font-size: 0.9rem; margin-top: 8px;"><strong>Selected:</strong> ${state.selectedTreatments.join(', ')}</p>` : ''}
+                <i class="fas fa-calendar-check" style="color: var(--gold); font-size: 1.5rem; margin-right: 8px;"></i>
+                <h3 style="color: var(--black); margin-bottom: 8px; font-family: 'Cormorant Garamond', serif; font-size: var(--text-2xl);">Select Your Date & Time</h3>
+                <p style="color: var(--muted); font-size: 0.9rem; margin: 0;">Complete your booking below</p>
+                ${state.selectedTreatments.length > 0 ? `<p style="color: var(--gold); font-size: 0.9rem; margin-top: 8px; font-weight: 500;"><strong>Selected:</strong> ${state.selectedTreatments.join(', ')}</p>` : ''}
             </div>
-            <div style="background: #e3f2fd; border-left: 4px solid #2196f3; padding: 16px; margin-bottom: 20px; border-radius: 4px;">
-                <p style="margin: 0; color: #1565c0; font-size: 0.95rem;">
-                    <i class="fas fa-info-circle" style="margin-right: 8px;"></i>
-                    <strong>Cal.com will collect your deposit payment during checkout.</strong> Your booking will be confirmed once payment is complete.
-                </p>
-            </div>
-            <div style="width: 100%; height: 700px; border: 2px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
-                <iframe src="${calcomUrl}" style="width: 100%; height: 100%; border: none;" allow="payment"></iframe>
-            </div>
+            <div id="cal-embed-container" style="width: 100%; min-height: 700px;"></div>
         `;
+
+        // Initialize Cal.com embed using their script
+        (function (C, A, L) {
+            let p = function (a, ar) { a.q.push(ar); };
+            let d = C.document;
+            C.Cal = C.Cal || function () {
+                let cal = C.Cal;
+                let ar = arguments;
+                if (!cal.loaded) {
+                    cal.ns = {};
+                    cal.q = cal.q || [];
+                    d.head.appendChild(d.createElement("script")).src = A;
+                    cal.loaded = true;
+                }
+                if (ar[0] === L) {
+                    const api = function () { p(api, arguments); };
+                    const namespace = ar[1];
+                    api.q = api.q || [];
+                    typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar);
+                    return;
+                }
+                p(cal, ar);
+            };
+        })(window, "https://app.cal.com/embed/embed.js", "init");
+
+        Cal("init", { origin: "https://cal.com" });
+
+        Cal("inline", {
+            elementOrSelector: "#cal-embed-container",
+            calLink: calcomUrl.replace('https://cal.com/', ''),
+            layout: "month_view"
+        });
+
+        Cal("ui", {
+            "styles": { "branding": { "brandColor": "#B8966F" } },
+            "hideEventTypeDetails": false,
+            "layout": "month_view"
+        });
 
         // Listen for Cal.com booking completion (no payment interception!)
         window.addEventListener('message', function(event) {
