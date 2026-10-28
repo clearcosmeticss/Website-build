@@ -3493,71 +3493,51 @@ textarea:focus {
    MOBILE STICKY HELP BAR - BOOKING PAGE
    ============================================ */
 
+/* Floating WhatsApp Button - Bottom Right Corner */
 .booking-mobile-sticky {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(15px);
-    border-top: 1px solid var(--border);
-    padding: 12px 16px;
-    padding-bottom: max(12px, env(safe-area-inset-bottom));
+    bottom: 20px;
+    right: 20px;
     z-index: 999;
-    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
     display: none;
 }
 
 @media (max-width: 768px) {
     .booking-mobile-sticky {
-        display: flex;
-        gap: 10px;
-        align-items: center;
+        display: block;
     }
 }
 
 .booking-mobile-sticky-btn {
-    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    padding: 14px 16px;
-    border-radius: 24px;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 600;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #25d366;
+    color: white;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
     text-decoration: none;
     transition: all 0.3s ease;
-    min-height: 48px;
-    touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
 }
 
-.booking-whatsapp-btn {
-    background: #25d366;
-    color: white;
-    border: none;
-}
-
-.booking-whatsapp-btn:active {
-    transform: scale(0.97);
-    background: #1fa851;
-}
-
-.booking-help-btn {
-    background: transparent;
-    color: var(--black);
-    border: 1.5px solid var(--border);
-}
-
-.booking-help-btn:active {
-    background: var(--cream);
-    border-color: var(--gold);
+.booking-mobile-sticky-btn:active {
+    transform: scale(0.95);
 }
 
 .booking-mobile-sticky-btn i {
-    font-size: 1.1rem;
+    font-size: 28px;
+}
+
+.booking-mobile-sticky-btn span {
+    display: none;
+}
+
+/* Hide the call button completely */
+.booking-help-btn {
+    display: none !important;
 }
 
 /* ============================================
