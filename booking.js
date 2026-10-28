@@ -397,16 +397,25 @@
 
         const pricing = calculatePricing();
 
-        document.getElementById('total-price').textContent = `€${pricing.totalPrice}`;
-        document.getElementById('deposit-amount').textContent = `€${pricing.deposit}`;
-        document.getElementById('remaining-amount').textContent = `€${pricing.remaining}`;
+        // Safely update elements only if they exist
+        const totalPrice = document.getElementById('total-price');
+        if (totalPrice) totalPrice.textContent = `€${pricing.totalPrice}`;
+
+        const depositAmount = document.getElementById('deposit-amount');
+        if (depositAmount) depositAmount.textContent = `€${pricing.deposit}`;
+
+        const remainingAmount = document.getElementById('remaining-amount');
+        if (remainingAmount) remainingAmount.textContent = `€${pricing.remaining}`;
+
+        const summaryPrice = document.getElementById('summary-price');
+        const summaryDeposit = document.getElementById('summary-deposit');
 
         if (pricing.totalPrice === 0 && state.selectedTreatments.length === 0) {
-            document.getElementById('summary-price').textContent = '—';
-            document.getElementById('summary-deposit').textContent = '—';
+            if (summaryPrice) summaryPrice.textContent = '—';
+            if (summaryDeposit) summaryDeposit.textContent = '—';
         } else {
-            document.getElementById('summary-price').textContent = `€${pricing.totalPrice}`;
-            document.getElementById('summary-deposit').textContent = `€${pricing.deposit}`;
+            if (summaryPrice) summaryPrice.textContent = `€${pricing.totalPrice}`;
+            if (summaryDeposit) summaryDeposit.textContent = `€${pricing.deposit}`;
         }
     }
 
