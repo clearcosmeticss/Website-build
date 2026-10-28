@@ -520,9 +520,7 @@
                 <p style="color: var(--muted); font-size: 0.9rem; margin: 0;">Complete your booking below</p>
                 ${state.selectedTreatments.length > 0 ? `<p style="color: var(--gold); font-size: 0.9rem; margin-top: 8px; font-weight: 500;"><strong>Selected:</strong> ${state.selectedTreatments.join(', ')}</p>` : ''}
             </div>
-            <div id="cal-embed-container" style="width: 100%; min-height: 700px; background: #f9f9f9; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                <p style="color: var(--muted);">Loading calendar...</p>
-            </div>
+            <div id="cal-embed-container"></div>
         `;
 
         // Wait for DOM to be ready
