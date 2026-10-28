@@ -251,10 +251,18 @@
                     state.selectedTreatments = state.selectedTreatments.filter(t => t !== treatment);
                     treatmentOption.classList.remove('selected');
                 } else {
-                    if (state.appointmentType === 'treatment') {
+                    if (state.appointmentType === 'treatment' || state.appointmentType === 'consultation') {
                         state.selectedTreatments = [treatment];
                         document.querySelectorAll('.treatment-option').forEach(opt => opt.classList.remove('selected'));
                         treatmentOption.classList.add('selected');
+
+                        // Auto-scroll to continue button for single treatment or consultation
+                        setTimeout(function() {
+                            const continueButton = document.getElementById('btn-step-1-next');
+                            if (continueButton) {
+                                continueButton.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            }
+                        }, 300);
                     } else {
                         state.selectedTreatments.push(treatment);
                         treatmentOption.classList.add('selected');
