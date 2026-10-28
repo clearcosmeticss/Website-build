@@ -3920,15 +3920,19 @@ textarea:focus {
     .treatment-select-group {
         width: 100vw !important;
         margin-left: calc(-50vw + 50%) !important;
-        padding: 0 12px !important;
+        padding: 0 !important;
         box-sizing: border-box !important;
     }
 
     .treatment-select-group > label,
-    .treatment-select-subtitle,
+    .treatment-select-subtitle {
+        margin-left: 16px !important;
+        margin-right: 16px !important;
+    }
+
     .treatment-search-box {
-        margin-left: 0 !important;
-        margin-right: 0 !important;
+        margin-left: 16px !important;
+        margin-right: 16px !important;
     }
 
     #treatment-list {
@@ -3946,29 +3950,31 @@ textarea:focus {
     .treatment-category {
         width: 100% !important;
         padding: 0 !important;
-        margin-bottom: 24px !important;
+        margin-bottom: 16px !important;
     }
 
     .treatment-category-title {
         font-size: 14px !important;
         font-weight: 700 !important;
-        margin-bottom: 12px !important;
-        padding: 0 !important;
+        margin-bottom: 8px !important;
+        padding-left: 16px !important;
     }
 
     .treatment-grid {
         width: 100% !important;
         padding: 0 !important;
         margin: 0 !important;
-        gap: 8px !important;
+        gap: 4px !important;
     }
 
     .treatment-option {
         width: 100% !important;
-        padding: 16px 14px !important;
+        padding: 16px !important;
         box-sizing: border-box !important;
-        border-radius: 8px !important;
+        border-radius: 0 !important;
         margin: 0 !important;
+        border-left: none !important;
+        border-right: none !important;
     }
 
     .treatment-option-checkbox {
@@ -3978,7 +3984,7 @@ textarea:focus {
     }
 
     .treatment-option-label {
-        font-size: 13px !important;
+        font-size: 14px !important;
         line-height: 1.4 !important;
         font-weight: 500 !important;
     }
