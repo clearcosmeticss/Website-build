@@ -1521,100 +1521,151 @@ a {
 }
 
 .treatment-select-group label {
-    font-family: 'Inter', sans-serif;
-    font-size: var(--text-sm);
-    font-weight: 600;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: var(--text-xl);
+    font-weight: 400;
     color: var(--black);
-    margin-bottom: var(--space-2);
+    margin-bottom: var(--space-3);
     display: block;
 }
 
 .treatment-dropdown {
     position: relative;
-    margin-bottom: var(--space-3);
+    margin-bottom: var(--space-5);
 }
 
 .dropdown-header {
-    padding: var(--space-3) var(--space-4);
+    padding: var(--space-4) var(--space-5);
     border: 2px solid var(--border);
-    border-radius: 8px;
+    border-radius: 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    background: white;
+    background: linear-gradient(135deg, #ffffff 0%, var(--warm-white) 100%);
     transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .dropdown-header:hover {
     border-color: var(--gold);
+    box-shadow: 0 4px 16px rgba(184, 150, 111, 0.15);
+}
+
+.dropdown-header span {
+    font-family: 'Inter', sans-serif;
+    font-size: var(--text-base);
+    color: var(--muted);
+}
+
+.dropdown-header i {
+    color: var(--gold);
+    font-size: var(--text-sm);
+    transition: transform 0.3s ease;
+}
+
+.dropdown-header:hover i {
+    transform: translateY(2px);
 }
 
 .dropdown-list {
     display: none;
     position: absolute;
-    top: 100%;
+    top: calc(100% + 8px);
     left: 0;
     right: 0;
     background: white;
     border: 2px solid var(--border);
-    border-radius: 8px;
-    margin-top: var(--space-1);
-    max-height: 300px;
+    border-radius: 12px;
+    max-height: 400px;
     overflow-y: auto;
-    z-index: 10;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    z-index: 100;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
 .dropdown-list.active {
     display: block;
+    animation: dropdownFade 0.3s ease;
+}
+
+@keyframes dropdownFade {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .treatment-option {
-    padding: var(--space-3) var(--space-4);
+    padding: var(--space-4) var(--space-5);
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition: all 0.2s ease;
     border-bottom: 1px solid var(--border);
+    font-family: 'Inter', sans-serif;
+    font-size: var(--text-base);
+    color: var(--black);
+}
+
+.treatment-option:first-child {
+    border-radius: 10px 10px 0 0;
 }
 
 .treatment-option:last-child {
     border-bottom: none;
+    border-radius: 0 0 10px 10px;
 }
 
 .treatment-option:hover {
-    background: var(--cream);
+    background: linear-gradient(135deg, var(--cream) 0%, var(--warm-white) 100%);
+    padding-left: var(--space-6);
 }
 
 .treatment-option.selected {
-    background: var(--cream);
+    background: linear-gradient(135deg, var(--cream) 0%, var(--warm-white) 100%);
     color: var(--gold);
-    font-weight: 500;
+    font-weight: 600;
+    border-left: 4px solid var(--gold);
+    padding-left: calc(var(--space-5) - 4px);
 }
 
 .selected-treatments-display {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-2);
+    gap: var(--space-3);
+    margin-top: var(--space-4);
 }
 
 .selected-treatment-tag {
     display: inline-flex;
     align-items: center;
     gap: var(--space-2);
-    padding: var(--space-1) var(--space-3);
-    background: var(--cream);
-    border-radius: 20px;
+    padding: var(--space-2) var(--space-4);
+    background: linear-gradient(135deg, var(--cream) 0%, var(--warm-white) 100%);
+    border: 2px solid var(--gold);
+    border-radius: 24px;
+    font-family: 'Inter', sans-serif;
     font-size: var(--text-sm);
+    font-weight: 500;
     color: var(--black);
+    box-shadow: 0 2px 8px rgba(184, 150, 111, 0.15);
 }
 
 .selected-treatment-tag button {
     background: none;
     border: none;
-    color: var(--muted);
+    color: var(--gold);
     cursor: pointer;
     padding: 0;
-    font-size: 16px;
+    font-size: 18px;
+    line-height: 1;
+    transition: transform 0.2s ease;
+}
+
+.selected-treatment-tag button:hover {
+    transform: scale(1.2);
 }
 
 .booking-nav-buttons {
