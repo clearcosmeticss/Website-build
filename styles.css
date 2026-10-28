@@ -1781,8 +1781,21 @@ a {
     margin-bottom: var(--space-4);
     background: white;
     border-radius: 16px;
-    padding: var(--space-4);
+    padding: 0;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+#cal-embed-container {
+    width: 100%;
+    min-height: 700px;
+}
+
+/* Cal.com iframe overrides for better mobile display */
+#calcom-embed iframe,
+#cal-embed-container iframe {
+    width: 100% !important;
+    min-width: 100% !important;
 }
 
 /* Booking Sidebar */
@@ -1882,6 +1895,30 @@ a {
 
     .booking-main {
         padding: var(--space-4) var(--space-1);
+    }
+
+    /* Give more width to Cal.com embed on mobile */
+    .booking-panel[data-step="2"] {
+        padding: 0;
+        margin: 0 calc(-1 * var(--space-1));
+    }
+
+    .booking-panel[data-step="2"] .booking-step-notice,
+    .booking-panel[data-step="2"] .payment-flow-banner {
+        margin-left: var(--space-1);
+        margin-right: var(--space-1);
+    }
+
+    .booking-panel[data-step="2"] .booking-nav-buttons {
+        margin-left: var(--space-1);
+        margin-right: var(--space-1);
+    }
+
+    #calcom-embed {
+        border-radius: 0;
+        box-shadow: none;
+        margin-left: 0;
+        margin-right: 0;
     }
 
     .booking-steps {
