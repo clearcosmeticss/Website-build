@@ -28,6 +28,14 @@
 
         // Check if user is returning from successful Cal.com booking
         checkBookingReturn();
+
+        // Auto-scroll to appointment cards on page load
+        setTimeout(function() {
+            const cards = document.getElementById('appointment-type-cards');
+            if (cards) {
+                cards.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }, 300);
     }
 
     function checkBookingReturn() {
