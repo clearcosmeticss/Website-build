@@ -369,22 +369,29 @@
 
     function goToStep(step) {
         state.step = step;
+
+        // Scroll IMMEDIATELY to prevent seeing bottom of page first
+        if (step === 2) {
+            // Instant scroll to approximate calendar position before rendering
+            const bookingSteps = document.querySelector('.booking-steps');
+            if (bookingSteps) {
+                const offset = bookingSteps.getBoundingClientRect().top + window.scrollY;
+                window.scrollTo({ top: offset, behavior: 'instant' });
+            }
+        } else {
+            window.scrollTo({ top: 0, behavior: 'instant' });
+        }
+
         updateUI();
 
-        // Scroll to appropriate section based on step
+        // Fine-tune scroll to actual calendar after it renders
         if (step === 2) {
-            // Scroll directly to calendar on step 2
             setTimeout(function() {
                 const calendarSection = document.getElementById('calcom-embed');
                 if (calendarSection) {
-                    calendarSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                } else {
-                    window.scrollTo({ top: 0, behavior: 'instant' });
+                    calendarSection.scrollIntoView({ behavior: 'instant', block: 'start' });
                 }
-            }, 100);
-        } else {
-            // Scroll to top for step 1
-            window.scrollTo({ top: 0, behavior: 'instant' });
+            }, 50);
         }
     }
 
