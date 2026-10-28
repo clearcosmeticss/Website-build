@@ -3917,9 +3917,19 @@ textarea:focus {
 
 /* Mobile adjustments - FULL WIDTH TREATMENT DROPDOWN */
 @media (max-width: 768px) {
+    /* Remove ALL padding from parent containers */
+    .booking-panel[data-step="1"] {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
     .treatment-select-group {
         width: 100vw !important;
-        margin-left: calc(-50vw + 50%) !important;
+        position: relative !important;
+        left: 50% !important;
+        right: 50% !important;
+        margin-left: -50vw !important;
+        margin-right: -50vw !important;
         padding: 0 !important;
         box-sizing: border-box !important;
     }
@@ -3936,19 +3946,19 @@ textarea:focus {
     }
 
     #treatment-list {
-        width: 100% !important;
+        width: 100vw !important;
         padding: 0 !important;
         margin: 0 !important;
     }
 
     .treatment-categories {
-        width: 100% !important;
+        width: 100vw !important;
         padding: 0 !important;
         margin: 0 !important;
     }
 
     .treatment-category {
-        width: 100% !important;
+        width: 100vw !important;
         padding: 0 !important;
         margin-bottom: 16px !important;
     }
@@ -3961,14 +3971,14 @@ textarea:focus {
     }
 
     .treatment-grid {
-        width: 100% !important;
+        width: 100vw !important;
         padding: 0 !important;
         margin: 0 !important;
-        gap: 4px !important;
+        gap: 2px !important;
     }
 
     .treatment-option {
-        width: 100% !important;
+        width: 100vw !important;
         padding: 16px !important;
         box-sizing: border-box !important;
         border-radius: 0 !important;
