@@ -16,12 +16,48 @@
         menuOverlay.classList.add('active');
         navToggle.classList.add('active');
         document.body.style.overflow = 'hidden';
+
+        // Focus trap: focus the close button
+        setTimeout(() => {
+            menuClose.focus();
+        }, 100);
+
+        // Trap focus within menu
+        trapFocus(menuOverlay);
     }
 
     function closeMenu() {
         menuOverlay.classList.remove('active');
         navToggle.classList.remove('active');
         document.body.style.overflow = '';
+
+        // Return focus to toggle button
+        navToggle.focus();
+    }
+
+    // Focus trap helper
+    function trapFocus(element) {
+        const focusableElements = element.querySelectorAll(
+            'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])'
+        );
+        const firstFocusable = focusableElements[0];
+        const lastFocusable = focusableElements[focusableElements.length - 1];
+
+        element.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                if (e.shiftKey) {
+                    if (document.activeElement === firstFocusable) {
+                        lastFocusable.focus();
+                        e.preventDefault();
+                    }
+                } else {
+                    if (document.activeElement === lastFocusable) {
+                        firstFocusable.focus();
+                        e.preventDefault();
+                    }
+                }
+            }
+        });
     }
 
     if (navToggle) {

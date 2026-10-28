@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0A0A0A">
+    <title>Frequently Asked Questions | ClearCosmetics</title>
+    <meta name="description" content="Get answers to common questions about aesthetic treatments, booking, pricing, aftercare, and our Dublin & Marbella clinics.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="styles.css?v=5">
+    <style>
+        .faq-section {
+            padding: var(--space-8) 0;
+            background: var(--warm-white);
+        }
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 var(--space-4);
+        }
+        .faq-category {
+            margin-bottom: var(--space-6);
+        }
+        .faq-category-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: var(--text-3xl);
+            color: var(--gold);
+            margin-bottom: var(--space-4);
+            padding-bottom: var(--space-2);
+            border-bottom: 2px solid var(--border);
+        }
+        .faq-item {
+            background: white;
+            border: 1.5px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: var(--space-3);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .faq-item:hover {
+            border-color: var(--gold);
+        }
+        .faq-question {
+            padding: var(--space-4);
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: var(--text-lg);
+            font-weight: 600;
+            color: var(--black);
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            list-style: none;
+            user-select: none;
+            transition: background 0.3s ease;
+        }
+        .faq-question::-webkit-details-marker {
+            display: none;
+        }
+        .faq-question i {
+            color: var(--gold);
+            font-size: 1.2rem;
+            min-width: 24px;
+        }
+        .faq-question::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            margin-left: auto;
+            transition: transform 0.3s ease;
+            color: var(--muted);
+        }
+        details[open] .faq-question::after {
+            transform: rotate(180deg);
+        }
+        details[open] .faq-question {
+            background: var(--cream);
+            border-bottom: 1px solid var(--border);
+        }
+        .faq-answer {
+            padding: var(--space-4);
+            color: var(--muted);
+            line-height: 1.7;
+            animation: slideDown 0.3s ease;
+        }
+        .faq-answer p {
+            margin-bottom: var(--space-2);
+        }
+        .faq-answer ul {
+            margin: var(--space-2) 0;
+            padding-left: var(--space-4);
+        }
+        .faq-answer ul li {
+            margin-bottom: var(--space-1);
+        }
+        .faq-answer strong {
+            color: var(--black);
+        }
+        .faq-cta {
+            background: var(--black);
+            color: var(--warm-white);
+            padding: var(--space-6) var(--space-4);
+            border-radius: 16px;
+            text-align: center;
+            margin-top: var(--space-8);
+        }
+        .faq-cta h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: var(--text-4xl);
+            margin-bottom: var(--space-3);
+        }
+        .faq-cta p {
+            color: rgba(250, 248, 246, 0.8);
+            margin-bottom: var(--space-4);
+        }
+        .faq-cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        @media (min-width: 768px) {
+            .faq-cta-buttons {
+                flex-direction: row;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav" id="main-nav">
+        <div class="nav-container">
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-brand">ClearCosmetics</div>
+
+            <a href="book.html" class="nav-book">Book</a>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay" id="menu-overlay">
+        <div class="menu-content">
+            <button class="menu-close" id="menu-close">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <nav class="menu-nav">
+                <a href="index.html" class="menu-link">Home</a>
+                <a href="treatments.html" class="menu-link">Treatments</a>
+                <a href="results.html" class="menu-link">Results</a>
+                <a href="about.html" class="menu-link">About</a>
+                <a href="book.html" class="menu-link menu-link-highlight">Book Consultation</a>
+            </nav>
+
+            <div class="menu-footer">
+                <div class="menu-social">
+                    <a href="https://wa.me/353831622444" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://instagram.com/clearcosmetics_" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+                <p class="menu-locations">Dublin · Marbella</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="page-hero-container">
+            <p class="page-hero-eyebrow">Your Questions Answered</p>
+            <h1 class="page-hero-title">Frequently Asked<br>Questions</h1>
+            <p class="page-hero-subtitle">
+                Everything you need to know about treatments, booking, and aftercare
+            </p>
+        </div>
+    </section>
+
+    <!-- FAQ Content -->
+    <section class="faq-section">
+        <div class="faq-container">
+
+            <!-- Booking & Appointments -->
+            <div class="faq-category">
+                <h2 class="faq-category-title"><i class="fas fa-calendar-check"></i> Booking & Appointments</h2>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <i class="fas fa-circle-question"></i>
+                        <span>How do I book an appointment?</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>You can book through our website at <a href="book.html">clearcosmetics.ie/book</a>, via WhatsApp at <a href="https://wa.me/353831622444">+353 83 162 2444</a>, or by calling us directly. We recommend booking online for the fastest confirmation.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <i class="fas fa-circle-question"></i>
+                        <span>Is a deposit required?</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p><strong>Yes.</strong> A €50 non-refundable deposit is required for all treatment bookings (free consultations excluded). The deposit is deducted from your final treatment cost.</p>
+                        <p>If you cancel with at least 48 hours' notice, your deposit can be transferred to a future appointment.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <i class="fas fa-circle-question"></i>
+                        <span>How often do you run clinics?</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>We run clinics 2–3 days per month in Dublin and Marbella. Appointments are released up to 3 months in advance. <strong>Book early</strong> to secure your preferred date and time, as slots fill quickly.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <i class="fas fa-circle-question"></i>
+                        <span>What if I need to cancel or reschedule?</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <ul>
+                            <li><strong>More than 48 hours' notice:</strong> Deposit transferred to future appointment</li>
+                            <li><strong>Less than 48 hours:</strong> Deposit forfeited</li>
+                            <li><strong>No-show:</strong> Full deposit lost, may be charged full treatment cost</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Treatments -->
+            <div class="faq-category">
+                <h2 class="faq-category-title"><i class="fas fa-syringe"></i> Treatments</h2>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <i class="fas fa-circle-question"></i>
+                        <span>Do I need a consultation first?</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p><strong>First-time clients:</strong> We recommend booking a free consultation to discuss your goals and create a personalized treatment plan.</p>
+                        <p><strong>Returning clients:</strong> You can book directly for treatments if you already know what you want.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <i class="fas fa-circle-question"></i>
+                        <span>How long do results last?</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <ul>
+                            <li><strong>Botox:</strong> 3–4 months</li>
+                            <li><strong>Dermal Fillers:</strong> 6–18 months (depending on area and product)</li>
+                            <li><strong>Skin Boosters:</strong> 6–9 months (often requires 2–3 sessions)</li>
+                            <li><strong>Polynucleotides:</strong> 6–12 months (usually 3-session course)</li>
+                            <li><strong>Fat Dissolving:</strong> Permanent results after 2–3 sessions</li>
+                        </ul>
+                        <p>Results vary by individual metabolism, lifestyle, and treatment area.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <i class="fas fa-circle-question"></i>
+                        <span>Does it hurt?</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>Most clients report minimal discomfort. We use ultra-fine needles and can apply numbing cream if needed. Lip fillers and jaw treatments tend to be slightly more sensitive, while Botox is usually very quick and painless.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <i class="fas fa-circle-question"></i>
+                        <span>What's the difference between Botox and fillers?</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p><strong>Botox (Anti-Wrinkle):</strong> Relaxes muscles to smooth dynamic wrinkles (forehead lines, crow's feet). Preventative and corrective.</p>
+                        <p><strong>Dermal Fillers:</strong> Add volume and structure to restore lost fullness or enhance features (lips, cheeks, jawline).</p>
+                        <p>Many clients combine both for optimal results!</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <i class="fas fa-circle-question"></i>
+                        <span>Will I look overdone or fake?</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p><strong>No.</strong> Our philosophy is <em>subtle, balanced, intentional</em>. We specialize in natural enhancement — refining what you already have, not altering your identity. You'll still look like you, just refreshed and confident.</p>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Pricing & Payment -->
+            <div class="faq-category">
+                <h2 class="faq-category-title"><i class="fas fa-euro-sign"></i> Pricing & Payment</h2>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <i class="fas fa-circle-question"></i>
+                        <span>How much do treatments cost?</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>Prices start from:</p>
+                        <ul>
+                            <li><strong>Botox:</strong> €150 (1 area)</li>
+                            <li><strong>Lip Filler:</strong> €180 (0.5ml) – €250 (1ml)</li>
+                            <li><strong>Dermal Fillers:</strong> €180–€350</li>
+                            <li><strong>Skin Boosters:</strong> €250</li>
+                            <li><strong>Packages:</strong> From €375</li>
+                        </ul>
+                        <p>View full pricing at <a href="treatments.html">clearcosmetics.ie/treatments</a></p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <i class="fas fa-circle-question"></i>
+                        <span>What payment methods do you accept?</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>We accept:</p>
+                        <ul>
+                            <li>Card (Visa, Mastercard)</li>
+                            <li>Cash</li>
+                            <li>Bank transfer</li>
+                            <li>Stripe/PayPal (online deposits)</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Aftercare & Safety -->
+            <div class="faq-category">
+                <h2 class="faq-category-title"><i class="fas fa-shield-heart"></i> Aftercare & Safety</h2>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <i class="fas fa-circle-question"></i>
+                        <span>What should I avoid after treatment?</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>For the first 24–48 hours after treatment, avoid:</p>
+                        <ul>
+                            <li>Alcohol</li>
+                            <li>Strenuous exercise</li>
+                            <li>Saunas, steam rooms, hot tubs</li>
+                            <li>Direct sun exposure</li>
+                            <li>Makeup on treated areas (24 hours)</li>
+                            <li>Massaging or touching the area</li>
+                        </ul>
+                        <p>Full aftercare instructions will be provided after your appointment.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <i class="fas fa-circle-question"></i>
+                        <span>What are the common side effects?</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>Mild and temporary side effects may include:</p>
+                        <ul>
+                            <li>Redness, swelling, tenderness</li>
+                            <li>Bruising (more common with fillers)</li>
+                            <li>Small bumps at injection sites</li>
+                        </ul>
+                        <p>These typically resolve within 2–7 days. Serious complications are rare when performed by qualified practitioners.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <i class="fas fa-circle-question"></i>
+                        <span>Are treatments safe?</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p><strong>Yes.</strong> We use only FDA/CE-approved products and follow strict medical protocols. All treatments are performed by qualified, insured practitioners with 10+ years of experience.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <i class="fas fa-circle-question"></i>
+                        <span>Can I have treatment if I'm pregnant/breastfeeding?</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p><strong>No.</strong> Aesthetic injectable treatments are not recommended during pregnancy or breastfeeding as a precaution.</p>
+                    </div>
+                </details>
+            </div>
+
+            <!-- About Us -->
+            <div class="faq-category">
+                <h2 class="faq-category-title"><i class="fas fa-info-circle"></i> About ClearCosmetics</h2>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <i class="fas fa-circle-question"></i>
+                        <span>Who performs the treatments?</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>All treatments are performed by Roxzi, our lead practitioner with 10+ years of experience in aesthetic medicine. ClearCosmetics is a medical-led practice fully insured and compliant with all regulations.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <i class="fas fa-circle-question"></i>
+                        <span>Where are your clinics located?</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p><strong>Dublin Clinic:</strong><br>
+                        PrestigeLash Academy, 337 S Circular Rd, Saint James, Dublin 8, D08 WP49</p>
+                        <p><strong>Marbella Clinic:</strong><br>
+                        Casas Sevilla 2, Av. Playas del Duque, Local 7, Nueva Andalucía, 29660 Marbella</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <i class="fas fa-circle-question"></i>
+                        <span>Do you have an age requirement?</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>You must be at least 18 years old to receive aesthetic treatments. We may request proof of age.</p>
+                    </div>
+                </details>
+            </div>
+
+            <!-- CTA -->
+            <div class="faq-cta">
+                <h3>Still Have Questions?</h3>
+                <p>We're here to help. Contact us directly or book a free consultation.</p>
+                <div class="faq-cta-buttons">
+                    <a href="https://wa.me/353831622444" class="btn btn-primary" target="_blank">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Us
+                    </a>
+                    <a href="book.html" class="btn btn-secondary">
+                        Book Free Consultation
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>ClearCosmetics</h3>
+                    <p>Natural beauty, elevated</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Explore</h4>
+                    <a href="treatments.html">Treatments</a>
+                    <a href="results.html">Results</a>
+                    <a href="about.html">About</a>
+                    <a href="book.html">Book Now</a>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <a href="tel:+353831622444">+353 83 162 2444</a>
+                    <a href="mailto:clearcosmeticss@gmail.com">clearcosmeticss@gmail.com</a>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Follow</h4>
+                    <a href="https://instagram.com/clearcosmetics_" target="_blank">Instagram</a>
+                    <a href="https://tiktok.com/@clearcosmetics_" target="_blank">TikTok</a>
+                    <a href="https://facebook.com/clearcosmetics" target="_blank">Facebook</a>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms & Conditions</a>
+                    <a href="faq.html">FAQ</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 ClearCosmetics. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

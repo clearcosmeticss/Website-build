@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0A0A0A">
+    <title>Contact Us | ClearCosmetics - Dublin & Marbella</title>
+    <meta name="description" content="Get in touch with ClearCosmetics. Contact our Dublin and Marbella clinics via phone, email, WhatsApp or visit us in person. We're here to help.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="styles.css?v=5">
+    <style>
+        .contact-section {
+            padding: var(--space-8) 0;
+            background: var(--warm-white);
+        }
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-4);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-6);
+            margin-bottom: var(--space-8);
+        }
+        @media (min-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .contact-info-card {
+            background: white;
+            border: 1.5px solid var(--border);
+            border-radius: 16px;
+            padding: var(--space-5);
+            transition: all 0.3s ease;
+        }
+        .contact-info-card:hover {
+            border-color: var(--gold);
+            box-shadow: 0 8px 24px rgba(184, 150, 111, 0.2);
+            transform: translateY(-4px);
+        }
+        .contact-info-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: var(--text-3xl);
+            color: var(--black);
+            margin-bottom: var(--space-3);
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+        .contact-info-card h3 i {
+            color: var(--gold);
+        }
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-3);
+            margin-bottom: var(--space-3);
+            padding-bottom: var(--space-3);
+            border-bottom: 1px solid var(--border);
+        }
+        .contact-detail:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .contact-detail i {
+            color: var(--gold);
+            font-size: 1.2rem;
+            min-width: 24px;
+            margin-top: 4px;
+        }
+        .contact-detail-content h4 {
+            font-size: var(--text-base);
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 4px;
+        }
+        .contact-detail-content p {
+            color: var(--muted);
+            margin: 0;
+            font-size: var(--text-sm);
+        }
+        .contact-detail-content a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .contact-detail-content a:hover {
+            color: var(--gold-dark);
+        }
+        .map-container {
+            width: 100%;
+            height: 300px;
+            background: var(--cream);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+            margin-top: var(--space-4);
+        }
+        .contact-form-section {
+            background: white;
+            border: 1.5px solid var(--border);
+            border-radius: 16px;
+            padding: var(--space-6);
+        }
+        .contact-form-section h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: var(--text-3xl);
+            color: var(--black);
+            margin-bottom: var(--space-2);
+        }
+        .contact-form-section p {
+            color: var(--muted);
+            margin-bottom: var(--space-5);
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-4);
+        }
+        @media (min-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        .form-group label {
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 8px;
+            font-size: var(--text-sm);
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 14px 16px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: var(--text-base);
+            background: white;
+            transition: all 0.3s ease;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(184, 150, 111, 0.1);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .quick-contact {
+            background: var(--black);
+            color: var(--warm-white);
+            padding: var(--space-6);
+            border-radius: 16px;
+            text-align: center;
+        }
+        .quick-contact h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: var(--text-3xl);
+            margin-bottom: var(--space-3);
+        }
+        .quick-contact p {
+            color: rgba(250, 248, 246, 0.8);
+            margin-bottom: var(--space-4);
+        }
+        .quick-contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+        }
+        @media (min-width: 768px) {
+            .quick-contact-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+        .hours-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-2);
+            margin-top: var(--space-3);
+        }
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: var(--space-2) 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .hours-row:last-child {
+            border-bottom: none;
+        }
+        .hours-row .day {
+            font-weight: 600;
+            color: var(--black);
+        }
+        .hours-row .time {
+            color: var(--muted);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav" id="main-nav">
+        <div class="nav-container">
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-brand">ClearCosmetics</div>
+
+            <a href="book.html" class="nav-book">Book</a>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay" id="menu-overlay">
+        <div class="menu-content">
+            <button class="menu-close" id="menu-close">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <nav class="menu-nav">
+                <a href="index.html" class="menu-link">Home</a>
+                <a href="treatments.html" class="menu-link">Treatments</a>
+                <a href="results.html" class="menu-link">Results</a>
+                <a href="about.html" class="menu-link">About</a>
+                <a href="book.html" class="menu-link menu-link-highlight">Book Consultation</a>
+            </nav>
+
+            <div class="menu-footer">
+                <div class="menu-social">
+                    <a href="https://wa.me/353831622444" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://instagram.com/clearcosmetics_" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+                <p class="menu-locations">Dublin · Marbella</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="page-hero-container">
+            <p class="page-hero-eyebrow">We're Here to Help</p>
+            <h1 class="page-hero-title">Get in Touch</h1>
+            <p class="page-hero-subtitle">
+                Visit our clinics, call us, or send a message. We're ready to answer your questions.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="contact-container">
+
+            <!-- Quick Contact -->
+            <div class="quick-contact" style="margin-bottom: var(--space-8);">
+                <h3>Need Help Right Now?</h3>
+                <p>Contact us directly via WhatsApp or phone for immediate assistance</p>
+                <div class="quick-contact-buttons">
+                    <a href="https://wa.me/353831622444?text=Hi%20ClearCosmetics!%20I%20have%20a%20question." class="btn btn-primary" target="_blank">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Us
+                    </a>
+                    <a href="tel:+353831622444" class="btn btn-secondary">
+                        <i class="fas fa-phone"></i> Call Us Now
+                    </a>
+                    <a href="book.html" class="btn btn-secondary">
+                        <i class="fas fa-calendar-check"></i> Book Online
+                    </a>
+                </div>
+            </div>
+
+            <!-- Clinic Locations -->
+            <div class="contact-grid">
+                <!-- Dublin Clinic -->
+                <div class="contact-info-card">
+                    <h3><i class="fas fa-map-marker-alt"></i> Dublin Clinic</h3>
+
+                    <div class="contact-detail">
+                        <i class="fas fa-location-dot"></i>
+                        <div class="contact-detail-content">
+                            <h4>Address</h4>
+                            <p>PrestigeLash Academy<br>
+                            337 S Circular Rd, Saint James<br>
+                            Dublin 8, D08 WP49<br>
+                            Ireland</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-detail">
+                        <i class="fas fa-clock"></i>
+                        <div class="contact-detail-content">
+                            <h4>Opening Hours</h4>
+                            <p><strong>Clinic Days:</strong> 2-3 days per month<br>
+                            10:00 AM – 6:00 PM<br>
+                            <em>By appointment only</em></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-detail">
+                        <i class="fas fa-phone"></i>
+                        <div class="contact-detail-content">
+                            <h4>Phone</h4>
+                            <p><a href="tel:+353831622444">+353 83 162 2444</a></p>
+                        </div>
+                    </div>
+
+                    <div class="map-container">
+                        <p><i class="fas fa-map"></i> Map integration available</p>
+                    </div>
+                </div>
+
+                <!-- Marbella Clinic -->
+                <div class="contact-info-card">
+                    <h3><i class="fas fa-map-marker-alt"></i> Marbella Clinic</h3>
+
+                    <div class="contact-detail">
+                        <i class="fas fa-location-dot"></i>
+                        <div class="contact-detail-content">
+                            <h4>Address</h4>
+                            <p>Casas Sevilla 2<br>
+                            Av. Playas del Duque, Local 7<br>
+                            Nueva Andalucía<br>
+                            29660 Marbella, Spain</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-detail">
+                        <i class="fas fa-clock"></i>
+                        <div class="contact-detail-content">
+                            <h4>Opening Hours</h4>
+                            <p><strong>Clinic Days:</strong> 2-3 days per month<br>
+                            10:00 AM – 6:00 PM<br>
+                            <em>By appointment only</em></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-detail">
+                        <i class="fas fa-phone"></i>
+                        <div class="contact-detail-content">
+                            <h4>Phone</h4>
+                            <p><a href="tel:+353831622444">+353 83 162 2444</a></p>
+                        </div>
+                    </div>
+
+                    <div class="map-container">
+                        <p><i class="fas fa-map"></i> Map integration available</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-section" style="margin-top: var(--space-8);">
+                <h3>Send Us a Message</h3>
+                <p>Fill out the form below and we'll get back to you within 24 hours</p>
+
+                <form id="contact-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="clinic">Preferred Clinic *</label>
+                            <select id="clinic" name="clinic" required>
+                                <option value="">Select a clinic</option>
+                                <option value="dublin">Dublin</option>
+                                <option value="marbella">Marbella</option>
+                                <option value="either">Either location</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="subject">Subject *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a topic</option>
+                                <option value="booking">Booking Enquiry</option>
+                                <option value="treatment">Treatment Question</option>
+                                <option value="pricing">Pricing Information</option>
+                                <option value="aftercare">Aftercare Advice</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="message">Your Message *</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                            <p style="color: var(--muted); font-size: var(--text-sm); margin-top: var(--space-2); text-align: center;">
+                                By submitting this form, you agree to our <a href="privacy.html" style="color: var(--gold);">Privacy Policy</a>
+                            </p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- General Contact Info -->
+            <div class="contact-info-card" style="margin-top: var(--space-8); text-align: center;">
+                <h3 style="justify-content: center;"><i class="fas fa-envelope"></i> General Contact</h3>
+
+                <div class="contact-detail" style="justify-content: center; border: none; padding: var(--space-2) 0;">
+                    <i class="fas fa-envelope"></i>
+                    <div class="contact-detail-content">
+                        <h4>Email</h4>
+                        <p><a href="mailto:clearcosmeticss@gmail.com">clearcosmeticss@gmail.com</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-detail" style="justify-content: center; border: none; padding: var(--space-2) 0;">
+                    <i class="fab fa-instagram"></i>
+                    <div class="contact-detail-content">
+                        <h4>Instagram</h4>
+                        <p><a href="https://instagram.com/clearcosmetics_" target="_blank">@clearcosmetics_</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-detail" style="justify-content: center; border: none; padding: var(--space-2) 0; margin: 0;">
+                    <i class="fab fa-whatsapp"></i>
+                    <div class="contact-detail-content">
+                        <h4>WhatsApp</h4>
+                        <p><a href="https://wa.me/353831622444" target="_blank">+353 83 162 2444</a></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>ClearCosmetics</h3>
+                    <p>Natural beauty, elevated</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Explore</h4>
+                    <a href="treatments.html">Treatments</a>
+                    <a href="results.html">Results</a>
+                    <a href="about.html">About</a>
+                    <a href="book.html">Book Now</a>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <a href="tel:+353831622444">+353 83 162 2444</a>
+                    <a href="mailto:clearcosmeticss@gmail.com">clearcosmeticss@gmail.com</a>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Follow</h4>
+                    <a href="https://instagram.com/clearcosmetics_" target="_blank">Instagram</a>
+                    <a href="https://tiktok.com/@clearcosmetics_" target="_blank">TikTok</a>
+                    <a href="https://facebook.com/clearcosmetics" target="_blank">Facebook</a>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms & Conditions</a>
+                    <a href="faq.html">FAQ</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 ClearCosmetics. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Simple form handling (replace with actual backend integration)
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+
+            // For now, show success message (replace with actual form submission)
+            alert('Thank you for your message! We\'ll get back to you within 24 hours.\n\nFor urgent enquiries, please WhatsApp us at +353 83 162 2444');
+
+            // Reset form
+            this.reset();
+
+            // In production, you would send this to a backend:
+            // fetch('/api/contact', { method: 'POST', body: JSON.stringify(data) })
+        });
+    </script>
+</body>
+</html>

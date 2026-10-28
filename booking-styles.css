@@ -3940,38 +3940,67 @@ textarea:focus {
     .treatment-select-group {
         width: 100vw !important;
         margin-left: calc(-50vw + 50%) !important;
-        padding: 0 !important;
+        padding: 0 12px !important;
         box-sizing: border-box !important;
     }
 
     .treatment-select-group > label,
     .treatment-select-subtitle,
     .treatment-search-box {
-        margin-left: 10px !important;
-        margin-right: 10px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
     }
 
-    #treatment-list,
-    .treatment-categories,
-    .treatment-category,
-    .treatment-grid {
+    #treatment-list {
         width: 100% !important;
-        padding: 0 8px !important;
-        box-sizing: border-box !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .treatment-categories {
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .treatment-category {
+        width: 100% !important;
+        padding: 0 !important;
+        margin-bottom: 24px !important;
     }
 
     .treatment-category-title {
-        font-size: 13px !important;
+        font-size: 14px !important;
+        font-weight: 700 !important;
+        margin-bottom: 12px !important;
+        padding: 0 !important;
+    }
+
+    .treatment-grid {
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        gap: 8px !important;
     }
 
     .treatment-option {
         width: 100% !important;
+        padding: 16px 14px !important;
         box-sizing: border-box !important;
+        border-radius: 8px !important;
+        margin: 0 !important;
+    }
+
+    .treatment-option-checkbox {
+        min-width: 24px !important;
+        width: 24px !important;
+        height: 24px !important;
     }
 
     .treatment-option-label {
-        font-size: 11px !important;
-        line-height: 1.3 !important;
+        font-size: 13px !important;
+        line-height: 1.4 !important;
+        font-weight: 500 !important;
     }
 }
 

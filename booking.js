@@ -268,7 +268,7 @@
                         setTimeout(function() {
                             const continueButton = document.getElementById('btn-step-1-next');
                             if (continueButton) {
-                                continueButton.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                continueButton.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                             }
                         }, 300);
                     } else {
@@ -313,6 +313,85 @@
                 if (dropdownHeader) dropdownHeader.classList.remove('active');
             }
         });
+
+        // Treatment Search Functionality
+        const searchInput = document.getElementById('treatment-search');
+        const clearSearch = document.getElementById('clear-search');
+        const selectedCounter = document.getElementById('selected-counter');
+
+        if (searchInput) {
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+                const treatmentOptions = document.querySelectorAll('.treatment-option');
+                const categories = document.querySelectorAll('.treatment-category');
+                let visibleCount = 0;
+
+                // Show/hide clear button
+                if (clearSearch) {
+                    clearSearch.style.display = searchTerm ? 'block' : 'none';
+                }
+
+                // Filter treatments
+                treatmentOptions.forEach(function(option) {
+                    const treatmentName = option.dataset.treatment.toLowerCase();
+                    const matches = treatmentName.includes(searchTerm);
+
+                    if (matches || !searchTerm) {
+                        option.style.display = '';
+                        visibleCount++;
+                    } else {
+                        option.style.display = 'none';
+                    }
+                });
+
+                // Hide empty categories
+                categories.forEach(function(category) {
+                    const categoryElement = category.closest('.treatment-category');
+                    if (!categoryElement) return;
+
+                    const visibleOptionsInCategory = categoryElement.querySelectorAll('.treatment-option:not([style*="display: none"])');
+                    categoryElement.style.display = visibleOptionsInCategory.length > 0 ? '' : 'none';
+                });
+
+                // Update counter with search results
+                if (searchTerm && visibleCount === 0) {
+                    if (selectedCounter) {
+                        selectedCounter.style.display = 'block';
+                        selectedCounter.querySelector('#selected-counter-text').textContent = 'No treatments found';
+                    }
+                } else if (searchTerm) {
+                    if (selectedCounter) {
+                        selectedCounter.style.display = 'block';
+                        selectedCounter.querySelector('#selected-counter-text').textContent = visibleCount + ' treatment' + (visibleCount !== 1 ? 's' : '') + ' found';
+                    }
+                } else {
+                    updateSelectedCounter();
+                }
+            });
+
+            // Clear search button
+            if (clearSearch) {
+                clearSearch.addEventListener('click', function() {
+                    searchInput.value = '';
+                    searchInput.dispatchEvent(new Event('input'));
+                    searchInput.focus();
+                });
+            }
+        }
+    }
+
+    function updateSelectedCounter() {
+        const selectedCounter = document.getElementById('selected-counter');
+        const counterText = document.getElementById('selected-counter-text');
+
+        if (!selectedCounter || !counterText) return;
+
+        if (state.selectedTreatments.length > 0) {
+            selectedCounter.style.display = 'block';
+            counterText.textContent = state.selectedTreatments.length + ' treatment' + (state.selectedTreatments.length !== 1 ? 's' : '') + ' selected';
+        } else {
+            selectedCounter.style.display = 'none';
+        }
     }
 
     function selectAppointmentType(typeId) {
@@ -364,6 +443,7 @@
             }
         }
 
+        updateSelectedCounter();
         updateSummary();
     }
 
@@ -597,11 +677,36 @@
             });
 
             Cal("ui", {
-                "styles": { "branding": { "brandColor": "#B8966F" } },
+                "styles": {
+                    "branding": { "brandColor": "#B8966F" },
+                    "fontSize": "14px",
+                    "body": {
+                        "fontSize": "14px"
+                    }
+                },
                 "hideEventTypeDetails": false,
-                "layout": "month_view"
+                "layout": "month_view",
+                "cssVarsPerTheme": {
+                    "light": {
+                        "--cal-text-sm": "14px",
+                        "--cal-text-base": "14px",
+                        "--cal-text-lg": "15px"
+                    }
+                }
             });
         }, 100);
+
+        // Apply mobile-friendly font sizes after Cal.com loads
+        setTimeout(function() {
+            const calIframe = document.querySelector('#cal-embed-container iframe');
+            if (calIframe && window.innerWidth < 768) {
+                // Add mobile-specific class to adjust layout
+                const calContainer = document.getElementById('calcom-embed');
+                if (calContainer) {
+                    calContainer.style.fontSize = '13px';
+                }
+            }
+        }, 1000);
 
         // Listen for Cal.com booking completion (no payment interception!)
         window.addEventListener('message', function(event) {
