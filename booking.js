@@ -154,33 +154,42 @@
         // Categorize treatments
         const categories = {
             'Dermal Fillers': [],
-            'Botox': [],
+            'Botox / Anti-Wrinkle': [],
             'Skin Boosters': [],
             'Polynucleotides': [],
             'Fat Dissolving': [],
-            'Package Deals': []
+            'Package Deals': [],
+            'Consultations': []
         };
 
         BOOKING_CONFIG.treatments.forEach(function (treatment) {
-            if (treatment.includes('Polynucleotides')) {
+            if (treatment.includes('Under-Eyes') || treatment.includes('Whole Face') ||
+                treatment.includes('Neck Area') || treatment.includes('Three Sessions')) {
                 categories['Polynucleotides'].push(treatment);
             } else if (treatment.includes('Lip Enhancement') || treatment.includes('Smile Line') ||
                 treatment.includes('Marionnette') || treatment.includes('Nasolabial') ||
-                treatment.includes('Under-Eye') || treatment.includes('Five Point') ||
-                treatment.includes('Non-Surgical Rhinoplasty') || treatment.includes('Dermal Filler Dissolving')) {
+                treatment.includes('Chin Filler') || treatment.includes('Cheek Filler') ||
+                treatment.includes('Jawline Filler') || treatment.includes('Temple Filler') ||
+                treatment.includes('Tear Trough') || treatment.includes('Non-Surgical Rhinoplasty') ||
+                treatment.includes('Top Up') || treatment.includes('Dermal Filler Dissolving')) {
                 categories['Dermal Fillers'].push(treatment);
-            } else if (treatment.includes('Botox') || treatment.includes('Nostril') ||
-                      treatment.includes('Bunny') || treatment.includes('Jowls') ||
-                      treatment.includes('Lip Flip') || treatment.includes('Neck Botox') ||
-                      treatment.includes('Trap') || treatment.includes('Buttock') ||
-                      treatment.includes('Masseter') || treatment.includes('Hyperhydrosis')) {
-                categories['Botox'].push(treatment);
-            } else if (treatment.includes('Fat Dissolving')) {
+            } else if (treatment.includes('Area') && !treatment.includes('Fat') && !treatment.includes('Polynucleotides') ||
+                      treatment.includes('Nostril') || treatment.includes('Bunny') ||
+                      treatment.includes('Jowls') || treatment.includes('Lip Flip') ||
+                      treatment.includes('Neck Botox') || treatment.includes('Trap') ||
+                      treatment.includes('Buttock') || treatment.includes('Masseter') ||
+                      treatment.includes('Hyperhidrosis')) {
+                categories['Botox / Anti-Wrinkle'].push(treatment);
+            } else if (treatment.includes('Consultation')) {
+                categories['Consultations'].push(treatment);
+            } else if (treatment.includes('Small Area') || treatment.includes('Large Area') ||
+                      treatment.includes('Sessions') && (treatment.includes('Small') || treatment.includes('Large'))) {
                 categories['Fat Dissolving'].push(treatment);
             } else if (treatment.includes('Profhilo') || treatment.includes('Seventy') ||
                       treatment.includes('B12') || treatment.includes('Lumi')) {
                 categories['Skin Boosters'].push(treatment);
-            } else if (treatment.includes('Package') || treatment.includes('ml Dermal Filler')) {
+            } else if (treatment.includes('Package') || treatment.includes('ml Dermal Filler') ||
+                      treatment.includes('ml Contour')) {
                 categories['Package Deals'].push(treatment);
             }
         });

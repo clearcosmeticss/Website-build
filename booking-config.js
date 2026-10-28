@@ -80,23 +80,44 @@ const BOOKING_CONFIG = {
     ],
 
     treatments: [
-        // DERMAL FILLERS
+        // DERMAL FILLERS - LIPS
         'Lip Enhancement - 0.5ml',
         'Lip Enhancement - 0.7ml',
         'Lip Enhancement - 1ml',
         'Smile Line (1ml)',
         'Marionnette Lines (1ml)',
         'Nasolabial Folds (1ml)',
-        'Under-Eye (Teartrough)',
-        'Five Point Face Lift',
+
+        // DERMAL FILLERS - CHIN
+        'Chin Filler - 0.5ml',
+        'Chin Filler - 0.7ml',
+        'Chin Filler - 1ml',
+        'Chin Filler - 1.5ml',
+
+        // DERMAL FILLERS - CHEEKS
+        'Cheek Filler - 0.5ml',
+        'Cheek Filler - 0.7ml',
+        'Cheek Filler - 1ml',
+        'Cheek Filler - 1.5ml',
+
+        // DERMAL FILLERS - JAWLINE
+        'Jawline Filler - 0.5ml',
+        'Jawline Filler - 0.7ml',
+        'Jawline Filler - 1ml',
+        'Jawline Filler - 1.5ml',
+
+        // DERMAL FILLERS - OTHER
         'Non-Surgical Rhinoplasty',
+        'Top Up',
+        'Temple Filler',
+        'Tear Trough (Under-Eye)',
         'Dermal Filler Dissolving',
 
-        // BOTOX
-        'Botox - One Area',
-        'Botox - Two Areas',
-        'Botox - Three Areas',
-        'Botox - Four Areas',
+        // BOTOX / ANTI-WRINKLE
+        'One Area',
+        'Two Areas',
+        'Three Areas',
+        'Four Areas',
         'Nostril Flare',
         'Bunny Lines',
         'Jowls / Jawline',
@@ -105,28 +126,29 @@ const BOOKING_CONFIG = {
         'Trap Botox',
         'Buttock Lift',
         'Masseter',
-        'Hyperhydrosis (Under Arms)',
-
-        // FAT DISSOLVING
-        'Fat Dissolving - Small Area (Cheeks/Chin/Jaw)',
-        'Fat Dissolving - Large Area (Legs/Stomach/Back)',
-        'Fat Dissolving - Large + Small Area',
-        'Fat Dissolving - Two Sessions Small Area',
-        'Fat Dissolving - Three Sessions Large Area',
+        'Hyperhidrosis (Under Arms)',
 
         // SKIN BOOSTERS
-        'Profhilo',
+        'Profhilo Sculptra - 1 Session',
+        'Profhilo Sculptra - 2 Sessions',
         'Seventy Hyal',
         'B12 Booster',
         'Lumi Eye',
 
         // POLYNUCLEOTIDES
-        'Polynucleotides - Under-Eyes',
-        'Polynucleotides - Whole Face',
-        'Polynucleotides - Neck Area',
-        'Polynucleotides - Three Sessions Under-Eyes',
-        'Polynucleotides - Three Sessions Whole Face',
-        'Polynucleotides - Three Sessions Neck Area',
+        'Under-Eyes',
+        'Whole Face',
+        'Neck Area',
+        'Three Sessions Under-Eyes',
+        'Three Sessions Whole Face',
+        'Three Sessions Neck Area',
+
+        // FAT DISSOLVING
+        'One Small Area (Cheeks/Chin/Jaw)',
+        'One Large Area (Legs/Stomach/Back)',
+        'Large Area + Small Area',
+        'Two Sessions Small Area',
+        'Three Sessions Large Area',
 
         // PACKAGE DEALS
         '2ml Contour Package',
@@ -134,8 +156,9 @@ const BOOKING_CONFIG = {
         '4ml Dermal Filler',
         '5ml Dermal Filler',
 
-        // Consultation
-        'Not Sure — Need Consultation'
+        // CONSULTATIONS
+        'In Person Consultation',
+        'Video Call Consultation'
     ],
 
     policies: [
