@@ -108,7 +108,7 @@ const BOOKING_CONFIG = {
 
         // DERMAL FILLERS - OTHER
         'Non-Surgical Rhinoplasty',
-        'Top Up',
+        'Non-Surgical Rhinoplasty Top Up',
         'Temple Filler',
         'Tear Trough (Under-Eye)',
         'Dermal Filler Dissolving',
