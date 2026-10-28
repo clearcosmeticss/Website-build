@@ -3917,7 +3917,22 @@ textarea:focus {
 
 /* Mobile adjustments - FULL WIDTH TREATMENT DROPDOWN */
 @media (max-width: 768px) {
-    /* Remove ALL padding from parent containers */
+    /* Remove ALL padding from ALL parent containers */
+    .booking-page .container {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .booking-layout {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .booking-main {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
     .booking-panel[data-step="1"] {
         padding-left: 0 !important;
         padding-right: 0 !important;
